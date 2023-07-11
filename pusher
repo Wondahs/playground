@@ -9,7 +9,7 @@ read -p "Enter commit message: " commit_msg
 # Git commit
 git commit -m "$commit_msg"
 
-echo "\nCommit successful.Pushing now"
+echo "\n Commit successful.Pushing now"
 
 # Git push
 git push
