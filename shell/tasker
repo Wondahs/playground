@@ -1,0 +1,25 @@
+#!/bin/bash
+
+# Prompt the user for the number of files
+read -p "Enter the number of files: " num_files
+
+# Iterate over the given number of files
+for ((i=1; i<=$num_files; i++))
+do                                                          # Prompt the user for the file name
+    read -p "Enter the name of file $i (or enter 'q' to
+quit): " file_name
+
+    # Check if the user wants to quit
+    if [[ "$file_name" == "q" ]]; then
+        echo "Quitting the program..."
+        exit 0
+    fi
+
+    # Invoke vi editor for text input
+    vi "$file_name"
+
+    # Make the file executable
+    chmod +x "$file_name"
+
+    echo "File $file_name created and made executable."
+done
