@@ -1,0 +1,16 @@
+#!/bin/bash
+
+# Performs git add in the current directory
+git add .
+
+# Prompts to add commit message
+read -p "Enter commit message: " commit_msg
+
+# Git commit
+git commit -m "$commit_msg"
+
+# Git push
+git push
+
+echo "Git add, commit, and push completed successfully"
+
