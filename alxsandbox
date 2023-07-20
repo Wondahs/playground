@@ -1,0 +1,19 @@
+#!/data/data/com.termux/files/usr/bin/bash
+
+# Replace 'your_username' with your actual username
+username="ab82bd69c807"
+
+# Replace 'your_server_address' with the address of your remote server
+server_address="ab82bd69c807.7c1a4af9.alx-cod.online"
+
+# Replace 'your_password' with your actual password
+password="cd1375cbb64be9d9b70e"
+
+# Send the SSH command using expect
+expect -c "
+spawn ssh $username@$server_address
+expect \"password:\"
+send \"$password\r\"
+interact
+"
+
