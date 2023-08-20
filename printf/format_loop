@@ -1,0 +1,72 @@
+#include "main.h"
+
+/**
+ * findHandler - Find the appropriate handler for a specifier
+ * @specifier: The format specifier
+ *
+ * Return: Pointer to the handler function, or NULL if not found
+ */
+FormatHandlerInfo findHandler(char specifier)
+{
+	for (int i = 0; i < sizeof(formatHandlers) / sizeof(formatHandlers[0]); i++)
+	{
+		if (specifier == formatHandlers[i].specifier)
+			return formatHandlers[i].handler;
+	}
+	return NULL;
+}
+
+/**
+ * handleNonSpecifier - Handle non-format specifier character
+ * @format: Pointer to the format string
+ * @pchar: Pointer to the character count
+ */
+void handleNonSpecifier(const char **format, int *pchar)
+{
+	write(1, *format, 1);
+	(*format)++;
+	(*pchar)++;
+}
+
+/**
+ * handleSpecifier - Handle a format specifier
+ * @format: Pointer to the format string
+ * @args: List of arguments
+ * @pchar: Pointer to the character count
+ */
+void handleSpecifier(const char **format, va_list args, int *pchar)
+{
+	(*format)++; // Move past the '%'
+	char specifier = **format;
+	(*format)++; // Move to the next character after the specifier
+
+	FormatHandlerInfo handler = findHandler(specifier);
+
+	if (handler)
+		handler(args, pchar);
+	else
+	{
+		write(1, "%", 1);         // Print the '%' character
+		write(1, &specifier, 1); // Print the unknown specifier
+		*pchar += 2;
+	}
+}
+
+/**
+ * formatLoop - Handle formatting and printing
+ * @format: The format string
+ * @args: List of arguments
+ * @pchar: Pointer to the character count
+ */
+void formatLoop(const char *format, va_list args, int *pchar)
+{
+	 FormatHandlerInfo formatHandlers[] = {
+		{'c', handleChar}, {'s', handleString}, {'i', handleInt}};
+	while (*format)
+	{
+		if (*format != '%')
+			handleNonSpecifier(&format, pchar);
+		else
+			handleSpecifier(&format, args, pchar);
+	}
+}

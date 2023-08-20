@@ -3,11 +3,26 @@
 #include <stdio.h>
 #include <stdarg.h>
 #include <unistd.h>
+#include <stdlib.h>
 
 int print_int(int num);
 int _printf(const char *format, ...);
 int print_str(char *s);
-// void print_char(char *s);
+/* void print_char(char *s); */
+typedef struct
+{
+	/* Struct for specifier handling*/
+	char specifier;
+	void (*handler)(va_list args, int *pchar);
+} FormatHandlerInfo;
 
+void handleChar(va_list args, int *pchar);
+void handleString(va_list args, int *pchar);
+void handleInt(va_list args, int *pchar);
+extern FormatHandlerInfo formatHandlers[];
+void formatLoop(const char *format, va_list args, int *pchar);
+void handleSpecifier(const char **format, va_list args, int *pchar);
+void handleNonSpecifier(const char **format, int *pchar);
+FormatHandlerInfo findHandler(char specifier);
 
 #endif

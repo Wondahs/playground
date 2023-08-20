@@ -1,11 +1,11 @@
 #include "main.h"
 
 /**
-*print_str - Prints string
-*@str: Input string
-*
-*Return: Length of str
-*/
+ *print_str - Prints string
+ *@str: Input string
+ *
+ *Return: Length of str
+ */
 int print_str(char *str)
 {
 	int i;
@@ -29,7 +29,7 @@ int print_str(char *str)
  */
 int print_int(int num)
 {
-	char buffer[12]; // Enough space for INT_MIN (-2147483648)
+	char buffer[12];
 	int len = 0;
 
 	if (num == 0)
