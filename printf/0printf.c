@@ -51,6 +51,13 @@ int _printf(const char *format, ...)
 					pchar += print_str(str);
 					break;
 				}
+				case 'i':
+				case 'd':
+				{
+					int num = va_arg(args, int);
+					pchar += print_int(num);
+					break;
+				}
 				default:
 				{
 					write(1, format, 1);
