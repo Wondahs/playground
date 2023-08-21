@@ -10,12 +10,13 @@
 int _printf(const char *format, ...)
 {
 	int pchar = 0;
+	int printed;
 	va_list args;
 
 	if (format == NULL)
 		return (-1);
 	va_start(args, format);
-	formatLoop(format, args, &pchar);
+	printed = formatLoop(format, args, &pchar);
 	va_end(args);
-	return (pchar);
+	return (printed);
 }

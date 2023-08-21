@@ -4,8 +4,11 @@ int main(void)
 {
     char *name = "mike";
     char c = 'D';
-    int age = 50, year = 2019;
+    int age = 50, year = 2019, ch, ch2;
 
-
-    _printf("My name is %s, i am in class %c. I was born in %d. I am %i years old.\n", name, c, age, year);
+	ch = _printf("My%s, %c, %d, %i\n", name, c, age, year);
+	printf("%i\n", ch);
+	ch2 = printf("My%s, %c, %d, %i\n", name, c, age, year);
+	_printf("%i\n", ch2);
+    return 0;
 }

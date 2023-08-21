@@ -6,23 +6,27 @@
  * @args: List of arguments
  * @pchar: Pointer to the character count
  */
-void formatLoop(const char *format, va_list args, int *pchar)
+int formatLoop(const char *format, va_list args, int *pchar)
 {
 	FormatHandlerInfo formatHandlers[] = {
-		{'c', handleChar}, {'s', handleString}, {'i', handleInt}};
+		{'c', handleChar}, {'s', handleString}, {'d', handleInt}, {'i', handleInt}};
+	void (*handler)(va_list, int *) = NULL;
+	long unsigned int i;
+	int ret = *pchar;
+
 	while (*format)
 	{
 		if (*format != '%')
 		{
 			write(1, format, 1);
-			pchar++;
+			ret++;
 		}
 		else
 		{
 			format++;
-			void (*handler)(va_list, int *) = NULL;
+			/*void (*handler)(va_list, int *) = NULL; */
 
-			for (int i = 0; i < sizeof(formatHandlers) / sizeof(formatHandlers[0]); i++)
+			for (i = 0; i < sizeof(formatHandlers) / sizeof(formatHandlers[0]); i++)
 			{
 				if (*format == formatHandlers[i].specifier)
 				{
@@ -35,9 +39,10 @@ void formatLoop(const char *format, va_list args, int *pchar)
 			else
 			{
 				write(1, format, 1);
-				pchar++;
+				ret++;
 			}
 		}
 		format++;
 	}
+	return (ret += *pchar);
 }

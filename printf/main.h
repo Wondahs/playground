@@ -5,6 +5,9 @@
 #include <unistd.h>
 #include <stdlib.h>
 
+#define UNUSED(x) (void)(x)
+
+
 int print_int(int num);
 int _printf(const char *format, ...);
 int print_str(char *s);
@@ -20,7 +23,7 @@ void handleChar(va_list args, int *pchar);
 void handleString(va_list args, int *pchar);
 void handleInt(va_list args, int *pchar);
 extern FormatHandlerInfo formatHandlers[];
-void formatLoop(const char *format, va_list args, int *pchar);
+int formatLoop(const char *format, va_list args, int *pchar);
 void handleSpecifier(const char **format, va_list args, int *pchar);
 void handleNonSpecifier(const char **format, int *pchar);
 FormatHandlerInfo findHandler(char specifier);

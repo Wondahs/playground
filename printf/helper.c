@@ -31,6 +31,8 @@ int print_int(int num)
 {
 	char buffer[12];
 	int len = 0;
+	int abs_num, i;
+	int num_digits = 0;
 
 	if (num == 0)
 	{
@@ -44,8 +46,8 @@ int print_int(int num)
 			num = -num;
 		}
 
-		int abs_num = num;
-		int num_digits = 0;
+		abs_num = num;
+		/* int num_digits = 0; */
 
 		while (abs_num > 0)
 		{
@@ -54,7 +56,7 @@ int print_int(int num)
 		}
 
 		abs_num = num;
-		for (int i = num_digits - 1; i >= 0; i--)
+		for (i = num_digits - 1; i >= 0; i--)
 		{
 			buffer[len + i] = '0' + (abs_num % 10);
 			abs_num /= 10;
