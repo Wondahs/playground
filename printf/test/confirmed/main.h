@@ -28,9 +28,4 @@ void handleSpecifier(const char **format, va_list args, int *pchar);
 void handleNonSpecifier(const char **format, int *pchar);
 FormatHandlerInfo findHandler(char specifier);
 
-#define HANDLERS \
-    {{'c', handleChar}, {'s', handleString}, \
-	{'d', handleInt}, {'i', handleInt}}
-
-
 #endif
