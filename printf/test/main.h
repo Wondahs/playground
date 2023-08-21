@@ -1,36 +1,39 @@
 #ifndef MAIN_H
 #define MAIN_H
+
 #include <stdio.h>
 #include <stdarg.h>
 #include <unistd.h>
 #include <stdlib.h>
 
 #define UNUSED(x) (void)(x)
+#define BUFFER_SIZE 1024  // Adjust this size as needed
 
+/**
+ * struct formatHandler - For format specifier
+ * @specifier: The format specifier character
+ * @handler: Pointer to the handler function for the specifier
+ */
+struct formatHandler
+{
+	char specifier;
+	void (*handler)(va_list args, char *buffer, int *pchar);
+};
+
+typedef struct formatHandler FormatHandlerInfo;
 
 int print_int(int num);
-int _printf(const char *format, ...);
 int print_str(char *s);
-/* void print_char(char *s); */
-typedef struct
-{
-	/* Struct for specifier handling*/
-	char specifier;
-	void (*handler)(va_list args, int *pchar);
-} FormatHandlerInfo;
+int _printf(const char *format, ...);
 
-void handleChar(va_list args, int *pchar);
-void handleString(va_list args, int *pchar);
-void handleInt(va_list args, int *pchar);
+void handleChar(va_list args, char *buffer, int *pchar);
+void handleString(va_list args, char *buffer, int *pchar);
+void handleInt(va_list args, char *buffer, int *pchar);
+
 extern FormatHandlerInfo formatHandlers[];
-int formatLoop(const char *format, va_list args, int *pchar);
-void handleSpecifier(const char **format, va_list args, int *pchar);
-void handleNonSpecifier(const char **format, int *pchar);
-FormatHandlerInfo findHandler(char specifier);
 
-#define HANDLERS \
-    {{'c', handleChar}, {'s', handleString}, \
-	{'d', handleInt}, {'i', handleInt}}
+int formatLoop(const char *format, va_list args, char *buffer, int *pchar);
 
+void flushBuffer(char *buffer, int *pchar);
 
 #endif

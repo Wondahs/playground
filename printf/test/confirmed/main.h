@@ -12,12 +12,24 @@ int print_int(int num);
 int _printf(const char *format, ...);
 int print_str(char *s);
 /* void print_char(char *s); */
-typedef struct
+
+/**
+ * struct formatHandler - For format specifier
+ * @specifier: First member
+ * @handler: Second member
+ *
+ */
+struct formatHandler
 {
 	/* Struct for specifier handling*/
 	char specifier;
 	void (*handler)(va_list args, int *pchar);
-} FormatHandlerInfo;
+};
+
+/**
+ * FormatHandlerInfo - Typedef for formatHandler
+ */
+typedef struct formatHandler FormatHandlerInfo;
 
 void handleChar(va_list args, int *pchar);
 void handleString(va_list args, int *pchar);
@@ -29,7 +41,7 @@ void handleNonSpecifier(const char **format, int *pchar);
 FormatHandlerInfo findHandler(char specifier);
 
 #define HANDLERS \
-    {{'c', handleChar}, {'s', handleString}, \
+	{{'c', handleChar}, {'s', handleString}, \
 	{'d', handleInt}, {'i', handleInt}}
 
 
