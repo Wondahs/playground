@@ -1,5 +1,6 @@
 #include "main.h"
 
+
 int formatLoop(const char *format, va_list args, char *buffer, int *pchar)
 {
 	FormatHandlerInfo formatHandlers[] = {
@@ -14,7 +15,6 @@ int formatLoop(const char *format, va_list args, char *buffer, int *pchar)
 		if (*format != '%')
 		{
 			buffer[(*pchar)++] = *format;
-			printed = 1;
 		}
 		else
 		{
@@ -33,12 +33,12 @@ int formatLoop(const char *format, va_list args, char *buffer, int *pchar)
 				if (buffer[(*pchar) - 1] == '\n')
 				{
 					flushBuffer(buffer, pchar);
+					printed = 1;
 				}
 			}
 			else
 			{
 				buffer[(*pchar)++] = *format;
-				printed = 0;
 			}
 		}
 		format++;

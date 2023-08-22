@@ -2,7 +2,7 @@
 
 int main(void)
 {
-    char *name = "Mike";
+    char *name = "Mikesss";
     char c = 'D';
     int age = 50, year = 2019, ch, ch2;
 
