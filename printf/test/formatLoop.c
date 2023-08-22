@@ -37,7 +37,7 @@ int formatLoop(const char *format, va_list args, int *pchar)
 				handler(args, pchar);
 			else
 			{
-				write(1, format, 1);
+				write(1, format - 1, 1);
 				ret++;
 			}
 		}

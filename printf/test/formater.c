@@ -104,6 +104,63 @@ void handleReversedString(va_list args, int *pchar)
     }
 	}
 }
+/**
+ * handlePointer - Handles pointer specifier
+ * @args: Args
+ * @pchar: Pointer to number of characters printed
+ */
+void handlePointer(va_list args, int *pchar)
+{
+    void *ptr = va_arg(args, void *);
+    char buffer[20];
+    unsigned long address = (unsigned long)ptr;
+    int num_digits = 0;
+    int i, digit;
+
+    while (address > 0)
+    {
+        address /= 16;
+        num_digits++;
+    }
+
+    address = (unsigned long)ptr;
+    for (i = num_digits - 1; i >= 0; i--)
+    {
+        digit = (address >> (i * 4)) & 0xF;
+        buffer[num_digits - 1 - i] = (digit < 10) ? ('0' + digit) : ('a' + digit - 10);
+    }
+    buffer[num_digits] = '\0';
+
+    write(1, "0x", 2);
+    write(1, buffer, num_digits);
+    *pchar += num_digits + 2;
+}
+
+
+/**
+ * handlePointer - Handles pointer specifier
+ * @args: Args
+ * @pchar: Pointer to number of printed characters
+ */
+/*void handlePointer(va_list args, int *pchar)
+{
+    void *ptr = va_arg(args, void *);
+    int num_digits = 0;
+    uintptr_t ptr_value = (uintptr_t)ptr;
+
+    write(1, "0x", 2);
+    *pchar += 2;
+
+    while (ptr_value > 0)
+    {
+        ptr_value >>= 4;
+        num_digits++;
+    }
+
+    print_hex((uintptr_t)ptr, 1);
+
+    *pchar += num_digits;
+}*/
 
 /**
  * handlePointer - Handles pointer soecifier
@@ -111,7 +168,7 @@ void handleReversedString(va_list args, int *pchar)
  * @pchar: Number of printed char
  *
  */
-void handlePointer(va_list args, int *pchar)
+/* void handlePointer(va_list args, int *pchar)
 {
     void *ptr = va_arg(args, void *);
 
@@ -122,7 +179,7 @@ void handlePointer(va_list args, int *pchar)
 
     *pchar += 8;
 
-}
+}*/
 
 /**
  * handleCustomString - Handles custom syring
