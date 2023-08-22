@@ -52,23 +52,23 @@ void handleInt(va_list args, int *pchar)
  */
 void handleRot13String(va_list args, int *pchar)
 {
-    char *str = va_arg(args, char *);
-    int i;
+	char *str = va_arg(args, char *);
+	int i;
 
-    /* ROT13 transformation */
-    for (i = 0; str[i] != '\0'; i++)
-    {
-        char c = str[i];
+	/* ROT13 transformation */
+	for (i = 0; str[i] != '\0'; i++)
+	{
+	char c = str[i];
 
-        if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'))
-        {
-            char base = (c >= 'a' && c <= 'z') ? 'a' : 'A';
-            c = base + ((c - base + 13) % 26);
-        }
+	if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'))
+	{
+		char base = (c >= 'a' && c <= 'z') ? 'a' : 'A';
+		c = base + ((c - base + 13) % 26);
+	}
 
-        write(1, &c, 1);
-        (*pchar)++;
-    }
+	write(1, &c, 1);
+	(*pchar)++;
+	}
 }
 
 /**
@@ -80,28 +80,28 @@ void handleRot13String(va_list args, int *pchar)
  */
 void handleReversedString(va_list args, int *pchar)
 {
-    char *str = va_arg(args, char *);
-    int length = 0;
-    int i;
+	char *str = va_arg(args, char *);
+	int length = 0;
+	int i;
 	
 	if (str == NULL)
-    	{
-	    write(1, "%r", 2);
-	    *pchar += 2;
+	{
+		write(1, "%r", 2);
+		*pchar += 2;
 	}
 	else
 	{
-    while (str[length] != '\0')
-    {
-        length++;
-    }
+	while (str[length] != '\0')
+	{
+	length++;
+	}
 
-    /* Print the reversed string */
-    for (i = length - 1; i >= 0; i--)
-    {
-        write(1, &str[i], 1);
-        (*pchar)++;
-    }
+	/* Print the reversed string */
+	for (i = length - 1; i >= 0; i--)
+	{
+	write(1, &str[i], 1);
+	(*pchar)++;
+	}
 	}
 }
 /**
@@ -111,29 +111,29 @@ void handleReversedString(va_list args, int *pchar)
  */
 void handlePointer(va_list args, int *pchar)
 {
-    void *ptr = va_arg(args, void *);
-    char buffer[20];
-    unsigned long address = (unsigned long)ptr;
-    int num_digits = 0;
-    int i, digit;
+	void *ptr = va_arg(args, void *);
+	char buffer[20];
+	unsigned long address = (unsigned long)ptr;
+	int num_digits = 0;
+	int i, digit;
 
-    while (address > 0)
-    {
-        address /= 16;
-        num_digits++;
-    }
+	while (address > 0)
+	{
+	address /= 16;
+	num_digits++;
+	}
 
-    address = (unsigned long)ptr;
-    for (i = num_digits - 1; i >= 0; i--)
-    {
-        digit = (address >> (i * 4)) & 0xF;
-        buffer[num_digits - 1 - i] = (digit < 10) ? ('0' + digit) : ('a' + digit - 10);
-    }
-    buffer[num_digits] = '\0';
+	address = (unsigned long)ptr;
+	for (i = num_digits - 1; i >= 0; i--)
+	{
+	digit = (address >> (i * 4)) & 0xF;
+	buffer[num_digits - 1 - i] = (digit < 10) ? ('0' + digit) : ('a' + digit - 10);
+	}
+	buffer[num_digits] = '\0';
 
-    write(1, "0x", 2);
-    write(1, buffer, num_digits);
-    *pchar += num_digits + 2;
+	write(1, "0x", 2);
+	write(1, buffer, num_digits);
+	*pchar += num_digits + 2;
 }
 
 
@@ -144,22 +144,22 @@ void handlePointer(va_list args, int *pchar)
  */
 /*void handlePointer(va_list args, int *pchar)
 {
-    void *ptr = va_arg(args, void *);
-    int num_digits = 0;
-    uintptr_t ptr_value = (uintptr_t)ptr;
+	void *ptr = va_arg(args, void *);
+	int num_digits = 0;
+	uintptr_t ptr_value = (uintptr_t)ptr;
 
-    write(1, "0x", 2);
-    *pchar += 2;
+	write(1, "0x", 2);
+	*pchar += 2;
 
-    while (ptr_value > 0)
-    {
-        ptr_value >>= 4;
-        num_digits++;
-    }
+	while (ptr_value > 0)
+	{
+	ptr_value >>= 4;
+	num_digits++;
+	}
 
-    print_hex((uintptr_t)ptr, 1);
+	print_hex((uintptr_t)ptr, 1);
 
-    *pchar += num_digits;
+	*pchar += num_digits;
 }*/
 
 /**
@@ -170,14 +170,14 @@ void handlePointer(va_list args, int *pchar)
  */
 /* void handlePointer(va_list args, int *pchar)
 {
-    void *ptr = va_arg(args, void *);
+	void *ptr = va_arg(args, void *);
 
-    write(1, "0x", 2);
-    *pchar += 2;
+	write(1, "0x", 2);
+	*pchar += 2;
 
 	print_hex((uintptr_t)ptr, 1);
 
-    *pchar += 8;
+	*pchar += 8;
 
 }*/
 
@@ -189,24 +189,24 @@ void handlePointer(va_list args, int *pchar)
  */
 void handleCustomString(va_list args, int *pchar)
 {
-    char *str = va_arg(args, char *);
-    int i;
+	char *str = va_arg(args, char *);
+	int i;
 
-    for (i = 0; str[i] != '\0'; i++)
-    {
-        if (str[i] < 32 || str[i] >= 127)
-        {
-            /* Print non-printable character as \xXX (uppercase hexadecimal)*/
-            write(1, "\\x", 2);
-            print_hex((unsigned int)str[i], 1);
-            *pchar += 4;
-        }
-        else
-        {
-            write(1, &str[i], 1);
-            (*pchar)++;
-        }
-    }
+	for (i = 0; str[i] != '\0'; i++)
+	{
+	if (str[i] < 32 || str[i] >= 127)
+	{
+		/* Print non-printable character as \xXX (uppercase hexadecimal)*/
+		write(1, "\\x", 2);
+		print_hex((unsigned int)str[i], 1);
+		*pchar += 4;
+	}
+	else
+	{
+		write(1, &str[i], 1);
+		(*pchar)++;
+	}
+	}
 }
 
 #include "main.h"
@@ -220,24 +220,24 @@ void handleCustomString(va_list args, int *pchar)
  */
 void handleBinary(va_list args, int *pchar)
 {
-    unsigned int num = va_arg(args, unsigned int);
+	unsigned int num = va_arg(args, unsigned int);
 
-    char binaryBuffer[32];
-    int j, i = 0;
+	char binaryBuffer[32];
+	int j, i = 0;
 
-    if (num == 0) {
-        binaryBuffer[i++] = '0';
-    } else {
-        while (num > 0) {
-            binaryBuffer[i++] = (num & 1) + '0';
-            num >>= 1;
-        }
-    }
+	if (num == 0) {
+	binaryBuffer[i++] = '0';
+	} else {
+	while (num > 0) {
+		binaryBuffer[i++] = (num & 1) + '0';
+		num >>= 1;
+	}
+	}
 
-    for (j = i - 1; j >= 0; j--) {
-        write(1, &binaryBuffer[j], 1);
-        (*pchar)++;
-    }
+	for (j = i - 1; j >= 0; j--) {
+	write(1, &binaryBuffer[j], 1);
+	(*pchar)++;
+	}
 }
 
 /**
@@ -248,8 +248,8 @@ void handleBinary(va_list args, int *pchar)
  */
 void handleUnsigned(va_list args, int *pchar)
 {
-    unsigned int num = va_arg(args, unsigned int);
-    *pchar += print_unsigned(num);
+	unsigned int num = va_arg(args, unsigned int);
+	*pchar += print_unsigned(num);
 }
 
 /**
@@ -260,8 +260,8 @@ void handleUnsigned(va_list args, int *pchar)
  */
 void handleOctal(va_list args, int *pchar)
 {
-    unsigned int num = va_arg(args, unsigned int);
-    *pchar += print_octal(num);
+	unsigned int num = va_arg(args, unsigned int);
+	*pchar += print_octal(num);
 }
 
 /**
@@ -272,8 +272,8 @@ void handleOctal(va_list args, int *pchar)
  */
 void handleHexLower(va_list args, int *pchar)
 {
-    unsigned int num = va_arg(args, unsigned int);
-    *pchar += print_hex(num, 0);
+	unsigned int num = va_arg(args, unsigned int);
+	*pchar += print_hex(num, 0);
 }
 
 /**
@@ -284,8 +284,8 @@ void handleHexLower(va_list args, int *pchar)
  */
 void handleHexUpper(va_list args, int *pchar)
 {
-    unsigned int num = va_arg(args, unsigned int);
-    *pchar += print_hex(num, 1);
+	unsigned int num = va_arg(args, unsigned int);
+	*pchar += print_hex(num, 1);
 }
 
 
