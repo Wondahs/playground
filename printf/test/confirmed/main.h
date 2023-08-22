@@ -55,7 +55,7 @@ void handleCustomString(va_list args, int *pchar);
 void handlePointer(va_list args, int *pchar);
 void handleReversedString(va_list args, int *pchar);
 void handleRot13String(va_list args, int *pchar);
-int print_unsigned(unsigned int num);
+int print_unsignedInt(unsigned int num);
 int print_octal(unsigned int num);
 int print_hex(unsigned int num, int uppercase);
 void handleUnsigned(va_list args, int *pchar);

@@ -76,39 +76,39 @@ int print_int(int num)
  *
  * Return: The number of characters printed
  */
-int print_unsigned(unsigned int num)
+int print_unsignedInt(unsigned int num)
 {
-    char buffer[12];
-    int len = 0;
-    unsigned int abs_num, i;
-    int num_digits = 0;
+	char buffer[12];
+	int len = 0;
+	unsigned int abs_num, i;
+	int num_digits = 0;
 
-    if (num == 0)
-    {
-        buffer[len++] = '0';
-    }
-    else
-    {
-        abs_num = num;
-        while (abs_num > 0)
-        {
-            abs_num /= 10;
-            num_digits++;
-        }
+	if (num == 0)
+	{
+		buffer[len++] = '0';
+	}
+	else
+	{
+		abs_num = num;
+		while (abs_num > 0)
+		{
+			abs_num /= 10;
+			num_digits++;
+		}
 
-        abs_num = num;
-        for (i = num_digits; i > 0; i--)
-        {
-            buffer[len + i - 1] = '0' + (abs_num % 10);
-            abs_num /= 10;
-        }
+		abs_num = num;
+		for (i = num_digits; i > 0; i--)
+		{
+			buffer[len + i - 1] = '0' + (abs_num % 10);
+			abs_num /= 10;
+		}
 
-        len += num_digits;
-    }
+		len += num_digits;
+	}
 
-    write(1, buffer, len);
+	write(1, buffer, len);
 
-    return len;
+	return (len);
 }
 
 /**
@@ -119,37 +119,37 @@ int print_unsigned(unsigned int num)
  */
 int print_octal(unsigned int num)
 {
-    char buffer[12];
-    int len = 0;
-    unsigned int abs_num, i;
-    int num_digits = 0;
+	char buffer[12];
+	int len = 0;
+	unsigned int abs_num, i;
+	int num_digits = 0;
 
-    if (num == 0)
-    {
-        buffer[len++] = '0';
-    }
-    else
-    {
-        abs_num = num;
-        while (abs_num > 0)
-        {
-            abs_num /= 8;
-            num_digits++;
-        }
+	if (num == 0)
+	{
+		buffer[len++] = '0';
+	}
+	else
+	{
+		abs_num = num;
+		while (abs_num > 0)
+		{
+			abs_num /= 8;
+			num_digits++;
+		}
 
-        abs_num = num;
-        for (i = num_digits; i > 0; i--)
-        {
-            buffer[len + i - 1] = '0' + (abs_num % 8);
-            abs_num /= 8;
-        }
+		abs_num = num;
+		for (i = num_digits; i > 0; i--)
+		{
+			buffer[len + i - 1] = '0' + (abs_num % 8);
+			abs_num /= 8;
+		}
 
-        len += num_digits;
-    }
+		len += num_digits;
+	}
 
-    write(1, buffer, len);
+	write(1, buffer, len);
 
-    return len;
+	return (len);
 }
 
 
@@ -162,36 +162,36 @@ int print_octal(unsigned int num)
  */
 int print_hex(unsigned int num, int uppercase)
 {
-    char buffer[12];
-    int len = 0;
-    unsigned int abs_num, i;
-    int num_digits = 0;
-    const char *hex_chars = uppercase ? "0123456789ABCDEF" : "0123456789abcdef";
+	char buffer[12];
+	int len = 0;
+	unsigned int abs_num, i;
+	int num_digits = 0;
+	const char *hex_chars = uppercase ? "0123456789ABCDEF" : "0123456789abcdef";
 
-    if (num == 0)
-    {
-        buffer[len++] = '0';
-    }
-    else
-    {
-        abs_num = num;
-        while (abs_num > 0)
-        {
-            abs_num /= 16;
-            num_digits++;
-        }
+	if (num == 0)
+	{
+		buffer[len++] = '0';
+	}
+	else
+	{
+		abs_num = num;
+		while (abs_num > 0)
+		{
+			abs_num /= 16;
+			num_digits++;
+		}
 
-        abs_num = num;
-        for (i = num_digits; i > 0; i--)
-        {
-            buffer[len + i - 1] = hex_chars[abs_num % 16];
-            abs_num /= 16;
-        }
+		abs_num = num;
+		for (i = num_digits; i > 0; i--)
+		{
+			buffer[len + i - 1] = hex_chars[abs_num % 16];
+			abs_num /= 16;
+		}
 
-        len += num_digits;
-    }
+		len += num_digits;
+	}
 
-    write(1, buffer, len);
+	write(1, buffer, len);
 
-    return len;
+	return (len);
 }
