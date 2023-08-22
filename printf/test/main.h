@@ -62,6 +62,6 @@ void handleUnsigned(va_list args, int *pchar);
 void handleOctal(va_list args, int *pchar);
 void handleHexLower(va_list args, int *pchar);
 void handleHexUpper(va_list args, int *pchar);
-
+void handleBinary(va_list args, int *pchar);
 
 #endif

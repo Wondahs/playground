@@ -83,7 +83,14 @@ void handleReversedString(va_list args, int *pchar)
     char *str = va_arg(args, char *);
     int length = 0;
     int i;
-
+	
+	if (str == NULL)
+    	{
+	    write(1, "%r", 2);
+	    *pchar += 2;
+	}
+	else
+	{
     while (str[length] != '\0')
     {
         length++;
@@ -95,6 +102,7 @@ void handleReversedString(va_list args, int *pchar)
         write(1, &str[i], 1);
         (*pchar)++;
     }
+	}
 }
 
 /**
