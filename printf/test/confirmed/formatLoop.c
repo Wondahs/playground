@@ -5,12 +5,14 @@
  * @format: The format string
  * @args: List of arguments
  * @pchar: Pointer to the character count
+ *
+ * Return: Number of printed characters(Excluding string terminator
  */
 int formatLoop(const char *format, va_list args, int *pchar)
 {
 	FormatHandlerInfo formatHandlers[] = HANDLERS;
 	void (*handler)(va_list, int *) = NULL;
-	long unsigned int i;
+	unsigned long int i;
 	int ret = *pchar;
 
 	while (*format)
