@@ -8,8 +8,7 @@
  */
 int formatLoop(const char *format, va_list args, int *pchar)
 {
-	FormatHandlerInfo formatHandlers[] = {
-		{'c', handleChar}, {'s', handleString}, {'d', handleInt}, {'i', handleInt}};
+	FormatHandlerInfo formatHandlers[] = HANDLERS;
 	void (*handler)(va_list, int *) = NULL;
 	long unsigned int i;
 	int ret = *pchar;

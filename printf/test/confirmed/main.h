@@ -4,6 +4,7 @@
 #include <stdarg.h>
 #include <unistd.h>
 #include <stdlib.h>
+#include <stdint.h>
 
 #define UNUSED(x) (void)(x)
 
@@ -41,8 +42,26 @@ void handleNonSpecifier(const char **format, int *pchar);
 FormatHandlerInfo findHandler(char specifier);
 
 #define HANDLERS \
-	{{'c', handleChar}, {'s', handleString}, \
-	{'d', handleInt}, {'i', handleInt}}
+    {{'c', handleChar}, {'s', handleString}, \
+    {'d', handleInt}, {'i', handleInt}, \
+    {'b', handleBinary}, {'u', handleUnsigned}, \
+    {'o', handleOctal}, {'x', handleHexLower}, \
+    {'X', handleHexUpper}, {'S', handleCustomString}, \
+    {'p', handlePointer}, {'r', handleReversedString}, \
+    {'R', handleRot13String}}
 
+/* New Functions */
+void handleCustomString(va_list args, int *pchar);
+void handlePointer(va_list args, int *pchar);
+void handleReversedString(va_list args, int *pchar);
+void handleRot13String(va_list args, int *pchar);
+int print_unsigned(unsigned int num);
+int print_octal(unsigned int num);
+int print_hex(unsigned int num, int uppercase);
+void handleUnsigned(va_list args, int *pchar);
+void handleOctal(va_list args, int *pchar);
+void handleHexLower(va_list args, int *pchar);
+void handleHexUpper(va_list args, int *pchar);
+void handleBinary(va_list args, int *pchar);
 
 #endif
