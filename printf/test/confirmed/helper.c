@@ -11,6 +11,12 @@ int print_str(char *str)
 	int i;
 	int len = 0;
 
+	if (str == NULL)
+	{
+		write(1, "(null)", 6);
+		return (6);
+	}
+
 	for (i = 0; str[i] != '\0'; i++)
 	{
 		len++;
@@ -71,7 +77,7 @@ int print_int(int num)
 }
 
 /**
- * print_unsigned - Print an unsigned integer
+ * print_unsignedInt - Print an unsigned integer
  * @num: The unsigned integer to be printed
  *
  * Return: The number of characters printed

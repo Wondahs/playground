@@ -42,13 +42,13 @@ void handleNonSpecifier(const char **format, int *pchar);
 FormatHandlerInfo findHandler(char specifier);
 
 #define HANDLERS \
-    {{'c', handleChar}, {'s', handleString}, \
-    {'d', handleInt}, {'i', handleInt}, \
-    {'b', handleBinary}, {'u', handleUnsigned}, \
-    {'o', handleOctal}, {'x', handleHexLower}, \
-    {'X', handleHexUpper}, {'S', handleCustomString}, \
-    {'p', handlePointer}, {'r', handleReversedString}, \
-    {'R', handleRot13String}}
+	{{'c', handleChar}, {'s', handleString}, \
+	{'d', handleInt}, {'i', handleInt}, \
+	{'b', handleBinary}, {'u', handleUnsigned}, \
+	{'o', handleOctal}, {'x', handleHexLower}, \
+	{'X', handleHexUpper}, {'S', handleCustomString}, \
+	{'p', handlePointer}, {'r', handleReversedString}, \
+	{'R', handleRot13String}}
 
 /* New Functions */
 void handleCustomString(va_list args, int *pchar);

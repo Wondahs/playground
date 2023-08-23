@@ -50,7 +50,13 @@ void handleCustomString(va_list args, int *pchar)
 	if (str[i] < 32 || str[i] >= 127)
 	{
 		/* Print non-printable character as \xXX (uppercase hexadecimal)*/
+
 		write(1, "\\x", 2);
+		if (str[i] < 16)
+		{
+			write(1, "0", 1);
+			*pchar += 1;
+		}
 		print_hex((unsigned int)str[i], 1);
 		*pchar += 4;
 	}

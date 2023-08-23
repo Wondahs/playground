@@ -25,6 +25,8 @@ int formatLoop(const char *format, va_list args, int *pchar)
 		else
 		{
 			format++;
+			if (*format == '\0')
+				continue;
 			/*void (*handler)(va_list, int *) = NULL; */
 
 			for (i = 0; i < sizeof(formatHandlers) / sizeof(formatHandlers[0]); i++)
@@ -39,6 +41,8 @@ int formatLoop(const char *format, va_list args, int *pchar)
 				handler(args, pchar);
 			else
 			{
+				write(1, "%", 1);
+				ret++;
 				write(1, format, 1);
 				ret++;
 			}
