@@ -4,6 +4,8 @@
  * handlePointer - Handles pointer specifier
  * @args: Args
  * @pchar: Pointer to number of characters printed
+ *
+ * Return: Nothing
  */
 void handlePointer(va_list args, int *pchar)
 {
@@ -15,7 +17,8 @@ void handlePointer(va_list args, int *pchar)
 
 	if (ptr == NULL)
 	{
-		write(1, "(nil)(nil)", 10);
+		write(1, "(nil)", 5);
+		*pchar += 5;
 		return;
 	}
 
