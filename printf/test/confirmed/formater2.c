@@ -13,6 +13,12 @@ void handlePointer(va_list args, int *pchar)
 	int num_digits = 0;
 	int i, digit;
 
+	if (ptr == NULL)
+	{
+		write(1, "(nil)(nil)", 10);
+		return;
+	}
+
 	while (address > 0)
 	{
 	address /= 16;
