@@ -26,7 +26,9 @@ int formatLoop(const char *format, va_list args, int *pchar)
 		{
 			format++;
 			if (*format == '\0')
-				continue;
+			{
+				return (-1);
+			}
 						
 			if (*format != '%')
 			{
