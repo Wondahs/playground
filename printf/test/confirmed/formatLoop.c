@@ -27,25 +27,34 @@ int formatLoop(const char *format, va_list args, int *pchar)
 			format++;
 			if (*format == '\0')
 				continue;
-			/*void (*handler)(va_list, int *) = NULL; */
-
-			for (i = 0; i < sizeof(formatHandlers) / sizeof(formatHandlers[0]); i++)
+						
+			if (*format != '%')
 			{
-				if (*format == formatHandlers[i].specifier)
+				for (i = 0; i < sizeof(formatHandlers) / sizeof(formatHandlers[0]); i++)
 				{
-					handler = formatHandlers[i].handler;
-					break;
+					if (*format == formatHandlers[i].specifier)
+					{
+						handler = formatHandlers[i].handler;
+						break;
+					}
+				}
+				if (handler)
+					handler(args, pchar);
+				else
+				{
+					write(1, "%", 1);
+					ret++;
+					write(1, format, 1);
+					ret++;
+					
 				}
 			}
-			if (handler)
-				handler(args, pchar);
 			else
 			{
 				write(1, "%", 1);
 				ret++;
-				write(1, format, 1);
-				ret++;
 			}
+
 		}
 		format++;
 	}
