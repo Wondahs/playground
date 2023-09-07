@@ -1,16 +1,10 @@
 #include "shell.h"
 
-int main(int argc, char **argv, char **env)
+int main(void)
 {
 	unsigned int i;
-	char *prompt = "$ "
-
-	i = 0;
-	while(env[i] != NULL)
-	{
-		printf("%s\n", env[i]);
-		i++;
-	}
+	char *prompt = "$ ";
+	
 
 	return (0);
 }
