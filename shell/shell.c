@@ -3,13 +3,16 @@
 int main(void)
 {
 	char *c = NULL;
-	int n = 10;
+	int j, n = 10;
 	ssize_t i;
 
-	printf("$ ");
-	i = _getline(&c, &n, STDIN_FILENO);
+	printf("$ Enter Name: ");
+	fflush(stdout);
 
-	printf("%s is %lu characters. with buffer %i\n", c, i, n);
+	i = _getline(&c, &n, STDIN_FILENO);
+	c[i - 1] = '\0';
+	j = _strlen(c);
+	printf("%s is %i characters. Total printed is %lu with buffer %i\n", c, j, i, n);
 
 	return 0;
 }
