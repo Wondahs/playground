@@ -1,13 +1,19 @@
 #include "main.h"
 
 /**
+ * _getline - Read a line from a file descriptor and dynamically resize the buffer.
+ * @lineptr: A pointer to a buffer where the line will be stored.
+ * @n: A pointer to the size of the buffer.
+ * @fd: The file descriptor from which to read the line.
  *
+ * This function reads characters
+ * from the given file descriptor until a newline
+ * character is encountered or the end of the file is reached.
+ * It dynamically resizes the buffer as needed to accommodate longer lines.
+ * The line is stored in the 'lineptr'
+ * buffer, and the 'n' pointer is updated with the new buffer size.
  *
- *
- *
- *
- *
- *
+ * Return: The number of characters read, or -1 on error.
  */
 ssize_t _getline(char **lineptr, int *n, int fd)
 {
@@ -27,7 +33,7 @@ ssize_t _getline(char **lineptr, int *n, int fd)
 	}
 	while (bytesRead == 1)
 	{
-		char temp;
+		char *temp;
 
 		if (i >= capacity - 2)
 		{
