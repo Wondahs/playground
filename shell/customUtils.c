@@ -7,7 +7,7 @@
  *
  *
  */
-char *_getenv(const char *name)
+char *_getenv(char *name)
 {
 	extern char **environ;
 	int i;
@@ -33,7 +33,7 @@ char *_getenv(const char *name)
  *
  *
  */
-int _strlen(const char *c)
+int _strlen(char *c)
 {
 	int len = 0;
 
@@ -71,11 +71,11 @@ int _strncmp(char *s1, char *s2, int n)
  */
 char *_strchr(char *s, char c)
 {
-	while (*s != NULL)
+	while (*s != '\0')
 	{
 		if (*s == c)
 			return (s);
 		s++;
 	}
-	return (1);
+	return (NULL);
 }
