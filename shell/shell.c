@@ -2,10 +2,14 @@
 
 int main(void)
 {
-	
-	printf("$ ");
-	
-	while (1)
-	{
+	char *c = NULL;
+	int n = 10;
+	ssize_t i;
 
+	printf("$ ");
+	i = _getline(&c, &n, STDIN_FILENO);
+
+	printf("%s is %lu characters. with buffer %i\n", c, i, n);
+
+	return 0;
 }

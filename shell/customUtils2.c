@@ -18,8 +18,8 @@
  */
 ssize_t _getline(char **lineptr, int *n, int fd)
 {
-	char ch;
-	ssize_t capacity = *n, i = 0, bytesRead = read(fd, ch, 1);
+	char c[2];
+	ssize_t j, capacity = *n, i = 0, bytesRead = read(fd, c, 1);
 
 	/* Check if lineptr and n are valid */
 	if (!lineptr || !n)
@@ -50,7 +50,7 @@ ssize_t _getline(char **lineptr, int *n, int fd)
 			free(temp);
 			*n = capacity;
 		}
-		(*lineptr)[i++] = ch;
+		(*lineptr)[i++] = c[0];
 		if (ch == '\n')
 			break;
 	}
