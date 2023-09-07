@@ -1,11 +1,10 @@
 #include "main.h"
 
-/** This contains tge following code:
- * _getenv
- * _strlen
- * _strncmp
- * _strchr
- */
+/* This contains the following code: */
+/* _getenv */
+/* _strlen */
+/* _strncmp */
+/* _strchr */
 
 /**
  * _getenv - Get the value of an environment variable.
@@ -19,16 +18,16 @@
  */
 char *_getenv(char *name)
 {
-	extern char **environ;
 	int i;
 
-	for (i = 0; environ[i] != NULL;i++)
+	for (i = 0; environ[i] != NULL; i++)
 	{
 		char *variable = environ[i];
 
 		if (_strncmp(variable, name, _strlen(name)) == 0)
 		{
 			char *value = _strchr(variable, '=');
+
 			if (value != NULL)
 				return (value + 1);
 		}
