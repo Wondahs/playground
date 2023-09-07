@@ -1,11 +1,21 @@
 #include "main.h"
 
+/** This contains tge following code:
+ * _getenv
+ * _strlen
+ * _strncmp
+ * _strchr
+ */
+
 /**
+ * _getenv - Get the value of an environment variable.
+ * @name: The name of the environment variable to retrieve.
  *
+ * This function searches for an environment variable by name and returns its
+ * value as a string.
  *
- *
- *
- *
+ * Return: A pointer to the value of the environment variable,
+ * or NULL if not found.
  */
 char *_getenv(char *name)
 {
@@ -27,11 +37,12 @@ char *_getenv(char *name)
 }
 
 /**
+ * _strlen - Calculate the length of a string.
+ * @c: The input string.
  *
+ * This function calculates the length of the input string and returns it.
  *
- *
- *
- *
+ * Return: The length of the string.
  */
 int _strlen(char *c)
 {
@@ -43,11 +54,15 @@ int _strlen(char *c)
 }
 
 /**
+ * _strncmp - Compare two strings up to a specified number of characters.
+ * @s1: The first string.
+ * @s2: The second string.
+ * @n: The maximum number of characters to compare.
  *
+ * This function compares two strings up to the specified number of characters
+ * and returns 0 if they are equal, or 1 if they are not equal.
  *
- *
- *
- *
+ * Return: 0 if the strings are equal, 1 otherwise.
  */
 int _strncmp(char *s1, char *s2, int n)
 {
@@ -62,12 +77,15 @@ int _strncmp(char *s1, char *s2, int n)
 }
 
 /**
+ * _strchr - Find the first occurrence of a character in a string.
+ * @s: The input string.
+ * @c: The character to search for.
  *
+ * This function searches for the first occurrence of the specified character
+ * in the input string and returns a pointer to that character,
+ * or NULL if not found.
  *
- *
- *
- *
- *
+ * Return: A pointer to the character, or NULL if not found.
  */
 char *_strchr(char *s, char c)
 {
