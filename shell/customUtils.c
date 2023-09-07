@@ -16,7 +16,7 @@ char *_getenv(const char *name)
 	{
 		char *variable = environ[i];
 
-		if (_strncmp(variable, name, _strlen(name)) = 0)
+		if (_strncmp(variable, name, _strlen(name)) == 0)
 		{
 			char *value = _strchr(variable, '=');
 			if (value != NULL)
@@ -69,14 +69,13 @@ int _strncmp(char *s1, char *s2, int n)
  *
  *
  */
-char *_strchr(char *s, int n)
+char *_strchr(char *s, char c)
 {
-	int i;
-
-	for (i = 0; s[i] != '\0'; i++)
+	while (*s != NULL)
 	{
-		if (s[i] == n)
-			return (s[i]);
+		if (*s == c)
+			return (s);
+		s++;
 	}
 	return (1);
 }
