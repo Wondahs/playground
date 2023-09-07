@@ -1,7 +1,8 @@
 #include "main.h"
 
 /**
- * _getline - Read a line from a file descriptor and dynamically resize the buffer.
+ * _getline - Read a line from a file descriptor
+ * and dynamically resize the buffer.
  * @lineptr: A pointer to a buffer where the line will be stored.
  * @n: A pointer to the size of the buffer.
  * @fd: The file descriptor from which to read the line.
