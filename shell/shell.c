@@ -2,14 +2,10 @@
 
 int main(void)
 {
-	char *prompt = "$ ";
-	char cmd[] = "";
 	
-	printf("%s", prompt);
-	scanf("%s", cmd);
+	printf("$ ");
+	
+	while (1)
+	{
 
-	printf("%s\n", _strchr(cmd, 'P'));
-	printf("%s\n", _getenv(cmd));
-	
-	return (0);
 }
