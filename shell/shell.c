@@ -5,6 +5,7 @@ int main(void)
 	char *c = NULL;
 	char *token;
 	char *envir;
+	char *env_cpy, *catt;
 	/*char *argv[] = {NULL};*/
 	/*char *envp[] = {NULL};*/
 	int n = 10;
@@ -29,18 +30,28 @@ int main(void)
 			break;
 		}
 
-		envir = _getenv(c_cpy);
+		envir = _getenv("PATH");
 		if (envir == NULL)
 			perror("_getenv");
+		env_cpy = (char *)malloc(sizeof(char) * 512);
+		if (!env_cpy)
+			perror("malloc");
 
-		token = _strtok(envir, ":");
+		env_cpy = _strcpy(env_cpy, envir);
+
+		printf("%s\n", env_cpy);
+
+		token = _strtok(env_cpy, ":");
+		
 		while (token != NULL)
 		{
-			printf("%s\n", token);
+			catt = _strcat(token, c_cpy);
+			printf("%s\n", catt);
 			token = _strtok(NULL, ":");
 		}
-
+		
 		free(c_cpy);
+		free(env_cpy);
 	}
 	return 0;
 }

@@ -107,7 +107,7 @@ char *_strtok(char *str, char *delim)
 
 	token_start = next_token;
 
-	while (*next_token != '\0')
+	while (next_token && *next_token != '\0')
 	{
 		if (_strchr(delim, *next_token) != NULL)
 		{
@@ -123,4 +123,35 @@ char *_strtok(char *str, char *delim)
 		return (token_start);
 	else
 		return (NULL);
+}
+
+/**
+ * _strcpy - Copy a source string to a destination buffer.
+ * @dest: Pointer to the destination buffer.
+ * @src: Pointer to the source string.
+ *
+ * Description:
+ * This function copies the string pointed to by 'src' into the 'dest' buffer,
+ * including the null-terminator. It ensures proper error handling for
+ * invalid pointers and checks that the destination buffer has sufficient
+ * space to hold the copied string.
+ *
+ * Return:
+ * On success, it returns a pointer to 'dest'. If an error occurs due to
+ * invalid pointers or insufficient destination buffer size, it returns NULL.
+ */
+char *_strcpy(char *dest, char *src)
+{
+	size_t i;
+	size_t len;
+
+	if (!dest || !src)
+		return (NULL);
+
+	len = _strlen(src);
+
+	for (i = 0; i < len; i++)
+		dest[i] = src[i];
+	dest[i] = '\0';
+	return (dest);
 }
