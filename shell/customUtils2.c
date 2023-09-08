@@ -75,7 +75,7 @@ char *_strcat(char *dest, char *src)
 	int i;
 	int len, len2;
 	char *dest_cpy;
-
+	
 	if (dest == NULL || src == NULL)
 		return (NULL);
 	len2 = _strlen(src);
@@ -89,7 +89,7 @@ char *_strcat(char *dest, char *src)
 
 	for (i = 0; src[i] != '\0'; i++)
 		dest_cpy[len++] = src[i];
-	dest[len] = '\0';
+	dest_cpy[len] = '\0';
 
 	return (dest_cpy);
 }
