@@ -3,9 +3,7 @@
 int main(void)
 {
 	char *c = NULL;
-	char *token, *token_cpy;
-	char *envir;
-	char *env_cpy, *catt;
+	char *token, *token_cpy, *envir, *env_cpy, *catt;
 	/*char *argv[] = {NULL};*/
 	/*char *envp[] = {NULL};*/
 	int n = 10;
