@@ -1,6 +1,14 @@
 #include "main.h"
 
-
+/**
+ *checkPath - Checks if given command can be executed before fork and execve.
+ *@cmd: Pointer to command
+ *
+ *This function takes the command, and checks through the
+ *environment variable PATH to check if the command can be executed.
+ *
+ *Return: Full path of command, or NULL if the command is not in PATH.
+ */
 char *checkPath(char *cmd)
 {
 	/* Get environment variable PATH*/
