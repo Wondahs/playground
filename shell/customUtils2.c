@@ -57,3 +57,70 @@ ssize_t _getline(char **lineptr, int *n, int fd)
 	*n = capacity;
 	return (i);
 }
+
+/**
+ * _strcat - Concatenates two strings.
+ *
+ * @dest: Destination string.
+ * @src: Source string to concatenate.
+ *
+ * Return: Pointer to the concatenated string (dest).
+ */
+char *_strcat(char *dest, char *src)
+{
+	int i;
+	int len;
+
+	if (dest == NULL || src == NULL)
+		return (NULL);
+
+	len = _strlen(dest);
+
+	for (i = 0; src[i] != '\0'; i++)
+		dest[len++] = src[i];
+	dest[len] = '\0';
+
+	return (dest);
+}
+
+/**
+ * _strtok - Tokenize a string based on specified delimiters.
+ *
+ * @str: The string to tokenize.
+ * @delim:   A string containing the delimiter characters.
+ *
+ * This function tokenizes @str using the characters specified in
+ * @delim as separators. It returns a pointer to the next token in the
+ * string on each subsequent call, or NULL when there are no more tokens.
+ *
+ * Return: A pointer to the next token
+ * or NULL if no more tokens are found.
+ */
+char *_strtok(char *str, char *delim)
+{
+	static char *next_token;
+	char *token_start = NULL;
+	bool found_delim = false;
+
+	if (str != NULL)
+		next_token = str;
+
+	token_start = next_token;
+
+	while (*next_token != '\0')
+	{
+		if (_strchr(delim, *next_token) != NULL)
+		{
+			*next_token = '\0';
+			next_token++;
+			found_delim = true;
+			break;
+		}
+		next_token++;
+	}
+
+	if (found_delim || *token_start != '\0')
+		return (token_start);
+	else
+		return (NULL);
+}

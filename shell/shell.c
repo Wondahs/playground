@@ -3,16 +3,44 @@
 int main(void)
 {
 	char *c = NULL;
-	int j, n = 10;
+	char *token;
+	char *envir;
+	/*char *argv[] = {NULL};*/
+	/*char *envp[] = {NULL};*/
+	int n = 10;
 	ssize_t i;
 
-	printf("$ Enter Name: ");
-	fflush(stdout);
+	while (1)
+	{
+		char *c_cpy;
 
-	i = _getline(&c, &n, STDIN_FILENO);
-	c[i - 1] = '\0';
-	j = _strlen(c);
-	printf("%s is %i characters. Total printed is %lu with buffer %i\n", c, j, i, n);
+		printf("$ Enter Name: ");
+		fflush(stdout);
 
+		i = _getline(&c, &n, STDIN_FILENO);
+		c[i - 1] = '\0';
+		c_cpy = _strdup(c);
+		if (!c_cpy)
+			perror("strdup error");
+		if (_strncmp("exit", c_cpy, _strlen(c_cpy)) == 0)
+		{
+			free(c_cpy);
+			free(c);
+			break;
+		}
+
+		envir = _getenv(c_cpy);
+		if (envir == NULL)
+			perror("_getenv");
+
+		token = _strtok(envir, ":");
+		while (token != NULL)
+		{
+			printf("%s\n", token);
+			token = _strtok(NULL, ":");
+		}
+
+		free(c_cpy);
+	}
 	return 0;
 }
