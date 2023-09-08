@@ -64,23 +64,34 @@ ssize_t _getline(char **lineptr, int *n, int fd)
  * @dest: Destination string.
  * @src: Source string to concatenate.
  *
+ * This function concatenates two strings. It does not modify @dest.
+ * Instead, it uses malloc to allocate memory depending on the length of
+ * @dest and @src. Remember to free the allocated memory after use.
+ *
  * Return: Pointer to the concatenated string (dest).
  */
 char *_strcat(char *dest, char *src)
 {
 	int i;
-	int len;
+	int len, len2;
+	char *dest_cpy;
 
 	if (dest == NULL || src == NULL)
 		return (NULL);
-
+	len2 = _strlen(src);
 	len = _strlen(dest);
+	dest_cpy = (char *)malloc(len + len2 + 1);
+	if (!dest_cpy)
+		return (NULL);
+
+	for (i = 0; dest[i] != '\0'; i++)
+		dest_cpy[i] = dest[i];
 
 	for (i = 0; src[i] != '\0'; i++)
-		dest[len++] = src[i];
+		dest_cpy[len++] = src[i];
 	dest[len] = '\0';
 
-	return (dest);
+	return (dest_cpy);
 }
 
 /**

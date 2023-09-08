@@ -3,7 +3,7 @@
 int main(void)
 {
 	char *c = NULL;
-	char *token;
+	char *token, *token_cpy;
 	char *envir;
 	char *env_cpy, *catt;
 	/*char *argv[] = {NULL};*/
@@ -42,10 +42,13 @@ int main(void)
 		printf("%s\n", env_cpy);
 
 		token = _strtok(env_cpy, ":");
-		
+
 		while (token != NULL)
 		{
-			catt = _strcat(token, c_cpy);
+			token_cpy = malloc(_strlen(token));
+			token_cpy = _strcpy(token_cpy, token);
+			token_cpy = _strcat(token_cpy, "/");
+			catt = _strcat(token_cpy, c_cpy);
 			printf("%s\n", catt);
 			token = _strtok(NULL, ":");
 		}
