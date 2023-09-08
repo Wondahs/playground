@@ -3,9 +3,9 @@
 int main(void)
 {
 	char *c = NULL;
-	char *token, *token_cpy, *envir, *env_cpy, *catt;
-	/*char *argv[] = {NULL};*/
-	/*char *envp[] = {NULL};*/
+	char *fullPath;
+	/* char *argv[] = {NULL}; */
+	/* char *envp[] = {NULL}; */
 	int n = 10;
 	ssize_t i;
 
@@ -28,31 +28,13 @@ int main(void)
 			break;
 		}
 
-		envir = _getenv("PATH");
-		if (envir == NULL)
-			perror("_getenv");
-		env_cpy = (char *)malloc(sizeof(char) * 512);
-		if (!env_cpy)
-			perror("malloc");
-
-		env_cpy = _strcpy(env_cpy, envir);
-
-		printf("%s\n", env_cpy);
-
-		token = _strtok(env_cpy, ":");
-
-		while (token != NULL)
-		{
-			token_cpy = malloc(_strlen(token));
-			token_cpy = _strcpy(token_cpy, token);
-			token_cpy = _strcat(token_cpy, "/");
-			catt = _strcat(token_cpy, c_cpy);
-			printf("%s\n", catt);
-			token = _strtok(NULL, ":");
-		}
+		fullPath = checkPath(c_cpy);
+		if (fullPath == NULL)
+			perror("./shell");
+		else
+			printf("%s\n", fullPath);
 		
 		free(c_cpy);
-		free(env_cpy);
 	}
 	return 0;
 }
