@@ -104,6 +104,7 @@ void execute(char *args[])
 {
 	pid_t child_pid;
 	int status;
+	int i;
 
 	child_pid = fork();
 
@@ -115,7 +116,13 @@ void execute(char *args[])
 		perror("execve failed");
 	}
 	else
-	
+	{
 		wait(&status);
+		for (i = 0; args[i] != NULL; i++)
+		{
+			free(args[i]);
+			args[i] = NULL;
+		}
+	}
 	return;
 }

@@ -34,13 +34,15 @@ int main(void)
 				args[j] = NULL;
 			}
 			free(fullPath);
-			free(cmd);
 		}
 		else
 		{
+			free(args[0]);
 			args[0] = fullPath;
 			execute(args);
 		}
+		/*free(fullPath);*/
+		free(cmd);
 	}
 	return (0);
 }
