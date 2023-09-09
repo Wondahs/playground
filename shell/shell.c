@@ -2,7 +2,7 @@
 
 int main(void)
 {
-	char *c = NULL;
+	char *c;
 	char *fullPath;
 	/* char *argv[] = {NULL}; */
 	/* char *envp[] = {NULL}; */
@@ -12,6 +12,7 @@ int main(void)
 	while (1)
 	{
 		char *c_cpy;
+		c = malloc(128);
 		/* Flush stdout and show prompt */
 		printf("$ ");
 		fflush(stdout);
@@ -35,10 +36,8 @@ int main(void)
 		if (fullPath == NULL)
 			perror("./shell");
 		else
-		{
 			printf("%s\n", fullPath);
-			free(fullPath);
-		}
+		free(fullPath);
 		free(c);
 		free(c_cpy);
 	}
