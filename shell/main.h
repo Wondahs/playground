@@ -18,6 +18,7 @@ char *_strcat(char *dest, char *src);
 char *_strtok(char *str, char *delim);
 char *_strcpy(char *dest, char *src);
 char *checkPath(char *cmd);
+char *getPrompt(void);
 
 #endif /* MAIN_H */
 

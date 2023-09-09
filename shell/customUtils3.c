@@ -34,7 +34,7 @@ char *checkPath(char *cmd)
 		token_cpy = _strcpy(token_cpy, token);
 		token_cpy = _strcat(token_cpy, "/");
 		full_path = _strcat(token_cpy, cmd);
-		printf("%s\n", full_path);
+		/*printf("%s\n", full_path);*/
 		if (access(full_path, X_OK) == 0)
 		{
 			free(env_cpy);
@@ -51,4 +51,35 @@ char *checkPath(char *cmd)
 	free(env_cpy);
 	env_cpy = NULL;
 	return (NULL);
+}
+
+/**
+ *getPrompt - Prints '$' and receives command from user.
+ *
+ *This function receives command, and copies it into a string
+ *without including the '\n' character.
+ *
+ *Return: Pointer to a copy of the command.
+ */
+char *getPrompt(void)
+{
+	char *c_cpy;
+	char *c = malloc(128);
+	ssize_t i;
+	int n = 20;
+
+	/* Flush stdout and show prompt */
+	printf("$ ");
+	fflush(stdout);
+
+	/* Get command */
+	i = _getline(&c, &n, STDIN_FILENO);
+
+	/* Set string terminator, duplicate command and return */
+	c[i - 1] = '\0';
+	c_cpy = _strdup(c);
+	if (!c_cpy)
+		perror("strdup error");
+	free(c);
+	return (c_cpy);
 }
