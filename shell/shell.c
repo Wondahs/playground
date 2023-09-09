@@ -25,8 +25,8 @@ int main(void)
 		/* Check for exit command */
 		if (_strncmp("exit", c_cpy, _strlen(c_cpy)) == 0)
 		{
-			free(c_cpy);
 			free(c);
+			free(c_cpy);
 			break;
 		}
 		/* Check if command exists */
@@ -34,8 +34,10 @@ int main(void)
 		if (fullPath == NULL)
 			perror("./shell");
 		else
+		{
 			printf("%s\n", fullPath);
-		
+		}
+		free(c);
 		free(c_cpy);
 	}
 	return 0;

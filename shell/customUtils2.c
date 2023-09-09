@@ -18,7 +18,7 @@
  */
 ssize_t _getline(char **lineptr, int *n, int fd)
 {
-	char c[1];
+	char c[2];
 	ssize_t j, capacity = *n, i = 0, bytesRead;
 
 	if (!lineptr || !n)
@@ -73,25 +73,25 @@ ssize_t _getline(char **lineptr, int *n, int fd)
 char *_strcat(char *dest, char *src)
 {
 	int i;
-	int len, len2;
-	char *dest_cpy;
+	size_t len;/* len2;*/
+	/*char *dest_cpy;*/
 	
 	if (dest == NULL || src == NULL)
 		return (NULL);
-	len2 = _strlen(src);
+	/*len2 = _strlen(src);*/
 	len = _strlen(dest);
-	dest_cpy = (char *)malloc(len + len2 + 1);
+	/*dest_cpy = (char *)malloc(len + len2 + 1);
 	if (!dest_cpy)
 		return (NULL);
 
 	for (i = 0; dest[i] != '\0'; i++)
-		dest_cpy[i] = dest[i];
+		dest_cpy[i] = dest[i];*/
 
 	for (i = 0; src[i] != '\0'; i++)
-		dest_cpy[len++] = src[i];
-	dest_cpy[len] = '\0';
+		dest[len++] = src[i];
+	dest[len] = '\0';
 
-	return (dest_cpy);
+	return (dest);
 }
 
 /**
