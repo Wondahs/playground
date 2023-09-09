@@ -57,7 +57,7 @@ char *checkPath(char *cmd)
  *getPrompt - Prints '$' and receives command from user.
  *
  *This function receives command, and copies it into a string
- *without including the '\n' character.
+ *without including the '\n' character. If command is 'exit' it returns NULL.
  *
  *Return: Pointer to a copy of the command.
  */
@@ -80,6 +80,14 @@ char *getPrompt(void)
 	c_cpy = _strdup(c);
 	if (!c_cpy)
 		perror("strdup error");
+	/* Check for exit command */
+	if (_strncmp("exit", c_cpy, _strlen(c_cpy)) == 0)
+	{
+		printf("exiting\n");
+		free(c_cpy);
+		free(c);
+		return (NULL);
+	}
 	free(c);
 	return (c_cpy);
 }

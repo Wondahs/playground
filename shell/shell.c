@@ -3,10 +3,7 @@
 #define MAX_ARGS 128
 int main(void)
 {
-	char *cmd, *token;
-	char *fullPath;
-	char *args[MAX_ARGS];
-	/*char *envp[] = {NULL};*/
+	char *cmd, *token, *fullPath, *args[MAX_ARGS];
 
 	while (1)
 	{
@@ -14,13 +11,8 @@ int main(void)
 
 		/* Get command */
 		cmd = getPrompt();
-		/* Check for exit command */
-		if (_strncmp("exit", cmd, _strlen(cmd)) == 0)
-		{
-			printf("exiting\n");
-			free(cmd);
+		if (cmd == NULL)
 			break;
-		}
 		/* Tokenize input */
 		token = _strtok(cmd, " ");
 		while (token != NULL && i < MAX_ARGS - 1)
