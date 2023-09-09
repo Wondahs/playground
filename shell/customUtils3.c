@@ -112,7 +112,7 @@ void execute(char *args[])
 		perror("fork failed");
 	if (child_pid == 0)
 	{
-		execve(args[0], args, NULL);
+		execve(args[0], args, environ);
 		perror("execve failed");
 	}
 	else
