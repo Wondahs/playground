@@ -29,6 +29,7 @@ int main(void)
 			free(c_cpy);
 			break;
 		}
+		printf("%s is len %d, getline returned %lu. capacity is %u\n", c_cpy, _strlen(c_cpy), i, n);
 		/* Check if command exists */
 		fullPath = checkPath(c_cpy);
 		if (fullPath == NULL)
@@ -36,6 +37,7 @@ int main(void)
 		else
 		{
 			printf("%s\n", fullPath);
+			free(fullPath);
 		}
 		free(c);
 		free(c_cpy);

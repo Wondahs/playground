@@ -34,10 +34,11 @@ char *checkPath(char *cmd)
 		token_cpy = _strcpy(token_cpy, token);
 		token_cpy = _strcat(token_cpy, "/");
 		full_path = _strcat(token_cpy, cmd);
-		/* printf("%s\n", full_path); */
+		printf("%s\n", full_path);
 		if (access(full_path, X_OK) == 0)
 		{
 			free(env_cpy);
+			env_cpy = NULL;
 			return (full_path);
 		}
 		else
@@ -47,5 +48,7 @@ char *checkPath(char *cmd)
 			token = _strtok(NULL, ":");
 		}
 	}
+	free(env_cpy);
+	env_cpy = NULL;
 	return (NULL);
 }
