@@ -5,6 +5,8 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <stdbool.h>
+#include <sys/types.h>
+#include <sys/wait.h>
 
 extern char **environ;
 
@@ -19,6 +21,7 @@ char *_strtok(char *str, char *delim);
 char *_strcpy(char *dest, char *src);
 char *checkPath(char *cmd);
 char *getPrompt(void);
+void execute(char *args[]);
 
 #endif /* MAIN_H */
 

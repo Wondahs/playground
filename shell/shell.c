@@ -27,20 +27,20 @@ int main(void)
 		{
 			write(STDOUT_FILENO, args[0], _strlen(args[0]));
 			perror(">");
+		/* Free allocated memory */
+			for (j = 0; j < i; j++)
+			{
+				free(args[j]);
+				args[j] = NULL;
+			}
+			free(fullPath);
+			free(cmd);
 		}
 		else
 		{
 			args[0] = fullPath;
-			execve(args[0], args, NULL);
+			execute(args);
 		}
-		/* Free allocated memory */
-		for (j = 0; j < i; j++)
-		{
-			free(args[j]);
-			args[j] = NULL;
-		}
-		free(fullPath);
-		free(cmd);
 	}
 	return (0);
 }

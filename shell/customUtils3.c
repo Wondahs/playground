@@ -91,3 +91,31 @@ char *getPrompt(void)
 	free(c);
 	return (c_cpy);
 }
+
+/**
+ *
+ *
+ *
+ *
+ *
+ *
+ */
+void execute(char *args[])
+{
+	pid_t child_pid;
+	int status;
+
+	child_pid = fork();
+
+	if (child_pid == -1)
+		perror("fork failed");
+	if (child_pid == 0)
+	{
+		execve(args[0], args, NULL);
+		perror("execve failed");
+	}
+	else
+	
+		wait(&status);
+	return;
+}
