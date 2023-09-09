@@ -69,7 +69,7 @@ char *getPrompt(void)
 	int n = 20;
 
 	/* Flush stdout and show prompt */
-	printf("$ ");
+	write(STDOUT_FILENO, "$ ", 2);
 	fflush(stdout);
 
 	/* Get command */

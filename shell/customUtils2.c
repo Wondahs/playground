@@ -73,19 +73,12 @@ ssize_t _getline(char **lineptr, int *n, int fd)
 char *_strcat(char *dest, char *src)
 {
 	int i;
-	size_t len;/* len2;*/
-	/*char *dest_cpy;*/
-	
+	size_t len;
+
 	if (dest == NULL || src == NULL)
 		return (NULL);
-	/*len2 = _strlen(src);*/
-	len = _strlen(dest);
-	/*dest_cpy = (char *)malloc(len + len2 + 1);
-	if (!dest_cpy)
-		return (NULL);
 
-	for (i = 0; dest[i] != '\0'; i++)
-		dest_cpy[i] = dest[i];*/
+	len = _strlen(dest);
 
 	for (i = 0; src[i] != '\0'; i++)
 		dest[len++] = src[i];
