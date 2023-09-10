@@ -1,6 +1,8 @@
 #ifndef MAIN_H
 #define MAIN_H
 
+#define MAX_ARGS 128
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
@@ -22,6 +24,7 @@ char *_strcpy(char *dest, char *src);
 char *checkPath(char *cmd);
 char *getPrompt(void);
 void execute(char *args[]);
+int tokenize_cmd(char *cmd, char *args[]);
 
 #endif /* MAIN_H */
 

@@ -76,6 +76,8 @@ char *getPrompt(void)
 	i = _getline(&c, &n, STDIN_FILENO);
 	if (i == -1)
 		perror("_getline");
+	if (i == 1)
+		return (NULL);
 
 	/* Set string terminator, duplicate command and return */
 	c[i - 1] = '\0';
@@ -87,12 +89,10 @@ char *getPrompt(void)
 }
 
 /**
+ *execute - Calls execve and runs the given command
+ *@args: Array containing commands
  *
- *
- *
- *
- *
- *
+ *Return: Nothing
  */
 void execute(char *args[])
 {
@@ -119,4 +119,36 @@ void execute(char *args[])
 		}
 	}
 	return;
+}
+
+/**
+ *
+ *
+ *
+ *
+ */
+int tokenize_cmd(char *cmd, char *args[])
+{
+	int j, i = 0;
+	char *token;
+	/* Tokenize input */
+		token = _strtok(cmd, " ");
+		while (token != NULL && i < MAX_ARGS - 1)
+		{
+			args[i++] = _strdup(token);
+			token = _strtok(NULL, " ");
+		}
+		args[i] = NULL;
+		if (_strncmp(args[0], "exit", 4) == 0)
+		{
+			/* Free allocated memory */
+			for (j = 0; j < i; j++)
+			{
+				free(args[j]);
+				args[j] = NULL;
+			}
+			return (-1);
+		}
+			
+		return (i);
 }
