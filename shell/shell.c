@@ -1,7 +1,12 @@
 #include "main.h"
-#include "printf.h"
 
-#define MAX_ARGS 128
+/**
+ * main - This is the entry point of a custom UNIX command line interpreter
+ * @argc: Argument count
+ * @argv: Arguments vector
+ *
+ * Return: 0 on success
+ */
 int main(int argc, char *argv[])
 {
 	int cmd_count = 1;
