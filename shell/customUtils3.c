@@ -74,20 +74,14 @@ char *getPrompt(void)
 
 	/* Get command */
 	i = _getline(&c, &n, STDIN_FILENO);
+	if (i == -1)
+		perror("_getline");
 
 	/* Set string terminator, duplicate command and return */
 	c[i - 1] = '\0';
 	c_cpy = _strdup(c);
 	if (!c_cpy)
 		perror("strdup error");
-	/* Check for exit command */
-	if (_strncmp("exit", c_cpy, _strlen(c_cpy)) == 0)
-	{
-		printf("exiting\n");
-		free(c_cpy);
-		free(c);
-		return (NULL);
-	}
 	free(c);
 	return (c_cpy);
 }
