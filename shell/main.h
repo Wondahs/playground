@@ -9,6 +9,7 @@
 #include <stdbool.h>
 #include <sys/types.h>
 #include <sys/wait.h>
+#include "printf.h"
 
 extern char **environ;
 
@@ -25,6 +26,7 @@ char *checkPath(char *cmd);
 char *getPrompt(void);
 void execute(char *args[]);
 int tokenize_cmd(char *cmd, char *args[]);
+void call_exec(int tok_count, char *args[], int cmd_count, char *arg);
 
 #endif /* MAIN_H */
 

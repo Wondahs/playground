@@ -118,14 +118,14 @@ void execute(char *args[])
 			args[i] = NULL;
 		}
 	}
-	return;
 }
 
 /**
+ *tokenize_cmd - Tokenizes command and checks for exit command
+ *@cmd: Command
+ *@args: An array into which command is split
  *
- *
- *
- *
+ *Return: Number of tokens of command, or -1 if command is "exit"
  */
 int tokenize_cmd(char *cmd, char *args[])
 {
@@ -142,6 +142,7 @@ int tokenize_cmd(char *cmd, char *args[])
 		if (_strncmp(args[0], "exit", 4) == 0)
 		{
 			/* Free allocated memory */
+			free(cmd);
 			for (j = 0; j < i; j++)
 			{
 				free(args[j]);
@@ -149,6 +150,5 @@ int tokenize_cmd(char *cmd, char *args[])
 			}
 			return (-1);
 		}
-			
 		return (i);
 }
