@@ -23,6 +23,7 @@ int main(int argc, char *argv[])
 			cmd_count++;
 			continue;
 		}
+		cmd = rmv_space(cmd);
 		tok = tokenize_cmd(cmd, args);
 		if (tok == -1)
 			break;
