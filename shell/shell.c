@@ -33,8 +33,7 @@ int main(int argc, char *argv[])
 			cmd_count++;
 			continue;
 		}
-			
-		call_exec(tok, args, cmd_count, argv[0]);
+		cl_exec(tok, args, cmd_count, argv[0], Path);
 		free(cmd);
 		cmd_count++;
 	}

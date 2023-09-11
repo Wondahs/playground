@@ -12,7 +12,6 @@
 #include "printf.h"
 
 extern char **environ;
-extern bool Path;
 
 ssize_t _getline(char **lineptr, int *n, int fd);
 char *_getenv(char *name);
@@ -27,7 +26,7 @@ char *checkPath(char *cmd);
 char *getPrompt(void);
 void execute(char *args[]);
 int tokenize_cmd(char *cmd, char *args[]);
-void call_exec(int tok_count, char *args[], int cmd_count, char *arg);
+void cl_exec(int tok_count, char *args[], int cmd_count, char *arg, bool Path);
 char *rmv_space(char *cmd);
 int exit_atoi(char *str);
 void sh_exit(char *args[], int i, int cmd_count, char *arg, bool Path);

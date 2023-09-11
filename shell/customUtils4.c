@@ -1,18 +1,18 @@
 #include "main.h"
 
 /**
- *call_exec - Checks if command exists and calls execve
+ *cl_exec - Checks if command exists and calls execve
  *@tok_count: Number of tokens in command
  *@args: Pointer to pointer of arrays containing command and options
  *@cmd_count: Number of commands carried out
  *@arg: Name of shell program(Contained at argv[0])
- *
+ *@Path: Boolean that tells if previous command is successful
  *Return: Nothing
  */
-void call_exec(int tok_count, char *args[], int cmd_count, char *arg)
+void cl_exec(int tok_count, char *args[], int cmd_count, char *arg, bool Path)
 {
 	char *fullPath;
-	int j;
+	(void)Path;
 	/* Check if command exixts */
 		fullPath = checkPath(args[0]);
 		if (fullPath == NULL)
@@ -20,11 +20,7 @@ void call_exec(int tok_count, char *args[], int cmd_count, char *arg)
 			Path = false;
 			_printf("%s: %i: %s: not found\n", arg, cmd_count, args[0]);
 		/* Free allocated memory */
-			for (j = 0; j < tok_count; j++)
-			{
-				free(args[j]);
-				args[j] = NULL;
-			}
+			free_args(args, tok_count);
 			free(fullPath);
 		}
 		else
@@ -80,15 +76,15 @@ char *rmv_space(char *cmd)
 int exit_atoi(char *str)
 {
 	int i, len = 0;
-	int ten = 1, total = 0;
+	int total = 0;
 
 	len = _strlen(str);
 	for (i = 0; i < len; i++)
 	{
 		if (str[i] >= '0' && str[i] <= '9')
 		{
-			total = (total * ten) + (str[i] - '0');
-			ten *= 10;
+			total = (total << 1) + (total << 3);
+			total += (str[i] - '0');
 		}
 		else
 			return (-1);
@@ -98,9 +94,13 @@ int exit_atoi(char *str)
 
 /**
  *sh_exit - Handles exit condition
+ *@args: Array containing arguments
+ *@i: Number of arguments in args
+ *@cmd_count: Number of commands already passed to shell
+ *@arg: Name of shell program
+ *@Path: Boolean that tells if previous command was successful
  *
- *
- *
+ *Return: Nothing
  */
 void sh_exit(char *args[], int i, int cmd_count, char *arg, bool Path)
 {
@@ -120,7 +120,8 @@ void sh_exit(char *args[], int i, int cmd_count, char *arg, bool Path)
 	exit_num = exit_atoi(args[1]);
 	if (exit_num == -1)
 	{
-		_printf("%s: %i: %s: not found\n", arg, cmd_count, args[0]);
+		_printf("%s: %i: %s: Illegal number:", arg, cmd_count, args[0]);
+		_printf(" %s\n", args[1]);
 		free_args(args, i);
 	}
 	else
@@ -130,6 +131,13 @@ void sh_exit(char *args[], int i, int cmd_count, char *arg, bool Path)
 	}
 }
 
+/**
+ * free_args - Frees argument vector
+ * @args: Vector to free
+ * @num_token: Number of tokens in vector
+ *
+ * Return: Nothing
+ */
 void free_args(char *args[], int num_token)
 {
 	int i;
