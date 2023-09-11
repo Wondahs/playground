@@ -12,6 +12,7 @@
 #include "printf.h"
 
 extern char **environ;
+extern bool Path;
 
 ssize_t _getline(char **lineptr, int *n, int fd);
 char *_getenv(char *name);
@@ -28,6 +29,7 @@ void execute(char *args[]);
 int tokenize_cmd(char *cmd, char *args[]);
 void call_exec(int tok_count, char *args[], int cmd_count, char *arg);
 char *rmv_space(char *cmd);
+int exit_atoi(char *str);
 
 #endif /* MAIN_H */
 

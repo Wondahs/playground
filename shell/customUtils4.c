@@ -17,6 +17,7 @@ void call_exec(int tok_count, char *args[], int cmd_count, char *arg)
 		fullPath = checkPath(args[0]);
 		if (fullPath == NULL)
 		{
+			Path = false;
 			_printf("%s: %i: %s: not found\n", arg, cmd_count, args[0]);
 		/* Free allocated memory */
 			for (j = 0; j < tok_count; j++)
@@ -28,6 +29,7 @@ void call_exec(int tok_count, char *args[], int cmd_count, char *arg)
 		}
 		else
 		{
+			Path = true;
 			free(args[0]);
 			args[0] = fullPath;
 			execute(args);
@@ -66,4 +68,46 @@ char *rmv_space(char *cmd)
 	free(cmd);
 	cmd = cmd_clean;
 	return (cmd);
+}
+
+/**
+ *exit_atoi - A string-to-integer converter for exit condition
+ *@str: String to convert
+ *
+ *
+ *Return: Integer if successful, -1 if non-numeric character found in input
+ */
+int exit_atoi(char *str)
+{
+	int i, len = 0;
+	int ten = 1, total = 0;
+
+	len = _strlen(str);
+	for (i = 0; i < len; i++)
+	{
+		if (str[i] >= '0' && str[i] <= '9')
+		{
+			total += (str[i] - '0') * ten;
+			ten *= 10;
+		}
+		else
+			return (-1);
+	}
+	return (total);
+}
+
+/**
+ *
+ *
+ *
+ *
+ */
+int sh_exit(char *args[])
+{
+	int exit_num;
+
+	exit_num = exit_atoi(args[1]);
+	if (exit_num == -1)
+		return -1;
+	exit(exit_num);
 }

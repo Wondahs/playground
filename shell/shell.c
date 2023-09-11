@@ -1,5 +1,6 @@
 #include "main.h"
 
+bool Path;
 /**
  * main - This is the entry point of a custom UNIX command line interpreter
  * @argc: Argument count
