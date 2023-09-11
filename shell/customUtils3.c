@@ -129,7 +129,7 @@ void execute(char *args[])
  */
 int tokenize_cmd(char *cmd, char *args[])
 {
-	int j, i = 0;
+	int i = 0;
 	char *token;
 	/* Tokenize input */
 		token = _strtok(cmd, " ");
@@ -139,16 +139,5 @@ int tokenize_cmd(char *cmd, char *args[])
 			token = _strtok(NULL, " ");
 		}
 		args[i] = NULL;
-		if (_strncmp(args[0], "exit", 4) == 0)
-		{
-			/* Free allocated memory */
-			free(cmd);
-			for (j = 0; j < i; j++)
-			{
-				free(args[j]);
-				args[j] = NULL;
-			}
-			return (-1);
-		}
 		return (i);
 }

@@ -30,6 +30,8 @@ int tokenize_cmd(char *cmd, char *args[]);
 void call_exec(int tok_count, char *args[], int cmd_count, char *arg);
 char *rmv_space(char *cmd);
 int exit_atoi(char *str);
+void sh_exit(char *args[], int i, int cmd_count, char *arg, bool Path);
+void free_args(char *args[], int num_token);
 
 #endif /* MAIN_H */
 

@@ -87,7 +87,7 @@ int exit_atoi(char *str)
 	{
 		if (str[i] >= '0' && str[i] <= '9')
 		{
-			total += (str[i] - '0') * ten;
+			total = (total * ten) + (str[i] - '0');
 			ten *= 10;
 		}
 		else
@@ -97,17 +97,46 @@ int exit_atoi(char *str)
 }
 
 /**
- *
+ *sh_exit - Handles exit condition
  *
  *
  *
  */
-int sh_exit(char *args[])
+void sh_exit(char *args[], int i, int cmd_count, char *arg, bool Path)
 {
 	int exit_num;
 
+	if (args[1] == NULL && Path == true)
+	{
+		free_args(args, i);
+		exit(0);
+	}
+	else if (args[1] == NULL && Path == false)
+	{
+		free_args(args, i);
+		exit(127);
+	}
+
 	exit_num = exit_atoi(args[1]);
 	if (exit_num == -1)
-		return -1;
-	exit(exit_num);
+	{
+		_printf("%s: %i: %s: not found\n", arg, cmd_count, args[0]);
+		free_args(args, i);
+	}
+	else
+	{
+		free_args(args, i);
+		exit(exit_num);
+	}
+}
+
+void free_args(char *args[], int num_token)
+{
+	int i;
+
+	for (i = 0; i < num_token; i++)
+	{
+		free(args[i]);
+		args[i] = NULL;
+	}
 }

@@ -1,6 +1,5 @@
 #include "main.h"
 
-bool Path;
 /**
  * main - This is the entry point of a custom UNIX command line interpreter
  * @argc: Argument count
@@ -12,6 +11,7 @@ int main(int argc, char *argv[])
 {
 	int cmd_count = 1;
 	char *cmd, *args[MAX_ARGS];
+	bool Path = true;
 
 	(void)argc;
 	while (1)
@@ -26,8 +26,14 @@ int main(int argc, char *argv[])
 		}
 		cmd = rmv_space(cmd);
 		tok = tokenize_cmd(cmd, args);
-		if (tok == -1)
-			break;
+		if (_strncmp(args[0], "exit", 4) == 0)
+		{
+			free(cmd);
+			sh_exit(args, tok, cmd_count, argv[0], Path);
+			cmd_count++;
+			continue;
+		}
+			
 		call_exec(tok, args, cmd_count, argv[0]);
 		free(cmd);
 		cmd_count++;
