@@ -31,6 +31,8 @@ char *rmv_space(char *cmd);
 int exit_atoi(char *str);
 void sh_exit(char *args[], int i, int cmd_count, char *arg, bool Path);
 void free_args(char *args[], int num_token);
+int count_slash(char *str);
+char *abs_path(char *str);
 
 #endif /* MAIN_H */
 

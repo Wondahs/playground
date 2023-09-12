@@ -13,23 +13,26 @@ void cl_exec(int tok_count, char *args[], int cmd_count, char *arg, bool Path)
 {
 	char *fullPath;
 	(void)Path;
-	/* Check if command exixts */
+
+	if (count_slash(args[0]))
+		fullPath = abs_path(args[0]);
+	else
 		fullPath = checkPath(args[0]);
-		if (fullPath == NULL)
-		{
-			Path = false;
-			_printf("%s: %i: %s: not found\n", arg, cmd_count, args[0]);
+	if (fullPath == NULL)
+	{
+		Path = false;
+		_printf("%s: %i: %s: not found\n", arg, cmd_count, args[0]);
 		/* Free allocated memory */
-			free_args(args, tok_count);
-			free(fullPath);
-		}
-		else
-		{
-			Path = true;
-			free(args[0]);
-			args[0] = fullPath;
-			execute(args);
-		}
+		free_args(args, tok_count);
+		free(fullPath);
+	}
+	else
+	{
+		Path = true;
+		free(args[0]);
+		args[0] = fullPath;
+		execute(args);
+	}
 }
 
 /**

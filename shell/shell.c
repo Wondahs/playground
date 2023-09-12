@@ -17,7 +17,7 @@ int main(int argc, char *argv[])
 	while (1)
 	{
 		int tok = 0;
-		/* Get command */
+
 		cmd = getPrompt();
 		if (cmd == NULL)
 		{
