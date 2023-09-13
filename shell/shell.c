@@ -12,13 +12,16 @@ int main(int argc, char *argv[])
 	int cmd_count = 1;
 	char *cmd, *args[MAX_ARGS];
 	bool Path = true;
+	bool piped = false;
 
 	(void)argc;
-	while (1)
+	while (!piped)
 	{
 		int tok = 0;
 
 		cmd = getPrompt();
+		if (isatty(STDIN_FILENO) == 0)
+			piped = true;
 		if (cmd == NULL)
 		{
 			cmd_count++;
@@ -26,7 +29,7 @@ int main(int argc, char *argv[])
 		}
 		cmd = rmv_space(cmd);
 		tok = tokenize_cmd(cmd, args);
-		if (_strncmp(args[0], "exit", 4) == 0)
+		if (_strncmp("exit", args[0], 4) == 0)
 		{
 			free(cmd);
 			sh_exit(args, tok, cmd_count, argv[0], Path);
