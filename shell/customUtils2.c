@@ -18,44 +18,46 @@
  */
 ssize_t _getline(char **lineptr, int *n, int fd)
 {
-	char c[2];
-	ssize_t j, capacity = *n, i = 0, bytesRead;
+	char c;
+	ssize_t i, tBytesRead = 0, bytesRead = 0;
 
 	if (!lineptr || !n)
 		return (-1);
-
-	if (*lineptr == NULL || capacity < 2)
+	if (*lineptr == NULL || *n < 2)
 	{
-		capacity = 64;
-		*lineptr = (char *)malloc(capacity);
+		*n = 64;
+		*lineptr = (char *)malloc(*n);
 		if (!(*lineptr))
 			return (-1);
 	}
-	while ((bytesRead = read(fd, c, 1) == 1))
+	while (1)
 	{
 		char *temp;
 
-		if (i >= capacity - 2)
+		if (tBytesRead >= (*n) - 2)
 		{
-			capacity *= 2;
-			temp = (char *)malloc(capacity);
+			(*n) *= 2;
+			temp = (char *)malloc(*n);
 			if (!temp)
 				return (-1);
-			for (j = 0; j < i; j++)
-				temp[j] = (*lineptr)[j];
+			for (i = 0; i < tBytesRead; i++)
+				temp[i] = (*lineptr)[i];
 			free(*lineptr);
 			*lineptr = temp;
-			i = j;
 		}
-		(*lineptr)[i++] = c[0];
-		if (c[0] == '\n')
+		bytesRead = read(fd, &c, 1);
+		if (bytesRead < 0)
+			return (-1);
+		else if (bytesRead == 0 && tBytesRead == 0)
+			return (0);
+		else if (bytesRead == 0)
+			break;
+		(*lineptr)[tBytesRead++] = c;
+		if (c == '\n')
 			break;
 	}
-	if (i == 0 && bytesRead < 0)
-		return (-1);
-	(*lineptr)[i] = '\0';
-	*n = capacity;
-	return (i);
+	(*lineptr)[tBytesRead] = '\0';
+	return (tBytesRead);
 }
 
 /**

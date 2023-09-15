@@ -74,16 +74,21 @@ char *getPrompt(void)
 
 	/* Get command */
 	i = _getline(&c, &n, STDIN_FILENO);
-	if (i == -1)
-		perror("_getline");
+	if (i == 0)
+		exit(0);
 	if (i == 1)
 		return (NULL);
 
 	/* Set string terminator, duplicate command and return */
-	c[i - 1] = '\0';
-	c_cpy = _strdup(c);
-	if (!c_cpy)
-		perror("strdup error");
+	if (c != NULL)
+	{
+		if (c[i - 1] == '\n')
+			c[i - 1] = '\0';
+		c[i] = '\0';
+		c_cpy = _strdup(c);
+		if (!c_cpy)
+			perror("strdup error");
+	}
 	free(c);
 	return (c_cpy);
 }

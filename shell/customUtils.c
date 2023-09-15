@@ -21,6 +21,8 @@ char *_getenv(char *name)
 {
 	int i;
 
+	if (name == NULL)
+		return (NULL);
 	for (i = 0; environ[i] != NULL; i++)
 	{
 		char *variable = environ[i];
@@ -48,6 +50,8 @@ int _strlen(char *c)
 {
 	int len = 0;
 
+	if (c == NULL)
+		return (-1);
 	while (c[len] != '\0')
 		len++;
 	return (len);
@@ -68,6 +72,8 @@ int _strncmp(char *s1, char *s2, int n)
 {
 	int i;
 
+	if ((s1 == NULL) || (s2 == NULL))
+		return (-1);
 	for (i = 0; i < n; i++)
 	{
 		if (s1[i] != s2[i])
@@ -89,6 +95,8 @@ int _strncmp(char *s1, char *s2, int n)
  */
 char *_strchr(char *s, char c)
 {
+	if ((s == NULL) || !c)
+		return (NULL);
 	while (*s != '\0')
 	{
 		if (*s == c)
@@ -112,8 +120,11 @@ char *_strdup(char *s)
 {
 	char *dup = NULL;
 	int i;
-	int len = _strlen(s);
+	int len;
 
+	if (s == NULL)
+		return (NULL);
+	len = _strlen(s);
 	dup = malloc(len + 1);
 	if (!dup)
 		return (NULL);

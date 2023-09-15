@@ -29,7 +29,7 @@ int main(int argc, char *argv[])
 		}
 		cmd = rmv_space(cmd);
 		tok = tokenize_cmd(cmd, args);
-		if (_strncmp("exit", args[0], 4) == 0)
+		if (_strncmp("exit", args[0], _strlen(args[0])) == 0)
 		{
 			free(cmd);
 			sh_exit(args, tok, cmd_count, argv[0], Path);

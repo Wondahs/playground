@@ -72,3 +72,14 @@ char *get_cmd(char *str)
 	cmd[j] = '\0';
 	return (cmd);
 }
+
+/**
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ */
+/*char *read_file(char */
