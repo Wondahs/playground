@@ -74,17 +74,6 @@ char *get_cmd(char *str)
 }
 
 /**
- *
- *
- *
- *
- *
- *
- *
- */
-/*char *read_file(char */
-
-/**
  *_realloc - Used with _getline to reallocate memory when necessary.
  *@lineptr: Double pointer to array used to store line.
  *@n: Size of memory to allocate.

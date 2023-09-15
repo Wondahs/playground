@@ -138,17 +138,16 @@ void execute(char *args[])
  *
  *Return: Number of tokens of command, or -1 if command is "exit"
  */
-int tokenize_cmd(char *cmd, char *args[])
+int tokenize_cmd(char *cmd, char *args[], char *delim)
 {
 	int i = 0;
 	char *token;
-	/* Tokenize input */
-		token = _strtok(cmd, " ");
-		while (token != NULL && i < MAX_ARGS - 1)
-		{
-			args[i++] = _strdup(token);
-			token = _strtok(NULL, " ");
-		}
-		args[i] = NULL;
-		return (i);
+	token = _strtok(cmd, delim);
+	while (token != NULL && i < MAX_ARGS - 1)
+	{
+		args[i++] = _strdup(token);
+		token = _strtok(NULL, delim);
+	}
+	args[i] = NULL;
+	return (i);
 }

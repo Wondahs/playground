@@ -105,31 +105,35 @@ int exit_atoi(char *str)
  *
  *Return: Nothing
  */
-void sh_exit(char *args[], int i, int cmd_count, char *arg, bool Path)
+void _ext(char *a[], int i, int cCt, int sc, char *arg, bool Path, char *s[])
 {
 	int exit_num;
 
-	if (args[1] == NULL && Path == true)
+	if (a[1] == NULL && Path == true)
 	{
-		free_args(args, i);
+		free(s[sc]);
+		free_args(a, i);
 		exit(0);
 	}
-	else if (args[1] == NULL && Path == false)
+	else if (a[1] == NULL && Path == false)
 	{
-		free_args(args, i);
+		free(s[sc]);
+		free_args(a, i);
 		exit(127);
 	}
 
-	exit_num = exit_atoi(args[1]);
+	exit_num = exit_atoi(a[1]);
 	if (exit_num == -1)
 	{
-		_printf("%s: %i: %s: Illegal number:", arg, cmd_count, args[0]);
-		_printf(" %s\n", args[1]);
-		free_args(args, i);
+		_printf("%s: %i: %s: Illegal number:", arg, cCt, a[0]);
+		_printf(" %s\n", a[1]);
+		free(s[sc]);
+		free_args(a, i);
 	}
 	else
 	{
-		free_args(args, i);
+		free(s[sc]);
+		free_args(a, i);
 		exit(exit_num);
 	}
 }

@@ -42,11 +42,12 @@ char *_strcpy(char *dest, char *src);
 char *checkPath(char *cmd);
 char *getPrompt(void);
 void execute(char *args[]);
-int tokenize_cmd(char *cmd, char *args[]);
+int tokenize_cmd(char *cmd, char *args[], char *delim);
 void cl_exec(int tok_count, char *args[], int cmd_count, char *arg, bool Path);
 char *rmv_space(char *cmd);
 int exit_atoi(char *str);
-void sh_exit(char *args[], int i, int cmd_count, char *arg, bool Path);
+/*void _exit(char *args[], int i, int cmd_count, char *arg, bool Path, char *s[]);*/
+void _ext(char *a[], int i, int cCt, int sc, char *arg, bool Path, char *s[]);
 void free_args(char *args[], int num_token);
 int count_slash(char *str);
 char *abs_path(char *str);
