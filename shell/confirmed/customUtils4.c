@@ -2,35 +2,36 @@
 
 /**
  *cl_exec - Checks if command exists and calls execve
- *@args: Pointer to struct of arrays containing command information
+ *@tok_count: Number of tokens in command
+ *@args: Pointer to pointer of arrays containing command and options
  *@cmd_count: Number of commands carried out
  *@arg: Name of shell program(Contained at argv[0])
  *@Path: Boolean that tells if previous command is successful
  *Return: Nothing
  */
-void cl_exec(cmd_t *args, int cmd_count, char *arg, bool Path)
+void cl_exec(int tok_count, char *args[], int cmd_count, char *arg, bool Path)
 {
 	char *fullPath;
 	(void)Path;
 
-	if (count_slash(args->args[0]))
-		fullPath = abs_path(args->args[0]);
+	if (count_slash(args[0]))
+		fullPath = abs_path(args[0]);
 	else
-		fullPath = checkPath(args->args[0]);
+		fullPath = checkPath(args[0]);
 	if (fullPath == NULL)
 	{
 		Path = false;
-		_printf("%s: %i: %s: not found\n", arg, cmd_count, args->args[0]);
+		_printf("%s: %i: %s: not found\n", arg, cmd_count, args[0]);
 		/* Free allocated memory */
-		free_args(args->args, args->arg_count);
+		free_args(args, tok_count);
 		free(fullPath);
 	}
 	else
 	{
 		Path = true;
-		free(args->args[0]);
-		args->args[0] = fullPath;
-		execute(args->args);
+		free(args[0]);
+		args[0] = fullPath;
+		execute(args);
 	}
 }
 
@@ -95,49 +96,44 @@ int exit_atoi(char *str)
 }
 
 /**
- *_ext - Handles exit condition
- *@cmmds: Commands separated by ";".
- *@args: Current Array containing arguments being executed
- *@idx: Current index of args.
- *@cCt: Number of commands already passed to shell
+ *sh_exit - Handles exit condition
+ *@args: Array containing arguments
+ *@i: Number of arguments in args
+ *@cmd_count: Number of commands already passed to shell
  *@arg: Name of shell program
  *@Path: Boolean that tells if previous command was successful
  *
  *Return: Nothing
  */
-void _ext(cmd_t *cmmds, cmd_t *args, int cCt, int idx, char *arg, bool Path)
+void _ext(char *a[], int i, int cCt, int sc, char *arg, bool Path, char *s[])
 {
 	int exit_num;
 
-	if (args->args[1] == NULL && Path == true)
+	if (a[1] == NULL && Path == true)
 	{
-		free(cmmds->args[idx]);
-		free_args(args->args, args->arg_count);
-		free(cmmds), free(args);
+		free(s[sc]);
+		free_args(a, i);
 		exit(0);
 	}
-	else if (args->args[1] == NULL && Path == false)
+	else if (a[1] == NULL && Path == false)
 	{
-		free(cmmds->args[idx]);
-		free_args(args->args, args->arg_count);
-		free(cmmds), free(args);
+		free(s[sc]);
+		free_args(a, i);
 		exit(127);
 	}
 
-	exit_num = exit_atoi(args->args[1]);
+	exit_num = exit_atoi(a[1]);
 	if (exit_num == -1)
 	{
-		_printf("%s: %i: %s: Illegal number:", arg, cCt, args->args[0]);
-		_printf(" %s\n", args->args[1]);
-		free(cmmds->args[idx]);
-		free_args(args->args, args->arg_count);
-		free(cmmds), free(args);
+		_printf("%s: %i: %s: Illegal number:", arg, cCt, a[0]);
+		_printf(" %s\n", a[1]);
+		free(s[sc]);
+		free_args(a, i);
 	}
 	else
 	{
-		free(cmmds->args[idx]);
-		free_args(args->args, args->arg_count);
-		free(cmmds), free(args);
+		free(s[sc]);
+		free_args(a, i);
 		exit(exit_num);
 	}
 }

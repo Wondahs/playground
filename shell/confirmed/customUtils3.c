@@ -55,15 +55,13 @@ char *checkPath(char *cmd)
 
 /**
  *getPrompt - Prints '$' and receives command from user.
- *@cmmds: Struct containing command information
- *@args: Commands that have been split
  *
  *This function receives command, and copies it into a string
  *without including the '\n' character. If command is 'exit' it returns NULL.
  *
  *Return: Pointer to a copy of the command.
  */
-char *getPrompt(cmd_t *cmmds, cmd_t *args)
+char *getPrompt(void)
 {
 	char *c_cpy;
 	char *c = malloc(128);
@@ -80,10 +78,7 @@ char *getPrompt(cmd_t *cmmds, cmd_t *args)
 	buf.count = 0;
 	i = _getline(&c, &n, STDIN_FILENO, &buf);
 	if (i == 0)
-	{
-		free(c), free(cmmds), free(args);
 		exit(0);
-	}
 	if (i == 1)
 	{
 		free(c);
@@ -140,7 +135,6 @@ void execute(char *args[])
  *tokenize_cmd - Tokenizes command and checks for exit command
  *@cmd: Command
  *@args: An array into which command is split
- *@delim: Delimiter
  *
  *Return: Number of tokens of command, or -1 if command is "exit"
  */
@@ -148,7 +142,6 @@ int tokenize_cmd(char *cmd, char *args[], char *delim)
 {
 	int i = 0;
 	char *token;
-
 	token = _strtok(cmd, delim);
 	while (token != NULL && i < MAX_ARGS - 1)
 	{

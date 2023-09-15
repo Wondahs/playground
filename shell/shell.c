@@ -10,16 +10,20 @@
 int main(int argc, char *argv[])
 {
 	int cmd_count = 1;
-	char *cmd, *args[MAX_ARGS], *seps[MAX_ARGS];
-	bool Path = true;
-	bool piped = false;
+	char *cmd;
+	bool Path = true, piped = false;
+	cmd_t *cmmds, *args;
 
 	(void)argc;
+	cmmds = (cmd_t *)malloc(sizeof(cmd_t));
+	args = (cmd_t *)malloc(sizeof(cmd_t));
 	while (!piped)
 	{
-		int cmds, i, tok = 0;
+		int i;
 
-		cmd = getPrompt();
+		args->arg_count = 0;
+		cmmds->arg_count = 0;
+		cmd = getPrompt(cmmds, args);
 		if (isatty(STDIN_FILENO) == 0)
 			piped = true;
 		if (cmd == NULL)
@@ -28,23 +32,25 @@ int main(int argc, char *argv[])
 			continue;
 		}
 		cmd = rmv_space(cmd);
-		cmds = tokenize_cmd(cmd, seps, ";");
+		cmmds->arg_count = tokenize_cmd(cmd, cmmds->args, ";");
 		free(cmd);
-		for (i = 0; i < cmds; i++)
+		for (i = 0; i < cmmds->arg_count; i++)
 		{
-			seps[i] = rmv_space(seps[i]);
-			tok = tokenize_cmd(seps[i], args, " ");
-			if (_strncmp("exit", args[0], _strlen(args[0])) == 0)
+			cmmds->args[i] = rmv_space(cmmds->args[i]);
+			args->arg_count = tokenize_cmd(cmmds->args[i], args->args, " ");
+			if (_strncmp("exit", args->args[0], _strlen(args->args[0])) == 0)
 			{
-				_ext(args, tok, cmd_count, i, argv[0], Path, seps);
+				_ext(cmmds, args, cmd_count, i, argv[0], Path);
 				cmd_count++;
 				continue;
 			}
-			cl_exec(tok, args, cmd_count, argv[0], Path);
-			free(seps[i]);
+			cl_exec(args, cmd_count, argv[0], Path);
+			free(cmmds->args[i]);
 			cmd_count++;
 		}
-		free(seps[cmds]);
 	}
 	return (0);
 }
+
+/**
+ * init_cmd_t - Initializes cmd_t struct

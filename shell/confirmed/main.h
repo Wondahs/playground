@@ -30,18 +30,6 @@ struct Buffer
 
 typedef struct Buffer buff_t;
 
-/**
- * struct Commands - Holds information about strings comtaining commands
- * @args: Arguments
- * @arg_count: Number of arguments
- *
- */
-typedef struct Commands
-{
-	char *args[MAX_ARGS];
-	int arg_count;
-} cmd_t;
-
 ssize_t _getline(char **lineptr, int *n, int fd, buff_t *buf);
 char *_getenv(char *name);
 int _strlen(char *c);
@@ -52,14 +40,14 @@ char *_strcat(char *dest, char *src);
 char *_strtok(char *str, char *delim);
 char *_strcpy(char *dest, char *src);
 char *checkPath(char *cmd);
-/*char *getPrompt(void);*/
-char *getPrompt(cmd_t *cmmds, cmd_t *args);
+char *getPrompt(void);
 void execute(char *args[]);
 int tokenize_cmd(char *cmd, char *args[], char *delim);
-void cl_exec(cmd_t *args, int cmd_count, char *arg, bool Path);
+void cl_exec(int tok_count, char *args[], int cmd_count, char *arg, bool Path);
 char *rmv_space(char *cmd);
 int exit_atoi(char *str);
-void _ext(cmd_t *cmmds, cmd_t *args, int cCt, int idx, char *arg, bool Path);
+/*void _exit(char *args[], int i, int cmd_count, char *arg, bool Path, char *s[]);*/
+void _ext(char *a[], int i, int cCt, int sc, char *arg, bool Path, char *s[]);
 void free_args(char *args[], int num_token);
 int count_slash(char *str);
 char *abs_path(char *str);
@@ -67,3 +55,4 @@ ssize_t read_buffer(int fd, buff_t *buf);
 char *_realloc(char **lineptr, int n, ssize_t tBytesRead);
 
 #endif /* MAIN_H */
+
