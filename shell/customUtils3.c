@@ -67,17 +67,23 @@ char *getPrompt(void)
 	char *c = malloc(128);
 	ssize_t i;
 	int n = 20;
+	buff_t buf;
 
 	/* Flush stdout and show prompt */
 	write(STDOUT_FILENO, "$ ", 2);
 	fflush(stdout);
 
 	/* Get command */
-	i = _getline(&c, &n, STDIN_FILENO);
+	buf.index = 0;
+	buf.count = 0;
+	i = _getline(&c, &n, STDIN_FILENO, &buf);
 	if (i == 0)
 		exit(0);
 	if (i == 1)
+	{
+		free(c);
 		return (NULL);
+	}
 
 	/* Set string terminator, duplicate command and return */
 	if (c != NULL)

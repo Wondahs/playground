@@ -6,6 +6,7 @@
  * @lineptr: A pointer to a buffer where the line will be stored.
  * @n: A pointer to the size of the buffer.
  * @fd: The file descriptor from which to read the line.
+ * @buf: Struct containing information about buffer.
  *
  * This function reads characters
  * from the given file descriptor until a newline
@@ -13,15 +14,16 @@
  * It dynamically resizes the buffer as needed to accommodate longer lines.
  * The line is stored in the 'lineptr'
  * buffer, and the 'n' pointer is updated with the new buffer size.
+ * It needs to be used with read_buffer and _realloc functions.
  *
  * Return: The number of characters read, or -1 on error.
  */
-ssize_t _getline(char **lineptr, int *n, int fd)
+ssize_t _getline(char **lineptr, int *n, int fd, buff_t *buf)
 {
 	char c;
-	ssize_t i, tBytesRead = 0, bytesRead = 0;
+	ssize_t tBytesRead = 0, bufferResult = 0;
 
-	if (!lineptr || !n)
+	if (!lineptr || !n || !buf)
 		return (-1);
 	if (*lineptr == NULL || *n < 2)
 	{
@@ -32,26 +34,20 @@ ssize_t _getline(char **lineptr, int *n, int fd)
 	}
 	while (1)
 	{
-		char *temp;
 
 		if (tBytesRead >= (*n) - 2)
 		{
 			(*n) *= 2;
-			temp = (char *)malloc(*n);
-			if (!temp)
-				return (-1);
-			for (i = 0; i < tBytesRead; i++)
-				temp[i] = (*lineptr)[i];
-			free(*lineptr);
-			*lineptr = temp;
+			*lineptr = _realloc(lineptr, *n, tBytesRead);
 		}
-		bytesRead = read(fd, &c, 1);
-		if (bytesRead < 0)
+		bufferResult = read_buffer(fd, buf);
+		if (bufferResult < 0)
 			return (-1);
-		else if (bytesRead == 0 && tBytesRead == 0)
+		else if (bufferResult == 0 && tBytesRead == 0)
 			return (0);
-		else if (bytesRead == 0)
+		else if (bufferResult == 0)
 			break;
+		c = buf->data[buf->index++];
 		(*lineptr)[tBytesRead++] = c;
 		if (c == '\n')
 			break;
@@ -160,4 +156,24 @@ char *_strcpy(char *dest, char *src)
 		dest[i] = src[i];
 	dest[i] = '\0';
 	return (dest);
+}
+
+/**
+ *read_buffer - Used with _getline to store read data in a buffer.
+ *@fd: File descriptor.
+ *@buf: Struct containing buffer information.
+ *
+ *
+ *Return: Number of bytes read.
+ */
+ssize_t read_buffer(int fd, buff_t *buf)
+{
+	if (buf->index >= buf->count)
+	{
+		buf->count = read(fd, buf->data, BUFFER_SIZE);
+		if (buf->count <= 0)
+			return (buf->count);
+		buf->index = 0;
+	}
+	return (buf->count);
 }

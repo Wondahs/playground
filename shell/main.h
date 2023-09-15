@@ -1,6 +1,7 @@
 #ifndef MAIN_H
 #define MAIN_H
 
+#define BUFFER_SIZE 1024
 #define MAX_ARGS 128
 
 #include <stdio.h>
@@ -13,7 +14,23 @@
 
 extern char **environ;
 
-ssize_t _getline(char **lineptr, int *n, int fd);
+/**
+ * struct Buffer - Holds information for buffer used with _getline.
+ * @data: Buffer.
+ * @index: Current position in buffer
+ * @count: Number of bytes read
+ *
+ */
+struct Buffer
+{
+	char data[BUFFER_SIZE];
+	ssize_t index;
+	ssize_t count;
+};
+
+typedef struct Buffer buff_t;
+
+ssize_t _getline(char **lineptr, int *n, int fd, buff_t *buf);
 char *_getenv(char *name);
 int _strlen(char *c);
 int _strncmp(char *s1, char *s2, int n);
@@ -33,6 +50,8 @@ void sh_exit(char *args[], int i, int cmd_count, char *arg, bool Path);
 void free_args(char *args[], int num_token);
 int count_slash(char *str);
 char *abs_path(char *str);
+ssize_t read_buffer(int fd, buff_t *buf);
+char *_realloc(char **lineptr, int n, ssize_t tBytesRead);
 
 #endif /* MAIN_H */
 

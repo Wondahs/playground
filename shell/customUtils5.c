@@ -83,3 +83,26 @@ char *get_cmd(char *str)
  *
  */
 /*char *read_file(char */
+
+/**
+ *_realloc - Used with _getline to reallocate memory when necessary.
+ *@lineptr: Double pointer to array used to store line.
+ *@n: Size of memory to allocate.
+ *@tBytesRead: Total byted read into lineptr.
+ *
+ *Return: lineptr with specified memory on success, or NULL if failed
+ */
+char *_realloc(char **lineptr, int n, ssize_t tBytesRead)
+{
+	ssize_t i;
+	char *temp;
+
+	temp = (char *)malloc(n);
+	if (!temp)
+		return (NULL);
+	for (i = 0; i < tBytesRead; i++)
+		temp[i] = (*lineptr)[i];
+	free(*lineptr);
+	*lineptr = temp;
+	return (*lineptr);
+}
