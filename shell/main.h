@@ -65,5 +65,7 @@ int count_slash(char *str);
 char *abs_path(char *str);
 ssize_t read_buffer(int fd, buff_t *buf);
 char *_realloc(char **lineptr, int n, ssize_t tBytesRead);
+cmd_t *init_cmd_t();
+void looper(cmd_t *cmmds, cmd_t *args, char *argv_0, int *cmd_count);
 
 #endif /* MAIN_H */
