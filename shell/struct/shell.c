@@ -14,12 +14,19 @@ int main(int argc, char *argv[])
 	bool piped = false;
 	cmd_t *cmmds, *args;
 
-	(void)argc;
 	cmmds = init_cmd_t();
 	args = init_cmd_t();
 	while (!piped)
 	{
-		cmd = getPrompt(cmmds, args);
+		if (argc == 2)
+		{
+			cmd = read_file(argv[1]);
+			cmd = replace_char(cmd, '\n', ';');
+			cmd = rmv_double(cmd, ';');
+			piped = true;
+		}
+		else
+			cmd = getPrompt(cmmds, args);
 		if (isatty(STDIN_FILENO) == 0)
 			piped = true;
 		if (cmd == NULL)
@@ -28,9 +35,11 @@ int main(int argc, char *argv[])
 			continue;
 		}
 		cmd = rmv_space(cmd);
+		cmd = rmv_double(cmd, ';');
 		cmmds->arg_count = tokenize_cmd(cmd, cmmds->args, ";");
 		free(cmd);
 		looper(cmmds, args, argv[0], &cmd_count);
 	}
+	free(cmmds), free(args);
 	return (0);
 }

@@ -35,8 +35,9 @@ void cl_exec(cmd_t *args, int cmd_count, char *arg, bool Path)
 }
 
 /**
- *rmv_space - Removes unnecessary spaces from input string
+ *rmv_space - Removes unnecessary character from input string
  *@cmd: Input string
+ *@c: Character to remove
  *
  *Return: Corrected string
  */

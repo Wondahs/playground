@@ -11,6 +11,8 @@
 #include <sys/types.h>
 #include <sys/wait.h>
 #include "printf.h"
+#include <fcntl.h>
+#include <string.h>
 
 extern char **environ;
 
@@ -52,12 +54,11 @@ char *_strcat(char *dest, char *src);
 char *_strtok(char *str, char *delim);
 char *_strcpy(char *dest, char *src);
 char *checkPath(char *cmd);
-/*char *getPrompt(void);*/
 char *getPrompt(cmd_t *cmmds, cmd_t *args);
 void execute(char *args[]);
 int tokenize_cmd(char *cmd, char *args[], char *delim);
 void cl_exec(cmd_t *args, int cmd_count, char *arg, bool Path);
-char *rmv_space(char *cmd);
+char *replace_char(char *str, char c, char s);
 int exit_atoi(char *str);
 void _ext(cmd_t *cmmds, cmd_t *args, int cCt, int idx, char *arg, bool Path);
 void free_args(char *args[], int num_token);
@@ -67,5 +68,8 @@ ssize_t read_buffer(int fd, buff_t *buf);
 char *_realloc(char **lineptr, int n, ssize_t tBytesRead);
 cmd_t *init_cmd_t();
 void looper(cmd_t *cmmds, cmd_t *args, char *argv_0, int *cmd_count);
+char *read_file(char *input_file);
+char *rmv_space(char *cmd);
+char *rmv_double(char *cmd, char c);
 
 #endif /* MAIN_H */
