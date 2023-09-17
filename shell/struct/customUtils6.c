@@ -49,12 +49,12 @@ cmd_t *init_cmd_t()
 }
 
 /**
+ *read_file - Reads file.
+ *@input_file: Name of file.
  *
  *
  *
- *
- *
- *
+ *Return: Copy of buffer containing file content
  */
 char *read_file(char *input_file)
 {
@@ -97,11 +97,12 @@ char *read_file(char *input_file)
 }
 
 /**
+ *replace_char - Replaces character in a string.
+ *@str: Input string.
+ *@c: Character to replace.
+ *@s: Character to replace @c.
  *
- *
- *
- *
- *
+ *Return: Pointer to corrected string.
  */
 char *replace_char(char *str, char c, char s)
 {
@@ -127,13 +128,13 @@ char *replace_char(char *str, char c, char s)
 }
 
 /**
+ *rmv_double - Removes occurrence of double character @c in input string @cmd.
+ *@cmd: Input string.
+ *@c: Double character to remove
  *
  *
  *
- *
- *
- *
- *
+ *Return: Pointer to corrected string.
  */
 char *rmv_double(char *cmd, char c)
 {
