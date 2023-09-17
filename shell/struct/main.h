@@ -12,7 +12,6 @@
 #include <sys/wait.h>
 #include "printf.h"
 #include <fcntl.h>
-#include <string.h>
 
 extern char **environ;
 
