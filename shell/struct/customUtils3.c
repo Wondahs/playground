@@ -72,8 +72,8 @@ char *getPrompt(cmd_t *cmmds, cmd_t *args)
 	buff_t buf;
 
 	/* Flush stdout and show prompt */
-	/*write(STDOUT_FILENO, "$ ", 2);
-	fflush(stdout);*/
+	write(STDOUT_FILENO, "$ ", 2);
+	fflush(stdout);
 
 	/* Get command */
 	buf.index = 0;
@@ -110,7 +110,7 @@ char *getPrompt(cmd_t *cmmds, cmd_t *args)
  *
  *Return: Nothing
  */
-void execute(char *args[])
+void execute(char *args[], bool piped)
 {
 	pid_t child_pid;
 	int status;
@@ -122,8 +122,8 @@ void execute(char *args[])
 		perror("fork failed");
 	if (child_pid == 0)
 	{
-		execve(args[0], args, environ);
-		perror("execve failed");
+		if (execve(args[0], args, environ) == -1 && piped)
+			exit(EXIT_FAILURE);
 	}
 	else
 	{

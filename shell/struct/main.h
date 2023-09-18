@@ -42,6 +42,8 @@ typedef struct Commands
 {
 	char *args[MAX_ARGS];
 	int arg_count;
+	bool piped;
+	bool foundPath;
 } cmd_t;
 
 ssize_t _getline(char **lineptr, int *n, int fd, buff_t *buf);
@@ -55,12 +57,12 @@ char *_strtok(char *str, char *delim);
 char *_strcpy(char *dest, char *src);
 char *checkPath(char *cmd);
 char *getPrompt(cmd_t *cmmds, cmd_t *args);
-void execute(char *args[]);
+void execute(char *args[], bool piped);
 int tokenize_cmd(char *cmd, char *args[], char *delim);
-void cl_exec(cmd_t *args, int cmd_count, char *arg, bool Path);
+void cl_exec(cmd_t *args, int cmd_count, char *arg);
 char *replace_char(char *str, char c, char s);
 int exit_atoi(char *str);
-void _ext(cmd_t *cmmds, cmd_t *args, int cCt, int idx, char *arg, bool Path);
+void _ext(cmd_t *cmmds, cmd_t *args, int cCt, int idx, char *arg);
 void free_args(char *args[], int num_token);
 int count_slash(char *str);
 char *abs_path(char *str);
@@ -74,7 +76,7 @@ char *rmv_double(char *cmd, char c);
 int _setenv(char *variable, char *value);
 int _unsetenv(char *variable);
 bool sCases(cmd_t *cmmds, cmd_t *args, int cmd_count,
-		int i, char *argv_0, bool Path);
+		int i, char *argv_0);
 void copy_env(void);
 
 #endif /* MAIN_H */

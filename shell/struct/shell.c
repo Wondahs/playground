@@ -11,25 +11,26 @@ int main(int argc, char *argv[])
 {
 	int cmd_count = 1;
 	char *cmd;
-	bool piped = false;
 	cmd_t *cmmds, *args;
 
 	copy_env();
 	cmmds = init_cmd_t();
 	args = init_cmd_t();
-	while (!piped)
+	while (!args->piped)
 	{
 		if (argc == 2)
 		{
 			cmd = read_file(argv[1]);
 			cmd = replace_char(cmd, '\n', ';');
 			cmd = rmv_double(cmd, ';');
-			piped = true;
+			args->piped = true;
 		}
 		else
 			cmd = getPrompt(cmmds, args);
 		if (isatty(STDIN_FILENO) == 0)
-			piped = true;
+		{
+			args->piped = true;
+		}
 		if (cmd == NULL)
 		{
 			cmd_count++;

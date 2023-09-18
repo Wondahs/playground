@@ -77,7 +77,7 @@ int _unsetenv(char *variable)
  *
  */
 bool sCases(cmd_t *cmmds, cmd_t *args, int cmd_count,
-		int i, char *argv_0, bool Path)
+		int i, char *argv_0)
 {
 	int condition = 0;
 
@@ -99,7 +99,7 @@ bool sCases(cmd_t *cmmds, cmd_t *args, int cmd_count,
 		}
 	if (_strncmp("exit", args->args[0], _strlen(args->args[0])) == 0)
 		{
-			_ext(cmmds, args, cmd_count, i, argv_0, Path);
+			_ext(cmmds, args, cmd_count, i, argv_0);
 			return (true);
 		}
 	return (false);

@@ -12,19 +12,18 @@
 void looper(cmd_t *cmmds, cmd_t *args, char *argv_0, int *cmd_count)
 {
 	int i;
-	bool Path = true;
 
 	for (i = 0; i < cmmds->arg_count; i++)
 	{
 		cmmds->args[i] = rmv_space(cmmds->args[i]);
 		args->arg_count = tokenize_cmd(cmmds->args[i], args->args, " ");
-		if (sCases(cmmds, args, *cmd_count, i, argv_0, Path))
+		if (sCases(cmmds, args, *cmd_count, i, argv_0))
 		{
 			free(cmmds->args[i]);
 			(*cmd_count)++;
 			continue;
 		}
-		cl_exec(args, *cmd_count, argv_0, Path);
+		cl_exec(args, *cmd_count, argv_0);
 		free(cmmds->args[i]);
 		(*cmd_count)++;
 	}
@@ -45,6 +44,8 @@ cmd_t *init_cmd_t()
 	if (!cmmds)
 		perror("malloc - cmmds");
 	cmmds->arg_count = 0;
+	cmmds->piped = false;
+	cmmds->foundPath = true;
 	return (cmmds);
 }
 
@@ -71,7 +72,7 @@ char *read_file(char *input_file)
 	file = open(input_file, O_RDONLY);
 	if (file == -1)
 	{
-		_printf("Error opening %s", input_file);
+		_printf("cannot open %s", input_file);
 		exit(errno);
 	}
 	buff[0] = '\0';
@@ -83,14 +84,14 @@ char *read_file(char *input_file)
 			break;
 		if (bytesRead == -1 || file == -1)
 		{
-			_printf("Error reading %s", input_file);
+			_printf("cannot read %s", input_file);
 			exit(99);
 		}
 	}
 	buff[tBytesRead] = '\0';
 	if (close(file) == -1)
 	{
-		_printf("cannot close file %s", input_file);
+		_printf("cannot close %s", input_file);
 		exit(errno);
 	}
 	return (_strdup(buff));

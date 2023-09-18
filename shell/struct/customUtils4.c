@@ -8,10 +8,9 @@
  *@Path: Boolean that tells if previous command is successful
  *Return: Nothing
  */
-void cl_exec(cmd_t *args, int cmd_count, char *arg, bool Path)
+void cl_exec(cmd_t *args, int cmd_count, char *arg)
 {
 	char *fullPath;
-	(void)Path;
 
 	if (count_slash(args->args[0]))
 		fullPath = abs_path(args->args[0]);
@@ -19,7 +18,7 @@ void cl_exec(cmd_t *args, int cmd_count, char *arg, bool Path)
 		fullPath = checkPath(args->args[0]);
 	if (fullPath == NULL)
 	{
-		Path = false;
+		args->foundPath = false;
 		_printf("%s: %i: %s: not found\n", arg, cmd_count, args->args[0]);
 		/* Free allocated memory */
 		free_args(args->args, args->arg_count);
@@ -27,10 +26,10 @@ void cl_exec(cmd_t *args, int cmd_count, char *arg, bool Path)
 	}
 	else
 	{
-		Path = true;
+		args->foundPath = true;
 		free(args->args[0]);
 		args->args[0] = fullPath;
-		execute(args->args);
+		execute(args->args, args->piped);
 	}
 }
 
@@ -105,18 +104,18 @@ int exit_atoi(char *str)
  *
  *Return: Nothing
  */
-void _ext(cmd_t *cmmds, cmd_t *args, int cCt, int idx, char *arg, bool Path)
+void _ext(cmd_t *cmmds, cmd_t *args, int cCt, int idx, char *arg)
 {
 	int exit_num;
 
-	if (args->args[1] == NULL && Path == true)
+	if (args->args[1] == NULL && args->foundPath == true)
 	{
 		free(cmmds->args[idx]);
 		free_args(args->args, args->arg_count);
 		free(cmmds), free(args);
 		exit(0);
 	}
-	else if (args->args[1] == NULL && Path == false)
+	else if (args->args[1] == NULL && args->foundPath == false)
 	{
 		free(cmmds->args[idx]);
 		free_args(args->args, args->arg_count);
@@ -132,6 +131,7 @@ void _ext(cmd_t *cmmds, cmd_t *args, int cCt, int idx, char *arg, bool Path)
 		free(cmmds->args[idx]);
 		free_args(args->args, args->arg_count);
 		free(cmmds), free(args);
+		exit(2);
 	}
 	else
 	{

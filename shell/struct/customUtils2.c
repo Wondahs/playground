@@ -49,7 +49,7 @@ ssize_t _getline(char **lineptr, int *n, int fd, buff_t *buf)
 			break;
 		c = buf->data[buf->index++];
 		(*lineptr)[tBytesRead++] = c;
-		if (c == '\n' && bufferResult == 0)
+		if (c == '\n' && !(isatty(STDIN_FILENO) == 0))
 			break;
 	}
 	(*lineptr)[tBytesRead] = '\0';
