@@ -1,0 +1,24 @@
+#include <stdio.h>
+#include "main.h"
+
+int main (void)
+{
+	char variable[] = "MY";
+	char value[] = "testing";
+	int set = 0, unset= 0, i = 0;
+
+	copy_env();
+
+	printf("Environ before set\n");
+	for (i = 0; environ[i] != NULL; i++)                            printf("Environ %d: %s\n", i, environ[i]);
+	set = _setenv(variable, value);
+	if (set == 0)
+		printf("Environ After set\n");
+	for (i = 0; environ[i] != NULL; i++)                            printf("Environ %d: %s\n", i, environ[i]);
+	unset = _unsetenv("PWD");
+	if (unset == 0)
+		printf("Envuron after unset");
+	for (i = 0; environ[i] != NULL; i++)
+		printf("Environ %d: %s\n", i, environ[i]);
+	return 0;
+}

@@ -49,7 +49,7 @@ ssize_t _getline(char **lineptr, int *n, int fd, buff_t *buf)
 			break;
 		c = buf->data[buf->index++];
 		(*lineptr)[tBytesRead++] = c;
-		if (c == '\n')
+		if (c == '\n' && bufferResult == 0)
 			break;
 	}
 	(*lineptr)[tBytesRead] = '\0';
@@ -145,7 +145,7 @@ char *_strcpy(char *dest, char *src)
 	size_t i;
 	size_t len;
 
-	if (!dest || !src)
+	if (!src)
 		return (NULL);
 
 	len = _strlen(src);

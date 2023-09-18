@@ -14,6 +14,7 @@ int main(int argc, char *argv[])
 	bool piped = false;
 	cmd_t *cmmds, *args;
 
+	copy_env();
 	cmmds = init_cmd_t();
 	args = init_cmd_t();
 	while (!piped)
@@ -35,6 +36,7 @@ int main(int argc, char *argv[])
 			continue;
 		}
 		cmd = rmv_space(cmd);
+		cmd = replace_char(cmd, '\n', ';');
 		cmd = rmv_double(cmd, ';');
 		cmmds->arg_count = tokenize_cmd(cmd, cmmds->args, ";");
 		free(cmd);

@@ -18,9 +18,9 @@ void looper(cmd_t *cmmds, cmd_t *args, char *argv_0, int *cmd_count)
 	{
 		cmmds->args[i] = rmv_space(cmmds->args[i]);
 		args->arg_count = tokenize_cmd(cmmds->args[i], args->args, " ");
-		if (_strncmp("exit", args->args[0], _strlen(args->args[0])) == 0)
+		if (sCases(cmmds, args, *cmd_count, i, argv_0, Path))
 		{
-			_ext(cmmds, args, *cmd_count, i, argv_0, Path);
+			free(cmmds->args[i]);
 			(*cmd_count)++;
 			continue;
 		}
@@ -65,14 +65,14 @@ char *read_file(char *input_file)
 	if (input_file == NULL)
 	{
 		_printf("%s is null", input_file);
-		exit(97);
+		exit(errno);
 	}
 
 	file = open(input_file, O_RDONLY);
 	if (file == -1)
 	{
 		_printf("Error opening %s", input_file);
-		exit(98);
+		exit(errno);
 	}
 	buff[0] = '\0';
 	while (1)
@@ -90,8 +90,8 @@ char *read_file(char *input_file)
 	buff[tBytesRead] = '\0';
 	if (close(file) == -1)
 	{
-		_printf("Error closing %s", input_file);
-		exit(100);
+		_printf("cannot close file %s", input_file);
+		exit(errno);
 	}
 	return (_strdup(buff));
 }

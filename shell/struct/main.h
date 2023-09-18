@@ -12,6 +12,7 @@
 #include <sys/wait.h>
 #include "printf.h"
 #include <fcntl.h>
+#include <errno.h>
 
 extern char **environ;
 
@@ -70,5 +71,10 @@ void looper(cmd_t *cmmds, cmd_t *args, char *argv_0, int *cmd_count);
 char *read_file(char *input_file);
 char *rmv_space(char *cmd);
 char *rmv_double(char *cmd, char c);
+int _setenv(char *variable, char *value);
+int _unsetenv(char *variable);
+bool sCases(cmd_t *cmmds, cmd_t *args, int cmd_count,
+		int i, char *argv_0, bool Path);
+void copy_env(void);
 
 #endif /* MAIN_H */
