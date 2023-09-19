@@ -23,7 +23,7 @@ void looper(cmd_t *cmmds, cmd_t *args, char *argv_0, int *cmd_count)
 			(*cmd_count)++;
 			continue;
 		}
-		cl_exec(args, *cmd_count, argv_0);
+		cl_exec(cmmds, args, *cmd_count, argv_0);
 		free(cmmds->args[i]);
 		(*cmd_count)++;
 	}
@@ -57,7 +57,7 @@ cmd_t *init_cmd_t()
  *
  *Return: Copy of buffer containing file content
  */
-char *read_file(char *input_file)
+char *read_file(char *input_file, char *argv_0)
 {
 	int file;
 	char buff[1024];
@@ -65,15 +65,15 @@ char *read_file(char *input_file)
 
 	if (input_file == NULL)
 	{
-		_printf("%s is null", input_file);
+		e_printf("%s is null", input_file);
 		exit(errno);
 	}
 
 	file = open(input_file, O_RDONLY);
 	if (file == -1)
 	{
-		_printf("cannot open %s", input_file);
-		exit(errno);
+		e_printf("%s: 0: cannot open %s: No such file\n", argv_0, input_file);
+		exit(2);
 	}
 	buff[0] = '\0';
 	while (1)
@@ -84,14 +84,14 @@ char *read_file(char *input_file)
 			break;
 		if (bytesRead == -1 || file == -1)
 		{
-			_printf("cannot read %s", input_file);
-			exit(99);
+			e_printf("%s: 0: cannot read %s\n", argv_0, input_file);
+			exit(2);
 		}
 	}
 	buff[tBytesRead] = '\0';
 	if (close(file) == -1)
 	{
-		_printf("cannot close %s", input_file);
+		e_printf("%s: 0: cannot close %s\n" , argv_0, input_file);
 		exit(errno);
 	}
 	return (_strdup(buff));

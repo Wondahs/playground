@@ -110,28 +110,44 @@ char *getPrompt(cmd_t *cmmds, cmd_t *args)
  *
  *Return: Nothing
  */
-void execute(char *args[], bool piped)
+void execute(cmd_t *args, cmd_t *cmmds,int cmd_count)
 {
 	pid_t child_pid;
 	int status;
 	int i;
 
 	child_pid = fork();
-
 	if (child_pid == -1)
 		perror("fork failed");
 	if (child_pid == 0)
 	{
-		if (execve(args[0], args, environ) == -1 && piped)
-			exit(EXIT_FAILURE);
+		if (execve(args->args[0], args->args, environ) == -1)
+		{
+			_printf("error");
+			if (cmmds->arg_count == cmd_count)
+			{
+				free_cmd_t(args);
+				free_cmd_t(cmmds);
+				exit(2);
+			}
+		}
 	}
 	else
 	{
 		wait(&status);
-		for (i = 0; args[i] != NULL; i++)
+		if (WEXITSTATUS(status) != 0)
 		{
-			free(args[i]);
-			args[i] = NULL;
+			if (cmmds->arg_count == cmd_count && args->piped)
+			{
+				free_cmd_t(args);
+				free_cmd_t(cmmds);
+				exit(2);
+			}
+		}
+		for (i = 0; args->args[i] != NULL; i++)
+		{
+			free(args->args[i]);
+			args->args[i] = NULL;
 		}
 	}
 }

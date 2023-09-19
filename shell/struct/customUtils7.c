@@ -122,3 +122,22 @@ void copy_env(void)
 	environ = new_env;
 	environ[i] = NULL;
 }
+
+/**
+ *
+ *
+ *
+ *
+ *
+ *
+ */
+void free_cmd_t(cmd_t *cmmd)
+{
+	int i;
+
+	for (i = 0; i < cmmd->arg_count; i++)
+	{
+		free(cmmd->args[i]);
+	}
+	free(cmmd);
+}

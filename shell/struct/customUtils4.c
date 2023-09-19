@@ -8,7 +8,7 @@
  *@Path: Boolean that tells if previous command is successful
  *Return: Nothing
  */
-void cl_exec(cmd_t *args, int cmd_count, char *arg)
+void cl_exec(cmd_t *cmmds, cmd_t *args, int cmd_count, char *arg)
 {
 	char *fullPath;
 
@@ -19,7 +19,7 @@ void cl_exec(cmd_t *args, int cmd_count, char *arg)
 	if (fullPath == NULL)
 	{
 		args->foundPath = false;
-		_printf("%s: %i: %s: not found\n", arg, cmd_count, args->args[0]);
+		e_printf("%s: %i: %s: not found\n", arg, cmd_count, args->args[0]);
 		/* Free allocated memory */
 		free_args(args->args, args->arg_count);
 		free(fullPath);
@@ -29,7 +29,7 @@ void cl_exec(cmd_t *args, int cmd_count, char *arg)
 		args->foundPath = true;
 		free(args->args[0]);
 		args->args[0] = fullPath;
-		execute(args->args, args->piped);
+		execute(args, cmmds, cmd_count);
 	}
 }
 
@@ -126,7 +126,7 @@ void _ext(cmd_t *cmmds, cmd_t *args, int cCt, int idx, char *arg)
 	exit_num = exit_atoi(args->args[1]);
 	if (exit_num == -1)
 	{
-		_printf("%s: %i: %s: Illegal number:", arg, cCt, args->args[0]);
+		e_printf("%s: %i: %s: Illegal number:", arg, cCt, args->args[0]);
 		_printf(" %s\n", args->args[1]);
 		free(cmmds->args[idx]);
 		free_args(args->args, args->arg_count);

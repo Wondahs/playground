@@ -11,6 +11,7 @@
 #include <sys/types.h>
 #include <sys/wait.h>
 #include "printf.h"
+#include "eprintf.h"
 #include <fcntl.h>
 #include <errno.h>
 
@@ -57,9 +58,9 @@ char *_strtok(char *str, char *delim);
 char *_strcpy(char *dest, char *src);
 char *checkPath(char *cmd);
 char *getPrompt(cmd_t *cmmds, cmd_t *args);
-void execute(char *args[], bool piped);
+void execute(cmd_t *args, cmd_t *cmmds, int cmd_count);
 int tokenize_cmd(char *cmd, char *args[], char *delim);
-void cl_exec(cmd_t *args, int cmd_count, char *arg);
+void cl_exec(cmd_t *cmmds, cmd_t *args, int cmd_count, char *arg);
 char *replace_char(char *str, char c, char s);
 int exit_atoi(char *str);
 void _ext(cmd_t *cmmds, cmd_t *args, int cCt, int idx, char *arg);
@@ -70,7 +71,7 @@ ssize_t read_buffer(int fd, buff_t *buf);
 char *_realloc(char **lineptr, int n, ssize_t tBytesRead);
 cmd_t *init_cmd_t();
 void looper(cmd_t *cmmds, cmd_t *args, char *argv_0, int *cmd_count);
-char *read_file(char *input_file);
+char *read_file(char *input_file, char *argv_0);
 char *rmv_space(char *cmd);
 char *rmv_double(char *cmd, char c);
 int _setenv(char *variable, char *value);
@@ -78,5 +79,6 @@ int _unsetenv(char *variable);
 bool sCases(cmd_t *cmmds, cmd_t *args, int cmd_count,
 		int i, char *argv_0);
 void copy_env(void);
+void free_cmd_t(cmd_t *cmmd);
 
 #endif /* MAIN_H */
