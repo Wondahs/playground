@@ -80,5 +80,7 @@ bool sCases(cmd_t *cmmds, cmd_t *args, int cmd_count,
 		int i, char *argv_0);
 void copy_env(void);
 void free_cmd_t(cmd_t *cmmd);
+void cd(cmd_t *args, char *argv_0, int cmd_count);
+char *free_strdup(char *s);
 
 #endif /* MAIN_H */

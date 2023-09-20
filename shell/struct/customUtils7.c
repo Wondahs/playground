@@ -9,13 +9,12 @@
  */
 int _setenv(char *variable, char *value)
 {
-	int i = 0;
-	static char new_var[4048];
+	int i = 0, j;
+	char *new_var, **new_env;
 
-	if (variable == NULL || value == NULL || !variable || !value)
+	if (!variable || !value)
 		return (-1);
-
-	new_var[0] = '\0';
+	new_var = malloc(_strlen(variable) + _strlen(value) + 2);
 	_strcpy(new_var, variable);
 	_strcat(new_var, "=");
 	_strcat(new_var, value);
@@ -23,14 +22,19 @@ int _setenv(char *variable, char *value)
 	{
 		if (_strncmp(environ[i], variable, _strlen(variable)) == 0)
 		{
-			environ[i] = new_var;
+			free(environ[i]);
+			environ[i] = _strdup(new_var);
+			free(new_var);
 			return (0);
 		}
 	}
-	for (i = 0; environ[i] != NULL; i++)
-		i++;
-	environ[i++] = new_var;
-	environ[i] = NULL;
+	new_env = (char **)malloc((i + 3) * sizeof(char *));
+	for (j = 0; environ[j] != NULL; j++)
+		new_env[j] = environ[j];
+	new_env[j] = _strdup(new_var);
+	new_env[j + 1] = NULL;
+	free(new_var), free(environ);
+	environ = new_env;
 	return (0);
 }
 
@@ -53,19 +57,19 @@ int _unsetenv(char *variable)
 		return (-1);
 	while (environ[size] != NULL)
 		size++;
-	temp = (char **)malloc((size + 2) * sizeof(char *));
+	temp = (char **)malloc((size + 1) * sizeof(char *));
 	for (i = 0; environ[i] != NULL; i++)
 	{
 		if (_strncmp(environ[i], variable, _strlen(variable)) != 0)
-		
+		{
 			temp[k++] = environ[i];
+		}
 	}
 	temp[k] = NULL;
-	for (i = 0; i <= k; i++)
-	{
-		environ[i] = temp[i];
-	}
-	free(temp);
+	/*for (i = 0; i < k; i++)
+		environ[i] = temp[i];*/
+	free(environ);
+	environ = temp;
 	return (0);
 }
 
@@ -102,6 +106,11 @@ bool sCases(cmd_t *cmmds, cmd_t *args, int cmd_count,
 			_ext(cmmds, args, cmd_count, i, argv_0);
 			return (true);
 		}
+	if (_strncmp("cd", args->args[0], 2) == 0)
+	{
+		cd(args, argv_0, cmd_count);
+		return (true);
+	}
 	return (false);
 }
 
@@ -111,16 +120,16 @@ bool sCases(cmd_t *cmmds, cmd_t *args, int cmd_count,
  */
 void copy_env(void)
 {
-	static char *new_env[1024];
+	char **new_env;
 	int size = 0, i;
 
 	while (environ[size] != NULL)
 		size++;
-
+	new_env = (char **)malloc((size + 1) * (sizeof(char *)));
 	for (i = 0; i < size; i++)
 		new_env[i] = environ[i];
+	new_env[i] = NULL;
 	environ = new_env;
-	environ[i] = NULL;
 }
 
 /**

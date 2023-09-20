@@ -20,5 +20,13 @@ int main (void)
 		printf("Envuron after unset");
 	for (i = 0; environ[i] != NULL; i++)
 		printf("Environ %d: %s\n", i, environ[i]);
+	free(environ);
+	/*char str[100];
+	char dest[] = "Copy that";
+	char cat[] = " Join this";
+
+	_strcpy(str, dest);
+	_strcat(str, cat);
+	_printf("%s\n", str);*/
 	return 0;
 }

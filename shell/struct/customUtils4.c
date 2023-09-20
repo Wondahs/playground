@@ -113,13 +113,14 @@ void _ext(cmd_t *cmmds, cmd_t *args, int cCt, int idx, char *arg)
 		free(cmmds->args[idx]);
 		free_args(args->args, args->arg_count);
 		free(cmmds), free(args);
+		free(environ);
 		exit(0);
 	}
 	else if (args->args[1] == NULL && args->foundPath == false)
 	{
 		free(cmmds->args[idx]);
 		free_args(args->args, args->arg_count);
-		free(cmmds), free(args);
+		free(cmmds), free(args), free(environ);
 		exit(127);
 	}
 
@@ -130,14 +131,14 @@ void _ext(cmd_t *cmmds, cmd_t *args, int cCt, int idx, char *arg)
 		_printf(" %s\n", args->args[1]);
 		free(cmmds->args[idx]);
 		free_args(args->args, args->arg_count);
-		free(cmmds), free(args);
+		free(cmmds), free(args), free(environ);
 		exit(2);
 	}
 	else
 	{
 		free(cmmds->args[idx]);
 		free_args(args->args, args->arg_count);
-		free(cmmds), free(args);
+		free(cmmds), free(args), free(environ);
 		exit(exit_num);
 	}
 }

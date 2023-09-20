@@ -122,15 +122,7 @@ void execute(cmd_t *args, cmd_t *cmmds,int cmd_count)
 	if (child_pid == 0)
 	{
 		if (execve(args->args[0], args->args, environ) == -1)
-		{
-			_printf("error");
-			if (cmmds->arg_count == cmd_count)
-			{
-				free_cmd_t(args);
-				free_cmd_t(cmmds);
-				exit(2);
-			}
-		}
+			perror("execve");
 	}
 	else
 	{
@@ -141,7 +133,8 @@ void execute(cmd_t *args, cmd_t *cmmds,int cmd_count)
 			{
 				free_cmd_t(args);
 				free_cmd_t(cmmds);
-				exit(2);
+				free(environ);
+				exit(WEXITSTATUS(status));
 			}
 		}
 		for (i = 0; args->args[i] != NULL; i++)
