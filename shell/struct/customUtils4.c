@@ -2,10 +2,10 @@
 
 /**
  *cl_exec - Checks if command exists and calls execve
+ *@cmmds: Pointer to struct containing command information
  *@args: Pointer to struct of arrays containing command information
  *@cmd_count: Number of commands carried out
  *@arg: Name of shell program(Contained at argv[0])
- *@Path: Boolean that tells if previous command is successful
  *Return: Nothing
  */
 void cl_exec(cmd_t *cmmds, cmd_t *args, int cmd_count, char *arg)
@@ -99,8 +99,7 @@ int exit_atoi(char *str)
  *@args: Current Array containing arguments being executed
  *@idx: Current index of args.
  *@cCt: Number of commands already passed to shell
- *@arg: Name of shell program
- *@Path: Boolean that tells if previous command was successful
+ *@arg: Name of shell program, held at argv[0].
  *
  *Return: Nothing
  */

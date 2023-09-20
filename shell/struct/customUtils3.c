@@ -71,7 +71,7 @@ char *getPrompt(cmd_t *cmmds, cmd_t *args)
 	int n = 20;
 	buff_t buf;
 
-	if(isatty(STDIN_FILENO))
+	if (isatty(STDIN_FILENO))
 	{
 		write(STDOUT_FILENO, "$ ", 2);
 		fflush(stdout);
@@ -108,11 +108,13 @@ char *getPrompt(cmd_t *cmmds, cmd_t *args)
 
 /**
  *execute - Calls execve and runs the given command
- *@args: Array containing commands
+ *@args: Pointer to struct containing commands info.
+ *@cmmds: Pointer to struct containing commands info.
+ *@cmd_count: Number of commands executed.
  *
  *Return: Nothing
  */
-void execute(cmd_t *args, cmd_t *cmmds,int cmd_count)
+void execute(cmd_t *args, cmd_t *cmmds, int cmd_count)
 {
 	pid_t child_pid;
 	int status;

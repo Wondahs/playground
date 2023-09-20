@@ -1,11 +1,11 @@
 #include "main.h"
 
 /**
+ *_setenv - Sets @variable as an environment variable wih value @value
+ *@variable: Variable to set.
+ *@value: Value of @variable
  *
- *
- *
- *
- *
+ *Return: 0 if success, -1 if fail.
  */
 int _setenv(char *variable, char *value)
 {
@@ -39,13 +39,10 @@ int _setenv(char *variable, char *value)
 }
 
 /**
+ *_unsetenv - Unsets an environment variable
+ *@variable: Variable to unset
  *
- *
- *
- *
- *
- *
- *
+ *Return: 0 on success, -1 on fail.
  */
 int _unsetenv(char *variable)
 {
@@ -66,19 +63,20 @@ int _unsetenv(char *variable)
 		}
 	}
 	temp[k] = NULL;
-	/*for (i = 0; i < k; i++)
-		environ[i] = temp[i];*/
 	free(environ);
 	environ = temp;
 	return (0);
 }
 
 /**
+ *sCases - Handles special cases.
+ *@cmmds: cmmds
+ *@args: args
+ *@cmd_count: Number of commands executed.
+ *@i: ith command in cmmds.
+ *@argv_0: Name of program held in argv[0].
  *
- *
- *
- *
- *
+ * Return: True if any special cases.
  */
 bool sCases(cmd_t *cmmds, cmd_t *args, int cmd_count,
 		int i, char *argv_0)
@@ -86,26 +84,26 @@ bool sCases(cmd_t *cmmds, cmd_t *args, int cmd_count,
 	int condition = 0;
 
 	if (_strncmp("setenv", args->args[0], _strlen(args->args[0])) == 0)
-		{
-			condition = _setenv(args->args[1], args->args[2]);
-			if (condition == -1)
-				perror("setenv");
-			free_args(args->args, args->arg_count);
-			return (true);
-		}
+	{
+		condition = _setenv(args->args[1], args->args[2]);
+		if (condition == -1)
+			perror("setenv");
+		free_args(args->args, args->arg_count);
+		return (true);
+	}
 	if (_strncmp("unsetenv", args->args[0], _strlen(args->args[0])) == 0)
-		{
-			condition = _unsetenv(args->args[1]);
-			if (condition == -1)
-				perror("unsetenv");
-			free_args(args->args, args->arg_count);
-			return (true);
-		}
+	{
+		condition = _unsetenv(args->args[1]);
+		if (condition == -1)
+			perror("unsetenv");
+		free_args(args->args, args->arg_count);
+		return (true);
+	}
 	if (_strncmp("exit", args->args[0], _strlen(args->args[0])) == 0)
-		{
-			_ext(cmmds, args, cmd_count, i, argv_0);
-			return (true);
-		}
+	{
+		_ext(cmmds, args, cmd_count, i, argv_0);
+		return (true);
+	}
 	if (_strncmp("cd", args->args[0], 2) == 0)
 	{
 		cd(args, argv_0, cmd_count);
@@ -116,8 +114,9 @@ bool sCases(cmd_t *cmmds, cmd_t *args, int cmd_count,
 }
 
 /**
- * copy_env - Copies environment variables
+ * copy_env - Copies environment variables.
  *
+ *Return: Nothing.
  */
 void copy_env(void)
 {
@@ -134,12 +133,10 @@ void copy_env(void)
 }
 
 /**
+ *free_cmd_t - Frees cmd_t struct
+ *@cmmd: Struct to free
  *
- *
- *
- *
- *
- *
+ *Return: Nothing.
  */
 void free_cmd_t(cmd_t *cmmd)
 {

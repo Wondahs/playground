@@ -52,7 +52,7 @@ cmd_t *init_cmd_t()
 /**
  *read_file - Reads file.
  *@input_file: Name of file.
- *
+ *@argv_0: Name of program, held in argv[0].
  *
  *
  *Return: Copy of buffer containing file content
@@ -91,7 +91,7 @@ char *read_file(char *input_file, char *argv_0)
 	buff[tBytesRead] = '\0';
 	if (close(file) == -1)
 	{
-		e_printf("%s: 0: cannot close %s\n" , argv_0, input_file);
+		e_printf("%s: 0: cannot close %s\n", argv_0, input_file);
 		exit(errno);
 	}
 	return (_strdup(buff));
