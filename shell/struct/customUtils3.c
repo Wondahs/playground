@@ -71,9 +71,11 @@ char *getPrompt(cmd_t *cmmds, cmd_t *args)
 	int n = 20;
 	buff_t buf;
 
-	/* Flush stdout and show prompt */
-	write(STDOUT_FILENO, "$ ", 2);
-	fflush(stdout);
+	if(isatty(STDIN_FILENO))
+	{
+		write(STDOUT_FILENO, "$ ", 2);
+		fflush(stdout);
+	}
 
 	/* Get command */
 	buf.index = 0;

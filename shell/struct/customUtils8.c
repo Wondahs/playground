@@ -35,6 +35,7 @@ void cd(cmd_t *args, char *argv_0, int cmd_count)
 			perror("cd");
 			return;
 		}
+		_printf("%s\n", oldpwd);
 	}
 	else
 	{

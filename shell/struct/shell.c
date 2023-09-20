@@ -43,6 +43,11 @@ int main(int argc, char *argv[])
 		free(cmd);
 		looper(cmmds, args, argv[0], &cmd_count);
 	}
+	if (args->foundPath == false)
+	{
+		free(cmmds), free(args), free(environ);
+		exit(127);
+	}
 	free(cmmds), free(args), free(environ);
 	return (0);
 }

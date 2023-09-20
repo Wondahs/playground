@@ -22,7 +22,6 @@ int _setenv(char *variable, char *value)
 	{
 		if (_strncmp(environ[i], variable, _strlen(variable)) == 0)
 		{
-			free(environ[i]);
 			environ[i] = _strdup(new_var);
 			free(new_var);
 			return (0);
@@ -34,6 +33,7 @@ int _setenv(char *variable, char *value)
 	new_env[j] = _strdup(new_var);
 	new_env[j + 1] = NULL;
 	free(new_var), free(environ);
+	new_var = NULL;
 	environ = new_env;
 	return (0);
 }
@@ -109,6 +109,7 @@ bool sCases(cmd_t *cmmds, cmd_t *args, int cmd_count,
 	if (_strncmp("cd", args->args[0], 2) == 0)
 	{
 		cd(args, argv_0, cmd_count);
+		free_args(args->args, args->arg_count);
 		return (true);
 	}
 	return (false);
