@@ -1,10 +1,10 @@
 #include "eprintf.h"
 
 /**
- * e_printf - Custom printf
+ * e_printf - Custom printf for printing to STDERR_FILENO
  * @format: Input string
  *
- * This custom printf function only handles char, char * and int types.
+ * This custom printf function only handles char, char * and int types and prints to STDERR.
  *
  * Return: Number of characters printed
  */
