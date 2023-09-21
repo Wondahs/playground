@@ -58,8 +58,8 @@ typedef struct Commands
 typedef struct Scases
 {
 	char *name;
-	bool (func*)(cmd_t *, cmd_t *, int, int, char *);
-} sCases;
+	bool (*func)(cmd_t *, cmd_t *, int, int, char *);
+} sCases_t;
 
 ssize_t _getline(char **lineptr, int *n, int fd, buff_t *buf);
 char *_getenv(char *name);
@@ -99,5 +99,10 @@ char *free_strdup(char *s);
 void cleanup(cmd_t *cmmds, cmd_t *args);
 int home(cmd_t *args);
 int oldpwd(cmd_t *args);
+void print_env(void);
+bool cmd_setenv(cmd_t *args, cmd_t *cmmds, int cmd_count, int i, char *argv_0);
+bool cmd_unsetenv(cmd_t *args, cmd_t *cmmds, int cmd_count, int i, char *argv_0);
+bool cmd_exit(cmd_t *args, cmd_t *cmmds, int cmd_count, int i, char *argv_0);
+bool cmd_env(cmd_t *args, cmd_t *cmmds, int cmd_count, int i, char *argv_0);
 
 #endif /* MAIN_H */
