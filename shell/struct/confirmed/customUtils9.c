@@ -1,20 +1,21 @@
 #include "main.h"
 
 /**
- *
- *
- *
- *
- *
- *
+ *sCases - Handles special cases.
+ *@cmmds: cmmds
+ *@args: args
+ *@cmd_count: Number of commands executed.
+ *@i: ith command in cmmds.
+ *@argv_0: Name of program held in argv[0].
+ * Return: True if any special cases.
  */
-bool sCases(cmd_t *cmmds, cmd_t *args, int cmd_count,                   int i, char *argv_0)
+bool sCases(cmd_t *cmmds, cmd_t *args, int cmd_count,
+	int i, char *argv_0)
 {
 	char *cmd_name = args->args[0];
 	size_t j = 0;
 
-	sCases_t commands[] =
-	{
+	sCases_t commands[] = {
 		{"setenv", cmd_setenv},
 		{"unsetenv", cmd_unsetenv},
 		{"exit", cmd_exit},
@@ -29,7 +30,16 @@ bool sCases(cmd_t *cmmds, cmd_t *args, int cmd_count,                   int i, c
 
 	return (false);
 }
-
+/**
+ *cmd_setenv - Handles setenv command.
+ *@cmmds: cmmds
+ *@args: args
+ *@cmd_count: Number of commands executed.
+ *@i: ith command in cmmds.
+ *@argv_0: Name of program held in argv[0].
+ *
+ *Return: True
+ */
 bool cmd_setenv(cmd_t *args, cmd_t *cmmds, int cmd_count, int i, char *argv_0)
 {
 	int condition = _setenv(args->args[1], args->args[2]);
@@ -43,7 +53,17 @@ bool cmd_setenv(cmd_t *args, cmd_t *cmmds, int cmd_count, int i, char *argv_0)
 	return (true);
 }
 
-bool cmd_unsetenv(cmd_t *args, cmd_t *cmmds, int cmd_count, int i, char *argv_0)
+/**
+ *cmd_unsetenv - Handles unsetenv command.
+ *@cmmds: cmmds
+ *@args: args
+ *@cmd_count: Number of commands executed.
+ *@i: ith command in cmmds.
+ *@argv_0: Name of program held in argv[0].
+ *Return: True
+ */
+bool cmd_unsetenv(cmd_t *args, cmd_t *cmmds,
+	int cmd_count, int i, char *argv_0)
 {
 	int condition = _unsetenv(args->args[1]);
 
@@ -56,12 +76,30 @@ bool cmd_unsetenv(cmd_t *args, cmd_t *cmmds, int cmd_count, int i, char *argv_0)
 	return (true);
 }
 
+/**
+ *cmd_exit - Handles exit command.
+ *@cmmds: cmmds
+ *@args: args
+ *@cmd_count: Number of commands executed.
+ *@i: ith command in cmmds.
+ *@argv_0: Name of program held in argv[0].
+ *Return: True
+ */
 bool cmd_exit(cmd_t *args, cmd_t *cmmds, int cmd_count, int i, char *argv_0)
 {
 	_ext(cmmds, args, cmd_count, i, argv_0);
 	return (true);
 }
 
+/**
+ *cmd_env - Handles env command.
+ *@cmmds: cmmds
+ *@args: args
+ *@cmd_count: Number of commands executed.
+ *@i: ith command in cmmds.
+ *@argv_0: Name of program held in argv[0].
+ *Return: True
+ */
 bool cmd_env(cmd_t *args, cmd_t *cmmds, int cmd_count, int i, char *argv_0)
 {
 	(void)cmmds;
