@@ -10,12 +10,15 @@
 int _setenv(char *variable, char *value)
 {
 	int i = 0, j;
-	char *new_var, **new_env;
+	char *new_var, **new_env, *temp;
 
 	if (!variable || !value)
 		return (-1);
-	new_var = malloc(_strlen(variable) + _strlen(value) + 2);
-	_strcpy(new_var, variable);
+	temp = malloc(_strlen(variable) + _strlen(value) + 2);
+	new_var = _strdup(variable);
+	temp = _strcpy(temp, new_var);
+	free(new_var);
+	new_var = temp;
 	_strcat(new_var, "=");
 	_strcat(new_var, value);
 	for (i = 0; environ[i] != NULL; i++)
