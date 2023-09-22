@@ -20,6 +20,7 @@ bool sCases(cmd_t *cmmds, cmd_t *args, int cmd_count,
 		{"unsetenv", cmd_unsetenv},
 		{"exit", cmd_exit},
 		{"env", cmd_env},
+		{"cd", cmd_cd},
 	};
 	for (j = 0; j < sizeof(commands) / sizeof(commands[0]); j++)
 	{
@@ -50,6 +51,7 @@ bool cmd_setenv(cmd_t *args, cmd_t *cmmds, int cmd_count, int i, char *argv_0)
 	(void)argv_0;
 	if (condition == -1)
 		perror("_setenv");
+	free_args(args->args, args->arg_count);
 	return (true);
 }
 
@@ -73,6 +75,7 @@ bool cmd_unsetenv(cmd_t *args, cmd_t *cmmds,
 	(void)argv_0;
 	if (condition == -1)
 		perror("_setenv");
+	free_args(args->args, args->arg_count);
 	return (true);
 }
 
@@ -108,6 +111,24 @@ bool cmd_env(cmd_t *args, cmd_t *cmmds, int cmd_count, int i, char *argv_0)
 	(void)argv_0;
 	(void)args;
 	print_env();
+	free_args(args->args, args->arg_count);
+	return (true);
+}
 
+/**
+ *cmd_env - Handles env command.
+ *@cmmds: cmmds
+ *@args: args
+ *@cmd_count: Number of commands executed.
+ *@i: ith command in cmmds.
+ *@argv_0: Name of program held in argv[0].
+ *Return: True
+ */
+bool cmd_cd(cmd_t *args, cmd_t *cmmds, int cmd_count, int i, char *argv_0)
+{
+	(void)cmmds;
+	(void)i;
+	cd(args, argv_0, cmd_count);
+	free_args(args->args, args->arg_count);
 	return (true);
 }

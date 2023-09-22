@@ -16,6 +16,8 @@ void looper(cmd_t *cmmds, cmd_t *args, char *argv_0, int *cmd_count)
 	for (i = 0; i < cmmds->arg_count; i++)
 	{
 		cmmds->args[i] = rmv_space(cmmds->args[i]);
+		if ((cmmds->args[i] = check_hash(cmmds->args[i])) == NULL)
+			continue;
 		args->arg_count = tokenize_cmd(cmmds->args[i], args->args, " ");
 		if (sCases(cmmds, args, *cmd_count, i, argv_0))
 		{
@@ -53,7 +55,8 @@ cmd_t *init_cmd_t()
  *read_file - Reads file.
  *@input_file: Name of file.
  *@argv_0: Name of program, held in argv[0].
- *
+ *@cmmds: Pointer to struct containing commands information.
+ *@args: Pointer to struct containing commands information.
  *
  *Return: Copy of buffer containing file content
  */

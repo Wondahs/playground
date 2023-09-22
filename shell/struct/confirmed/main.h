@@ -100,9 +100,16 @@ void cleanup(cmd_t *cmmds, cmd_t *args);
 int home(cmd_t *args);
 int oldpwd(cmd_t *args);
 void print_env(void);
-bool cmd_setenv(cmd_t *args, cmd_t *cmmds, int cmd_count, int i, char *argv_0);
-bool cmd_unsetenv(cmd_t *args, cmd_t *cmmds, int cmd_count, int i, char *argv_0);
-bool cmd_exit(cmd_t *args, cmd_t *cmmds, int cmd_count, int i, char *argv_0);
-bool cmd_env(cmd_t *args, cmd_t *cmmds, int cmd_count, int i, char *argv_0);
+bool cmd_setenv(cmd_t *args, cmd_t *cmmds,
+		int cmd_count, int i, char *argv_0);
+bool cmd_unsetenv(cmd_t *args, cmd_t *cmmds,
+		int cmd_count, int i, char *argv_0);
+bool cmd_exit(cmd_t *args, cmd_t *cmmds,
+		int cmd_count, int i, char *argv_0);
+bool cmd_env(cmd_t *args, cmd_t *cmmds, int cmd_count,
+		int i, char *argv_0);
+bool cmd_cd(cmd_t *args, cmd_t *cmmds, int cmd_count,
+		int i, char *argv_0);
+char *check_hash(char *str);
 
 #endif /* MAIN_H */

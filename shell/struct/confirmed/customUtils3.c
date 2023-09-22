@@ -16,7 +16,7 @@ char *checkPath(char *cmd)
 	char *token, *token_cpy, *full_path, *env_cpy = NULL;
 
 	if (envir == NULL)
-		perror("_getenv");
+		return (NULL);
 	/* Duplicate PATH*/
 	env_cpy = _strdup(envir);
 
