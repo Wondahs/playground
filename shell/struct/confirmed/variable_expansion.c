@@ -17,7 +17,6 @@ void expand(cmd_t *args)
 		if (args->args[i][0] == '$')
 		{
 			char *temp = NULL;
-			char *variable = NULL;
 
 			if (args->args[i][1] == '?')
 			{
@@ -38,19 +37,7 @@ void expand(cmd_t *args)
 			}
 			else
 			{
-				char *word = malloc(512);
-				int k = 1, index = 0;
-
-				while (args->args[i][k] != '\0')
-				{
-					word[index++] = args->args[i][k];
-					k++;
-				}
-				word[index] = '\0';
-				variable = _getenv(word);
-				temp = args->args[i];
-				args->args[i] = _strdup(variable);
-				free(temp), free(word);
+				expand_variable(args, i);
 				return;
 			}
 		}
@@ -101,4 +88,30 @@ char *i_to_str(int num)
 	}
 	str[num_digits] = '\0';
 	return (str);
+}
+
+/**
+ *
+ *
+ *
+ *
+ *
+ */
+void expand_variable(cmd_t *args, int i)
+{
+	char *word = malloc(512);
+	char *variable = NULL;
+	char *temp = NULL;
+	int k = 1, index = 0;
+
+	while (args->args[i][k] != '\0')
+	{
+		word[index++] = args->args[i][k];
+		k++;
+	}
+	word[index] = '\0';
+	variable = _getenv(word);
+	temp = args->args[i];
+	args->args[i] = _strdup(variable);
+	free(temp), free(word);
 }

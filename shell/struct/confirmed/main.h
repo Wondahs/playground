@@ -121,5 +121,6 @@ bool cmd_cd(cmd_t *args, cmd_t *cmmds, int cmd_count,
 char *check_hash(char *str);
 void expand(cmd_t *args);
 char *i_to_str(int num);
+void expand_variable(cmd_t *args, int i);
 
 #endif /* MAIN_H */
