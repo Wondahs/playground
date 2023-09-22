@@ -44,6 +44,7 @@ typedef struct Buffer buff_t;
  * @new_vars: Array holding new environment variables.
  * @called_setenv: True if _setenv has been called, to enable freeing new_vars
  * @expanded: Checks if variable expansion has occurred.
+ * @exit_status: Checks exit status of previous command.
  */
 typedef struct Commands
 {

@@ -1,12 +1,14 @@
 #include "main.h"
 
 /**
+ *expand - Handles variable expansion.
+ *@args: Pointer to struct containing command information
  *
+ *This command loops through each tokenized part of input command
+ *and checks for "$". It currently handles "$$", "$?", and variable expansions
+ *such as "$VARIABLE".
  *
- *
- *
- *
- *
+ *Return: Nothing
  */
 void expand(cmd_t *args)
 {
@@ -91,11 +93,11 @@ char *i_to_str(int num)
 }
 
 /**
+ *expand_variable - Carries out variable expansion
+ *@args: Struct containing command info.
+ *@i: Index
  *
- *
- *
- *
- *
+ *Return: Nothing
  */
 void expand_variable(cmd_t *args, int i)
 {
