@@ -110,6 +110,7 @@ void _ext(cmd_t *cmmds, cmd_t *args, int cCt, int idx, char *arg)
 	if (args->args[1] == NULL && args->foundPath == true)
 	{
 		free(cmmds->args[idx]);
+		free_args(args->new_vars, args->n_var_count);
 		free_args(args->args, args->arg_count);
 		free(cmmds), free(args);
 		free(environ);
@@ -118,6 +119,7 @@ void _ext(cmd_t *cmmds, cmd_t *args, int cCt, int idx, char *arg)
 	else if (args->args[1] == NULL && args->foundPath == false)
 	{
 		free(cmmds->args[idx]);
+		free_args(args->new_vars, args->n_var_count);
 		free_args(args->args, args->arg_count);
 		free(cmmds), free(args), free(environ);
 		exit(2);
@@ -127,8 +129,9 @@ void _ext(cmd_t *cmmds, cmd_t *args, int cCt, int idx, char *arg)
 	if (exit_num == -1)
 	{
 		e_printf("%s: %i: %s: Illegal number:", arg, cCt, args->args[0]);
-		_printf(" %s\n", args->args[1]);
+		e_printf(" %s\n", args->args[1]);
 		free(cmmds->args[idx]);
+		free_args(args->new_vars, args->n_var_count);
 		free_args(args->args, args->arg_count);
 		free(cmmds), free(args), free(environ);
 		exit(2);
@@ -136,6 +139,7 @@ void _ext(cmd_t *cmmds, cmd_t *args, int cCt, int idx, char *arg)
 	else
 	{
 		free(cmmds->args[idx]);
+		free_args(args->new_vars, args->n_var_count);
 		free_args(args->args, args->arg_count);
 		free(cmmds), free(args), free(environ);
 		exit(exit_num);
