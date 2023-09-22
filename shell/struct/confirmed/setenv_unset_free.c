@@ -25,6 +25,8 @@ int _setenv(char *variable, char *value, cmd_t *args)
 		if (_strncmp(environ[i], variable, _strlen(variable)) == 0)
 		{
 			environ[i] = args->new_vars[args->n_var_count];
+			args->n_var_count += 1;
+			args->called_setenv = true;
 			return (0);
 		}
 	}

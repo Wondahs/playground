@@ -9,7 +9,8 @@
 void cd(cmd_t *args, char *argv_0, int cmd_count)
 {
 	char *arg = args->args[1];
-	char current_dir[1024];
+	char current_dir[10240];
+	char *new_pwd;
 
 	(void)cmd_count;
 	(void)argv_0;
@@ -37,8 +38,10 @@ void cd(cmd_t *args, char *argv_0, int cmd_count)
 			return;
 		}
 	}
+	new_pwd = getcwd(NULL, 0);
 	_setenv("OLDPWD", current_dir, args);
-	_setenv("PWD", getcwd(NULL, 0), args);
+	_setenv("PWD", new_pwd, args);
+	free(new_pwd);
 }
 
 /**
