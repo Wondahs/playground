@@ -41,3 +41,21 @@ char *check_hash(char *str)
 	else
 		return (str);
 }
+
+/**
+ *cmd_cd - Handles cd command.
+ *@cmmds: cmmds
+ *@args: args
+ *@cmd_count: Number of commands executed.
+ *@i: ith command in cmmds.
+ *@argv_0: Name of program held in argv[0].
+ *Return: True
+ */
+bool cmd_cd(cmd_t *args, cmd_t *cmmds, int cmd_count, int i, char *argv_0)
+{
+	(void)cmmds;
+	(void)i;
+	cd(args, argv_0, cmd_count);
+	free_args(args->args, args->arg_count);
+	return (true);
+}
