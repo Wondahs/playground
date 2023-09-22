@@ -42,7 +42,7 @@ typedef struct Buffer buff_t;
  * @foundPath: True if path to command was found.
  * @n_var_count: Index of new environment variable array
  * @new_vars: Array holding new environment variables.
- *
+ * @called_setenv: True if _setenv has been called, to enable freeing new_vars
  */
 typedef struct Commands
 {
@@ -52,6 +52,7 @@ typedef struct Commands
 	bool foundPath;
 	int n_var_count;
 	char *new_vars[1024];
+	bool called_setenv;
 } cmd_t;
 
 /**

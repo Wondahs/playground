@@ -4,7 +4,7 @@
  *_setenv - Sets @variable as an environment variable wih value @value
  *@variable: Variable to set.
  *@value: Value of @variable
- *
+ *@args: Pointer to struct containing commands information.
  *Return: 0 if success, -1 if fail.
  */
 int _setenv(char *variable, char *value, cmd_t *args)
@@ -36,6 +36,7 @@ int _setenv(char *variable, char *value, cmd_t *args)
 	free(environ);
 	environ = new_env;
 	args->n_var_count += 1;
+	args->called_setenv = true;
 	return (0);
 }
 
@@ -102,5 +103,13 @@ void free_cmd_t(cmd_t *cmmd)
 	{
 		free(cmmd->args[i]);
 	}
+	if (cmmd->called_setenv)
+	{
+		for (i = 0; i < cmmd->n_var_count; i++)
+		{
+			free(cmmd->new_vars[i]);
+		}
+	}
+
 	free(cmmd);
 }

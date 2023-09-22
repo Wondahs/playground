@@ -1,5 +1,12 @@
 #include "main.h"
 
+/** This file contains the following functions:
+ * checkPath
+ * getPrompt
+ * execute
+ * tokenize_cmd
+ */
+
 /**
  *checkPath - Checks if given command can be executed before fork and execve.
  *@cmd: Pointer to command
@@ -136,10 +143,8 @@ void execute(cmd_t *args, cmd_t *cmmds, int cmd_count)
 			args->foundPath = false;
 			if (cmmds->arg_count == cmd_count && args->piped)
 			{
-				free_args(args->new_vars, args->n_var_count);
 				free_cmd_t(args);
-				free_cmd_t(cmmds);
-				free(environ);
+				free(cmmds), free(environ);
 				exit(WEXITSTATUS(status));
 			}
 		}

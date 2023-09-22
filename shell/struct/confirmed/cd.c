@@ -98,10 +98,10 @@ void cleanup(cmd_t *cmmds, cmd_t *args)
 {
 	if (args->foundPath == false)
 	{
-		free_args(args->new_vars, args->n_var_count);
-		free(cmmds), free(args), free(environ);
+		free_cmd_t(args);
+		free(cmmds), free(environ);
 		exit (127);
 	}
-	free_args(args->new_vars, args->n_var_count);
-	free(cmmds), free(args), free(environ);
+	free_cmd_t(args);
+	free(cmmds), free(environ);
 }
