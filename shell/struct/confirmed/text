@@ -1,2 +1,4 @@
 ls /njdjd
-echo hellv \0 djjd
+echo $?
+setenv DO /bin/ls
+$DO -last
