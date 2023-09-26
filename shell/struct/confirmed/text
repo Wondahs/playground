@@ -2,3 +2,9 @@ ls /njdjd
 echo $?
 setenv DO /bin/ls
 $DO -last
+env
+unsetenv DO
+env
+la -latrs
+echo all set
+exit 28
