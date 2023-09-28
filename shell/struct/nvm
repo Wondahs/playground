@@ -1,0 +1,11 @@
+#!/bin/bash
+
+# Install nvm (if not already installed)
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+
+# Close and reopen your terminal or run the following command to use nvm
+source ~/.bashrc  # For Bash
+
+# Install Node.js version 14.x (or higher)
+nvm install 14
+
