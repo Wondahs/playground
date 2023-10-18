@@ -50,5 +50,6 @@ typedef struct commands
 
 void *read_code(char *argv_1, cmd_t *cmds);
 char *rmv_space(char *cmd);
+void parse(cmd_t *cmds);
 
 #endif /* LISTS_H */
