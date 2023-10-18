@@ -1,4 +1,5 @@
 #include "monty.h"
+#include <string.h>
 
 /**
  *
@@ -11,51 +12,35 @@
 void executer(void)
 {
 	int i = 0, line_number = 1;
-	instruction_t ops[] = {
-		{"push", push},
-		{"pall", pall}
-	};
-	void (*executor)(stack_t **stack, unsigned int line_number) = NULL;
 	stack_t *stack = NULL;
 
 	for (i = 0; i < cmds->line_count; i++)
 	{
-		int j = 0;
-		char *token = NULL;
+		char *endptr;
 		int num;
 
-		executor = NULL;
-		token = strtok(cmds->lines[i], " ");
-		while (j < MAX_ARGS && token != NULL)
+		cmds->args[0] = NULL;
+		cmds->args[1] = NULL;
+		tokenizer(i);
+		if (cmds->args[1] != NULL)
 		{
-			cmds->args[j] = token;
-			token = strtok(NULL, " ");
-			j++;
-		}
-		num = atoi(cmds->args[1]);
-		if (num == 0 && cmds->args[1][0] != '0' && cmds->args[1] != NULL)
-		{
-			fprintf(stderr, "L%d: unknown instruction %s\n", line_number, cmds->args[0]);
-			free_all(stack);
-			exit(EXIT_FAILURE);
-		}
-		cmds->num = num;
-		for (j = 0; j < sizeof(ops) / sizeof(ops[0]); j++)
-		{
-			if (strcmp(cmds->args[0], ops[j].opcode) == 0)
+			num = (int)strtol(cmds->args[1], &endptr, 10);
+			if (endptr == cmds->args[1])
 			{
-				executor = ops[j].f;
-				break;
+				fprintf(stderr, "L%d: unknown instruction %s\n",
+line_number, cmds->args[0]);
+				free_all(stack);
+				exit(EXIT_FAILURE);
 			}
+			cmds->num = num;
 		}
-		if (executor != NULL)
-			executor(&stack, line_number);
-		else
+		if (strcmp(cmds->args[0], "push") == 0
+		&& cmds->args[1] == NULL)
 		{
-			fprintf(stderr, "L%d: unknown instruction %s\n", line_number, cmds->args[0]);
-			free_all(stack);
-			exit(EXIT_FAILURE);
+			continue;
+			line_number++;
 		}
+		check_op(&stack, line_number);
 		line_number++;
 	}
 	free_stack(stack);

@@ -1,5 +1,5 @@
 #include "monty.h"
-#include <stdio.h>
+#include <string.h>
 
 /**
  *rmv_space - Removes unnecessary character from input string
@@ -47,15 +47,16 @@ void parse(cmd_t *cmds)
 {
 	char *buffer = cmds->buffer;
 	char *token = NULL;
-	int *i = &(cmds->line_count);
+	/*int *i = &(cmds->line_count);*/
+	int j = 0;
 
-	*i = 0;
 	token = strtok(buffer, "\n");
-	while ((*i) < MAX_LINES && token != NULL)
+	while (j < MAX_LINES && token != NULL)
 	{
-		cmds->lines[*i] = strdup(token);
+		cmds->lines[j] = _strdup(token);
 		token = strtok(NULL, "\n");
-		cmds->lines[*i] = rmv_space(cmds->lines[*i]);
-		(*i)++;
+		cmds->lines[j] = rmv_space(cmds->lines[j]);
+		j++;
 	}
+	cmds->line_count = j;
 }
