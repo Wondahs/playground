@@ -3,6 +3,7 @@
 
 #define MAX_LINES 1024
 #define MAX_ARGS 2
+#define N_INFINITY 2147483647
 
 #include <stdlib.h>
 #include <stdio.h>
@@ -10,6 +11,9 @@
 #include <unistd.h>
 #include <stdbool.h>
 #include <string.h>
+#include <limits.h>
+#include <stddef.h>
+#include <math.h>
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -61,7 +65,12 @@ void check_op(stack_t **stack, int line_number);
 void tokenizer(int i);
 char *_strdup(char *s);
 
+int delete_stack_at_index(stack_t **head, unsigned int index);
+int num_at_index(stack_t* stack, unsigned int index);
+int stack_len(stack_t *h);
+
 void push(stack_t **stack, unsigned int line_number);
 void pall(stack_t **stack, unsigned int line_number);
+void sub(stack_t **stack, unsigned int line_number);
 
 #endif /* LISTS_H */

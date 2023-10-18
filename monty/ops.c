@@ -1,4 +1,6 @@
 #include "monty.h"
+#include <stdio.h>
+#include <stdlib.h>
 
 /**
  *add_dnodeint - Adds new node at the head of a dlistint_t list
@@ -60,4 +62,37 @@ void pall(stack_t **stack, unsigned int line_number)
 		count++;
 		current = current->next;
 	}
+}
+
+/**
+ *
+ *
+ *
+ *
+ *
+ */
+void sub(stack_t **stack, unsigned int line_number)
+{
+	int len, stack_0 = 0, stack_1 = 0, result = 0;
+
+	stack_t *stack_zero = *stack;
+	stack_t *stack_one = *stack, *current = *stack;
+
+	len = stack_len(current);
+	if (len < 2)
+	{
+		fprintf(stderr, "L%d: can't sub, stack too short\n", line_number);
+		free_all(current);
+		exit(EXIT_FAILURE);
+	}
+
+	stack_0 = num_at_index(stack_zero, 0);
+	stack_1 = num_at_index(stack_one, 1);
+	result = stack_1 - stack_0;
+	
+	delete_stack_at_index(stack, 0);
+	delete_stack_at_index(stack, 0);
+
+	cmds->num = result;
+	push(stack, line_number);
 }

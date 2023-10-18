@@ -1,12 +1,3 @@
-push 4
-push 5
-push 6
+push 3
+sub
 pall
-push  7
-push
-push 8
-push 9r
-pall
-push r
-pall
-pusk
