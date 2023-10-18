@@ -8,6 +8,7 @@
 #include <stdio.h>
 #include <fcntl.h>
 #include <unistd.h>
+#include <stdbool.h>
 #include <string.h>
 
 /**
@@ -42,10 +43,12 @@ typedef struct instruction_s
 typedef struct commands
 {
 	char *lines[MAX_LINES];
+	char buffer[MAX_LINES];
 	int line_count;
 	char *args[MAX_ARGS];
 } cmd_t;
 
-char *read_code(char *argv_1);
+void *read_code(char *argv_1, cmd_t *cmds);
+char *rmv_space(char *cmd);
 
 #endif /* LISTS_H */

@@ -10,18 +10,17 @@
  *
  *
  */
-char *read_code(char *argv_1)
+void *read_code(char *argv_1, cmd_t *cmds)
 {
 	int bytesread, written = 0;
 	int file = open(argv_1, O_RDONLY);
-	char *buffer;
+	char *buffer = cmds->buffer;
 	if (file == -1)
 	{
 		fprintf(stderr, "Error: Can't open file %s\n", argv_1);
 		exit(EXIT_FAILURE);
 	}
 
-	buffer = malloc(1025);
 	while (1)
 	{
 		bytesread = read(file, buffer, 1024);
@@ -31,5 +30,4 @@ char *read_code(char *argv_1)
 	}
 	close(file);
 	buffer[written] = '\0';
-	return (buffer);
 }
