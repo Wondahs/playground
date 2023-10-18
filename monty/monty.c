@@ -1,12 +1,9 @@
 #include "monty.h"
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
 
+cmd_t *cmds = NULL;
 int main(int argc, char *argv[])
 {
 	int i = 0;
-	cmd_t *cmds;
 	if (argc != 2)
 	{
 		fprintf(stderr, "USAGE: monty file\n");
@@ -16,6 +13,7 @@ int main(int argc, char *argv[])
 	cmds = (cmd_t *)malloc(sizeof(cmd_t));
 	read_code(argv[1], cmds);
 	parse(cmds);
+	execute();
 	for (i = 0; i < cmds->line_count; i++)
 		free(cmds->lines[i]);
 	free(cmds);

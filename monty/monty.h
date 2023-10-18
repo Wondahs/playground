@@ -46,10 +46,17 @@ typedef struct commands
 	char buffer[MAX_LINES];
 	int line_count;
 	char *args[MAX_ARGS];
+	int num;
 } cmd_t;
+
+extern cmd_t *cmds;
 
 void *read_code(char *argv_1, cmd_t *cmds);
 char *rmv_space(char *cmd);
 void parse(cmd_t *cmds);
+void execute(void);
+
+void push(stack_t **stack, unsigned int line_number);
+void pall(stack_t **stack, unsigned int line_number);
 
 #endif /* LISTS_H */

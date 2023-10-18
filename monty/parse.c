@@ -46,28 +46,14 @@ void parse(cmd_t *cmds)
 {
 	char *buffer = cmds->buffer;
 	char *token = NULL;
-	int i = 0;
+	int i = cmds->line_count;
 
-	cmds->line_count = 0;
+	i = 0;
 	token = strtok(buffer, "\n");
-	while (cmds->line_count < MAX_LINES && token != NULL)
+	while (i < MAX_LINES && token != NULL)
 	{
-		cmds->lines[(cmds->line_count)++] = strdup(token);
+		cmds->lines[i] = strdup(token);
 		token = strtok(NULL, "\n");
-	}
-
-	for (i = 0; i < cmds->line_count; i++)
-	{
-		int args = 0;
-
 		cmds->lines[i] = rmv_space(cmds->lines[i]);
-		token = strtok(cmds->lines[i], " ");
-		while (args < MAX_ARGS && token != NULL)
-		{
-			cmds->args[args] = (token);
-			token = strtok(NULL, " ");
-			args++;
-		}
-		printf("cmd: %s, num: %s\n", cmds->args[0], cmds->args[1]);
 	}
 }
