@@ -51,10 +51,12 @@ typedef struct commands
 
 extern cmd_t *cmds;
 
-void *read_code(char *argv_1, cmd_t *cmds);
+void read_code(char *argv_1);
 char *rmv_space(char *cmd);
 void parse(cmd_t *cmds);
-void execute(void);
+void executer(void);
+void free_all(stack_t *stack);
+void free_stack(stack_t *stack);
 
 void push(stack_t **stack, unsigned int line_number);
 void pall(stack_t **stack, unsigned int line_number);

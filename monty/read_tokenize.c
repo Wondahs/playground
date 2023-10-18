@@ -1,6 +1,5 @@
 #include "monty.h"
-#include <stdlib.h>
-#include <string.h>
+#include <stdio.h>
 
 /**
  *
@@ -10,11 +9,10 @@
  *
  *
  */
-void *read_code(char *argv_1, cmd_t *cmds)
+void read_code(char *argv_1)
 {
-	int bytesread, written = 0;
+	int bytesread = 0, written = 0;
 	int file = open(argv_1, O_RDONLY);
-	char *buffer = cmds->buffer;
 	if (file == -1)
 	{
 		fprintf(stderr, "Error: Can't open file %s\n", argv_1);
@@ -23,11 +21,11 @@ void *read_code(char *argv_1, cmd_t *cmds)
 
 	while (1)
 	{
-		bytesread = read(file, buffer, 1024);
+		bytesread = read(file, cmds->buffer, 1024);
 		written += bytesread;
 		if (bytesread == 0)
 			break;
 	}
 	close(file);
-	buffer[written] = '\0';
+	cmds->buffer[written] = '\0';
 }
