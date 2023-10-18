@@ -1,6 +1,9 @@
 #ifndef LISTS_H
 #define LISTS_H
 
+#define MAX_LINES 1024
+#define MAX_ARGS 2
+
 #include <stdlib.h>
 #include <stdio.h>
 #include <fcntl.h>
@@ -38,7 +41,11 @@ typedef struct instruction_s
 
 typedef struct commands
 {
-	char *lines[1024];
+	char *lines[MAX_LINES];
 	int line_count;
+	char *args[MAX_ARGS];
 } cmd_t;
+
+char *read_code(char *argv_1);
+
 #endif /* LISTS_H */

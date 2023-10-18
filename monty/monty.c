@@ -5,8 +5,8 @@
 
 int main(int argc, char *argv[])
 {
-	int file, bytesread, written = 0, i = 0;
-	char buffer[1024], *token = NULL;
+	int i = 0;
+	char *buffer = NULL, *token = NULL;
 	cmd_t *cmds;
 	//stack_t *stack;
 	if (argc != 2)
@@ -15,36 +15,33 @@ int main(int argc, char *argv[])
 		exit(EXIT_FAILURE);
 	}
 
-	file = open(argv[1], O_RDONLY);
-	if (file == -1)
-	{
-		fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
-		exit(EXIT_FAILURE);
-	}
-
-	while (1)
-	{
-		bytesread = read(file, buffer, sizeof(buffer));
-		written += bytesread;
-		if (bytesread == 0)
-			break;
-	}
-	close(file);
-	buffer[written] = '\0';
-
+	buffer = read_code(argv[1]);
 	cmds = (cmd_t *)malloc(sizeof(cmd_t));
 	//stack = (stack_t *)malloc(sizeof(stack_t));
 	cmds->line_count = 0;
-
 	token = strtok(buffer, "\n");
-	while (token != NULL)
+	while (cmds->line_count < MAX_LINES && token != NULL)
 	{
 		cmds->lines[(cmds->line_count)++] = strdup(token);
 		token = strtok(NULL, "\n");
 	}
-	while (i < cmds->line_count)
-		printf("%s\n", cmds->lines[i++]);
+	free(buffer);
 
+	for (i = 0; i < cmds->line_count; i++)
+	{
+		int args = 0;
+
+		token = strtok(cmds->lines[i], " ");
+		while (args < MAX_ARGS && token != NULL)
+		{
+			cmds->args[args] = strdup(token);
+			token = strtok(NULL, " ");
+			args++;
+		}
+		printf("cmd: %s, num: %s\n", cmds->args[0], cmds->args[1]);
+	}
+	for (i = 0; i < MAX_ARGS; i++)
+		free(cmds->args[i]);
 	for (i = 0; i < cmds->line_count; i++)
 		free(cmds->lines[i]);
 	free(cmds);
