@@ -96,3 +96,36 @@ void sub(stack_t **stack, unsigned int line_number)
 	cmds->num = result;
 	push(stack, line_number);
 }
+
+
+/**
+ *
+ *
+ *
+ *
+ *
+ *
+ */
+void swap(stack_t **stack, unsigned int line_number)
+{
+	int len, first, next;
+	stack_t *head = *stack, *current = *stack;
+
+	len = stack_len(head);
+	if (len < 2)
+	{
+		fprintf(stderr, "L%d: can't sub, stack too short\n", line_number);
+		free_all(*stack);
+		exit(EXIT_FAILURE);
+	}
+	first = current->n;
+	next = current->next->n;
+
+	delete_stack_at_index(stack, 0);
+	delete_stack_at_index(stack, 0);
+
+	cmds->num = first;
+	push(stack, line_number);
+	cmds->num = next;
+	push(stack, line_number);
+}

@@ -27,7 +27,8 @@ void check_op(stack_t **stack, int line_number)
 	instruction_t ops[] = {
 		{"push", push},
 		{"pall", pall},
-		{"sub", sub}
+		{"sub", sub},
+		{"swap", swap}
 	};
 	void (*executor)(stack_t **stack, unsigned int line_number) = NULL;
 

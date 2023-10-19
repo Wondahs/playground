@@ -1,3 +1,7 @@
 push 3
-sub
+push 4
+push 5
+swap
+pall
+swap
 pall
