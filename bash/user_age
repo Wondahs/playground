@@ -1,0 +1,25 @@
+#!/bin/bash
+
+source functions
+user_age()
+{
+	local year
+	local age
+
+	echo "Welcome to age calculator"
+	echo "Enter your year of birth:"
+
+	read year
+
+	if is_integer "$year" || [[ $year -gt 2023 ]]; then
+		echo "Invalid year"
+		return
+	fi
+
+	age=$((2023 - $year))
+
+	echo "You are $age years!"
+
+}
+
+user_age

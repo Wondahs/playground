@@ -1,0 +1,39 @@
+#!/bin/bash
+
+source functions
+simple_calculator()
+{
+	echo "This is a simple calculator"
+	echo "Enter num 1:"
+	read num1
+	if ! is_integer "$num1"; then
+		echo "Enter num 2:"
+		read num2
+		if ! is_integer "$num2"; then
+			echo "Enter operator(+,-,/,x,%):"
+			read operator
+		else
+			echo "Invalid num"
+			return
+		fi
+	else
+		echo "invalid num"
+		return
+	fi
+
+	if [[ $operator = '+' ]]; then
+		add $num1 $num2
+	elif [[ $operator = '-' ]]; then
+		sub $num1 $num2
+	elif [[ $operator = '/' ]]; then
+		div $num1 $num2
+	elif [[ $operator = '%' ]]; then
+		mod $num1 $num2
+	elif [[ $operator = 'x' ]]; then
+		mul $num1 $num2
+	else
+		echo "Invalid operator"
+	fi
+}
+
+simple_calculator

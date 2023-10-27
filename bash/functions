@@ -1,0 +1,55 @@
+#!/bin/bash
+
+is_integer()
+{
+	local input=$1
+
+	if [[ $input =~ ^[0-9]+$ ]]; then
+		return 1
+	else
+		return 0
+	fi
+}
+
+add()
+{
+	local num1=$1
+	local num2=$2
+	local result
+	result=$((num1 + num2))
+	echo "$num1 + $num2 = $result"
+}
+
+sub()
+{
+	local num1=$1
+	local num2=$2
+	local result
+	result=$((num1 - num2))                                 echo "$num1 - $num2 = $result"
+}
+
+div()
+{
+	local num1=$1
+	local num2=$2
+	local result
+	result=$((num1 / num2))
+	echo "$num1 / $num2 = $result"
+}
+
+mod()
+{                                                               local num1=$1
+	local num2=$2
+	local result
+	result=$((num1 % num2))
+	echo "$num1 % $num2 = $result"
+}
+
+mul()
+{
+	local num1=$1
+	local num2=$2
+	local result
+	result=$((num1 * num2))
+	echo "$num1 * $num2 = $result"
+}

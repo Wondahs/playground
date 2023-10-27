@@ -1,0 +1,14 @@
+#!/bin/bash
+even_or_odd()
+{
+	echo "Enter number:"
+	read number
+
+	if [ $((number % 2)) -eq 0 ]; then
+		echo "$number is even"
+	else
+		echo "$number is odd"
+	fi
+
+}
+even_or_odd
