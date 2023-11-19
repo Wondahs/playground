@@ -24,21 +24,20 @@ void insertion_sort_list(listint_t **list)
 			temp = current->prev;
 			if (temp->n > current->n)
 			{
+				temp->next = current->next;
+				if (current->next)
+					current->next->prev = temp;
+				current->prev = temp->prev;
 				if (temp->prev)
 					temp->prev->next = current;
 				else
 					*list = current;
-				if (current->next)
-					current->next->prev = temp;
-				temp->next = current->next;
-				current->prev = temp->prev;
 				current->next = temp;
 				temp->prev = current;
 				print_list(*list);
 				continue;
 			}
 			current = current->prev;
-
 		}
 		head = head->next;
 	}
