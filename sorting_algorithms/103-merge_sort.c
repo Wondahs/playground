@@ -10,16 +10,16 @@
  */
 void merge(int *array, int low, int mid, int high)
 {
-	int left_size = mid - low, right_size = high - mid;
+	int left_size = mid - low + 1, right_size = high - mid;
 	int *left, *right, *buffer = malloc(left_size + right_size * sizeof(int));
 	int i, j, k;
 
 	left = buffer;
 	right = left + left_size;
 	for (i = 0; i < left_size; i++)
-		left[i] = array[low + 1 + i];
+		left[i] = array[low + i];
 	for (j = 0; j < right_size; j++)
-		right[j] = array[mid + j];
+		right[j] = array[mid + 1 + j];
 	printf("Merging...\n[left]: ");
 	print_array(left, left_size);
 	printf("[right]: ");
@@ -29,7 +29,7 @@ void merge(int *array, int low, int mid, int high)
 	k = low;
 	while (i < left_size && j < right_size)
 	{
-		if (left[i] < right[j])
+		if (left[i] <= right[j])
 		{
 			array[k] = left[i];
 			i++;
