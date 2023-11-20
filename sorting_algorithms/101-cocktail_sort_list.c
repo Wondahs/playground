@@ -1,4 +1,5 @@
 #include "sort.h"
+#include <stdbool.h>
 #include <stdio.h>
 
 /**
@@ -11,7 +12,7 @@
  */
 void cocktail_sort_list(listint_t **list)
 {
-	listint_t *head = *list, *prev, *next;
+	listint_t *head = *list, *prev, *next, *temp;
 	bool sorted = false;
 
 	while (!sorted)
@@ -35,13 +36,18 @@ void cocktail_sort_list(listint_t **list)
 				head->prev = next;
 				print_list(*list);
 			}
+			temp = head;
 			head = head->next;
 		}
-		while (!sorted && head && head->prev)
+		head = temp;
+		if (sorted)
+			break;
+		while (head && head->prev)
 		{
 			prev = head->prev;
 			if (prev->n > head->n)
 			{
+				sorted = false;
 				prev->next = head->next;
 				if (head->next)
 					head->next->prev = prev;
