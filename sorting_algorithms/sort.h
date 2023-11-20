@@ -31,5 +31,8 @@ void quick_sort(int *array, size_t size);
 void shell_sort(int *array, size_t size);
 void cocktail_sort_list(listint_t **list);
 void counting_sort(int *array, size_t size);
+void merge(int *array, int low, int mid, int high);
+void merge_sort(int *array, size_t size);
+void merge_helper(int *array, int low, int high);
 
 #endif /* SORT_H */
