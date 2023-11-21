@@ -32,15 +32,16 @@ void swap_nodes(listint_t **list, listint_t **current, listint_t **nxt)
  */
 void cocktail_sort_list(listint_t **list)
 {
-	listint_t *head = *list, *prev, *next, *temp;
+	listint_t *head, *prev, *next;
 	bool sorted = false;
 
-	if (!head || head->next == NULL)
+	if (*list == NULL || (*list)->next == NULL)
 		return;
 
 	while (!sorted)
 	{
 		sorted = true;
+		head = *list;
 		while (head && head->next)
 		{
 			next = head->next;
@@ -49,11 +50,12 @@ void cocktail_sort_list(listint_t **list)
 				sorted = false;
 				swap_nodes(list, &head, &next);
 				print_list(*list);
+				continue;
 			}
-			temp = head;
 			head = head->next;
 		}
-		head = temp;
+		while (head->next)
+			head = head->next;
 		if (sorted)
 			break;
 		while (head && head->prev)
@@ -64,6 +66,7 @@ void cocktail_sort_list(listint_t **list)
 				sorted = false;
 				swap_nodes(list, &prev, &head);
 				print_list(*list);
+				continue;
 			}
 			head = head->prev;
 		}
