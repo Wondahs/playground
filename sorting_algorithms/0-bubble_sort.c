@@ -1,6 +1,23 @@
 #include "sort.h"
-#include <stdbool.h>
-#include <stddef.h>
+
+
+/**
+ *swap_num - Swap two numbers.
+ *@a: First number.
+ *@b: Second number.
+ *
+ *
+ *Return: Nothing.
+ */
+
+void swap_num(int *a, int *b)
+{
+	int tmp;
+
+	tmp = *a;
+	*a = *b;
+	*b = tmp;
+}
 
 /**
  *bubble_sort - Sorts an array of integers in
@@ -13,9 +30,11 @@
  */
 void bubble_sort(int *array, size_t size)
 {
-	int temp;
 	size_t i;
 	bool sorted = false;
+
+	if (array == NULL || size < 2)
+		return;
 
 	while (!sorted)
 	{
@@ -24,9 +43,7 @@ void bubble_sort(int *array, size_t size)
 		{
 			if (array[i] > array[i + 1])
 			{
-				temp = array[i];
-				array[i] = array[i + 1];
-				array[i + 1] = temp;
+				swap_num(array + i, array + i + 1);
 				print_array(array, size);
 				sorted = false;
 			}

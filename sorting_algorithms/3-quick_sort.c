@@ -1,5 +1,9 @@
 #include "sort.h"
 
+int lumoto_partition(int *a, int low, int high, size_t size);
+void quick_sort(int *array, size_t size);
+void quick_helper(int *a, int low, int high, size_t size);
+
 /**
  * lumoto_partition - function that implements Lumoto partition scheme.
  * @a: array
@@ -63,5 +67,7 @@ void quick_helper(int *a, int low, int high, size_t size)
  */
 void quick_sort(int *array, size_t size)
 {
+	if (size < 2 || array == NULL)
+		return;
 	quick_helper(array, 0, size - 1, size);
 }

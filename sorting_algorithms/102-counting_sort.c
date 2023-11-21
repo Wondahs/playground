@@ -18,8 +18,6 @@ void counting_sort(int *array, size_t size)
 			k = array[i];
 	}
 
-	printf("%d\n", k);
-
 	k += 1;
 	count = malloc(sizeof(int) * k);
 	if (!count)

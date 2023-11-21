@@ -30,23 +30,16 @@ void merge(int *array, int low, int mid, int high)
 	while (i < left_size && j < right_size)
 	{
 		if (left[i] <= right[j])
-		{
-			array[k] = left[i];
-			i++;
-		}
+			array[k++] = left[i++];
 		else
-		{
-			array[k] = right[j];
-			j++;
-		}
-		k++;
+			array[k++] = right[j++];
 	}
 	while (i < left_size)
 		array[k++] = left[i++];
 	while (j < right_size)
 		array[k++] = right[j++];
 	printf("[Done]: ");
-	print_array(array, left_size + right_size);
+	print_array(array + low, left_size + right_size);
 	free(buffer);
 }
 
@@ -58,11 +51,13 @@ void merge(int *array, int low, int mid, int high)
  */
 void merge_sort(int *array, size_t size)
 {
+	if (size < 2 || array == NULL)
+		return;
 	merge_helper(array, 0, size);
 }
 
 /**
- *merger_helper - Helper function for merge_sort.
+ *merge_helper - Helper function for merge_sort.
  *@array: Array to sort.
  *@low: Index of first element.
  *@high: Index of last element.
@@ -76,7 +71,7 @@ void merge_helper(int *array, int low, int high)
 		mid = low + (high - low) / 2;
 
 		merge_helper(array, low, mid);
-		merge_helper(array, mid + 1, high);
+		merge_helper(array, mid, high);
 
 		merge(array, low, mid, high);
 	}
