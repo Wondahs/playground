@@ -14,6 +14,8 @@ void merge(int *array, int low, int mid, int high)
 	int *left, *right, *buffer = malloc(left_size + right_size * sizeof(int));
 	int i, j, k;
 
+	if (!buffer)
+		return;
 	left = buffer;
 	right = left + left_size;
 	for (i = 0; i < left_size; i++)
