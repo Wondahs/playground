@@ -30,24 +30,29 @@ class HBNBCommand(cmd.Cmd):
         new_instance.save()
         print(new_instance.id)
 
-    def do_show(self, class_name, class_id):
+    def do_show(self, args):
         """
         Prints the string representation
         of an instancebased on the class name and id.
         Ex: $ show BaseModel 1234-1234-1234.
         """
-        if not class_name:
+        if not args:
             print("** class name missing **")
             return
+        args_list = args.split()
+        class_name = args_list[0]
         if class_name not in HBNBCommand.class_list:
             print("** class doesn't exist **")
             return
-        if not class_id:
+        if len(args_list) < 2:
             print("** instance id missing **")
             return
-        if class_dict[class_id] == class_name:
+        class_id = args_list[1]
+        if HBNBCommand.class_dict[class_id] == class_name:
             key = f"{class_name}.{class_id}"
-            print("{class_obj[key]}")
+            print(f"{HBNBCommand.class_obj[key]}")
+        else:
+            print("** no instance found **")
 
     def do_EOF(self, line):
         """Exits the program on EOF."""
@@ -56,6 +61,10 @@ class HBNBCommand(cmd.Cmd):
     def do_quit(self, line):
         """Quits the program"""
         return True
+
+    def emptyline(self):
+        """Do nothing upon receiving emptyline"""
+        pass
 
 
 if __name__ == '__main__':
