@@ -3,6 +3,11 @@
 import cmd
 from models.base_model import BaseModel
 from models.user import User
+from models.amenity import Amenity
+from models.city import City
+from models.place import Place
+from models.review import Review
+from models.state import State
 from models import storage
 
 
@@ -150,10 +155,10 @@ class HBNBCommand(cmd.Cmd):
         val_name = args_list[3]
         obj = HBNBCommand.class_obj[key]
         if hasattr(obj, attr_name):
-            attr_type = type(obj.__dict__[attr_name])
-            obj.__dict__[attr_name] = attr_type(val_name)
+            attr_type = type(getattr(obj, attr_name))
+            setattr(obj, attr_name, attr_type(val_name))
         else:
-            obj.__dict__[attr_name] = val_name
+            setattr(obj, attr_name, val_name)
 
         storage.save()
 
