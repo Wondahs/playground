@@ -2,6 +2,7 @@
 """Module containing FileStorage class"""
 import json
 from models.base_model import BaseModel
+from models.user import User
 
 
 class FileStorage:
@@ -16,7 +17,7 @@ class FileStorage:
     def new(self, obj):
         """
         Sets in __objects the obj with key <obj class name>.id
-        """
+    """
         key = f"{obj.__class__.__name__}.{obj.id}"
         FileStorage.__objects[key] = obj
 
@@ -45,5 +46,4 @@ class FileStorage:
                     del obj['__class__']
                     self.new(eval(cls_name)(**obj))
         except Exception:
-            print("No such file")
             return
