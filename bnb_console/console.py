@@ -15,9 +15,9 @@ class HBNBCommand(cmd.Cmd):
     """Entry point of the command interpreter"""
     prompt = "(hbnb) "
     class_obj = storage.all()
-    #print(storage.all())
     class_dict = {}
-    class_list = set(["BaseModel", "User"])
+    class_list = set(["BaseModel", "User", "Amenity",
+                      "City", "Place", "Review", "State"])
     for obj in class_obj.values():
         class_dict[obj.id] = obj.__class__.__name__
 
