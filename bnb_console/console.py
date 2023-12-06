@@ -28,6 +28,7 @@ class HBNBCommand(cmd.Cmd):
             return
         new_instance = BaseModel()
         new_instance.save()
+        HBNBCommand.class_dict[new_instance.id] = class_name
         print(new_instance.id)
 
     def do_show(self, args):
@@ -48,9 +49,37 @@ class HBNBCommand(cmd.Cmd):
             print("** instance id missing **")
             return
         class_id = args_list[1]
-        if HBNBCommand.class_dict[class_id] == class_name:
+        if (class_id in HBNBCommand.class_dict.keys() and
+                HBNBCommand.class_dict[class_id] == class_name):
             key = f"{class_name}.{class_id}"
             print(f"{HBNBCommand.class_obj[key]}")
+        else:
+            print("** no instance found **")
+
+    def do_destroy(self, args):
+        """
+        Deletes an instance based on the class name
+        and id (save the change into the JSON file).
+        Ex: $ destroy BaseModel 1234-1234-1234
+        """
+        if not args:
+            print("** class name missing **")
+            return
+        args_list = args.split()
+        class_name = args_list[0]
+        if class_name not in HBNBCommand.class_list:
+            print("** class doesn't exist **")
+            return
+        if len(args_list) < 2:
+            print("** instance id missing **")
+            return
+        class_id = args_list[1]
+        if (class_id in HBNBCommand.class_dict.keys()
+            and HBNBCommand.class_dict[class_id] == class_name):
+            key = f"{class_name}.{class_id}"
+            del storage.all()[key]
+            del HBNBCommand.class_dict[class_id]
+            storage.save()
         else:
             print("** no instance found **")
 
