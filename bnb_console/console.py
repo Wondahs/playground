@@ -95,16 +95,19 @@ class HBNBCommand(cmd.Cmd):
         of all instances based or not on the class name.
         Ex: $ all BaseModel or $ all.
         """
+        obj_list = []
         if not args:
             for obj in storage.all().values():
-                print(obj)
+                obj_list.append(str(obj))
+            print(obj_list)
         else:
             args_list = args.split()
             class_name = args_list[0]
             if class_name in HBNBCommand.class_list:
                 for obj in storage.all().values():
                     if obj.__class__.__name__ == class_name:
-                        print(obj)
+                        obj_list.append(str(obj))
+                print(obj_list)
             else:
                 print("** class doesn't exist **")
 
