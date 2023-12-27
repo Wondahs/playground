@@ -138,7 +138,7 @@ void _ext(cmd_t *cmmds, cmd_t *args, int cCt, int idx, char *arg)
 }
 
 /**
- * free_args - Frees argument vector
+ * free_args - Frees argument vectqor
  * @args: Vector to free
  * @num_token: Number of tokens in vector
  *
