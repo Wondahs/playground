@@ -1,0 +1,121 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:wght@700&display=swap");
+body {
+  font-family: "Montserrat", sans-serif;
+}
+
+.container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.container .left {
+  position: relative;
+  color: white;
+  background-color: rgb(60, 58, 58);
+  width: 100%;
+  height: 600px;
+  display: none;
+  align-items: center;
+}
+.container .image_container {
+  position: absolute;
+  width: 30%;
+  min-height: 300px;
+  height: 80%;
+  border-radius: 50% 50% 50% 0;
+  overflow: hidden;
+  border: 5px wheat solid;
+  right: 0;
+}
+.container .image_container img {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+.container .image_container .references_section, .container .image_container .education_section {
+  display: none;
+}
+.container .right {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.container .right .image_container {
+  width: 200px;
+  position: relative;
+  height: 200px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 5px goldenrod solid;
+}
+.container .right .image_container img {
+  width: 120%;
+  height: 100%;
+}
+.container .right .name_box {
+  background-color: rgb(230, 221, 210);
+  width: 100%;
+}
+.container .right h1 {
+  font-weight: 900;
+  font-size: 40px;
+  text-align: center;
+}
+.container .right h1 span {
+  color: goldenrod;
+}
+.container .right section {
+  width: 90%;
+}
+.container .right section .text, .container .right section ul {
+  font-size: 15px;
+  text-align: justify;
+}
+.container .right section .location, .container .right section ul {
+  margin-top: 0;
+}
+.container .right section .header {
+  display: flex;
+  align-items: center;
+  font-size: 15px;
+}
+.container .right section .header img {
+  background-color: goldenrod;
+  border-radius: 50%;
+  height: 20px;
+  margin-right: 10px;
+  border: 2px goldenrod solid;
+}
+.container .right section .role_year {
+  display: flex;
+  align-items: center;
+  padding: 0;
+}
+.container .right section .role_year h3, .container .right section .role_year p {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+.container .right section .role_year .duration {
+  margin-left: auto;
+  font-weight: bold;
+}
+.container .right section .location {
+  font-style: italic;
+}
+.container .right .skills {
+  margin-bottom: 20px;
+}
+.container .right .footer {
+  display: flex;
+  width: 100%;
+  bottom: 0;
+  position: fixed;
+  background-color: white;
+  height: 5%;
+  align-items: center;
+  justify-content: center;
+  border-top: 2px black solid;
+}
+.container .right .footer p {
+  margin: 0;
+}/*# sourceMappingURL=mobile.css.map */

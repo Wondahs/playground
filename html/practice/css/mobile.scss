@@ -1,0 +1,161 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:wght@700&display=swap');
+
+body {
+	font-family: 'Montserrat', sans-serif;
+}
+
+.container {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+
+	.left {
+		position: relative;
+		color: white;
+		background-color: rgb(60, 58, 58);
+		width: 100%;
+		height: 600px;
+		display: none;
+		align-items: center;
+
+		// .image_container {
+		// 	position: absolute;
+		// 	width: 30%;
+		// 	min-height: 300px;
+		// 	height: 80%;
+		// 	border-radius: 50% 50% 50% 0;
+		// 	overflow: hidden;
+		// 	border: 5px wheat solid;
+		// 	right: 0;
+
+		// 	img {
+		// 		width: 100%;
+		// 		height: 100%;
+		// 		display: block;
+		// 	}
+		}
+
+		.image_container {
+			position: absolute;
+			width: 30%;
+			min-height: 300px;
+			height: 80%;
+			border-radius: 50% 50% 50% 0;
+			overflow: hidden;
+			border: 5px wheat solid;
+			right: 0;
+
+			img {
+				width: 100%;
+				height: 100%;
+				display: block;
+			}
+
+		.references_section, .education_section {
+			display: none;
+		}
+	}
+
+	.right {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+
+		.image_container {
+			width: 200px;
+			position: relative;
+			height: 200px;
+			border-radius: 50%;
+			overflow: hidden;
+			border: 5px goldenrod solid;
+
+			img {
+				width: 120%;
+				height: 100%;
+			}
+		}
+
+		.name_box {
+			background-color: rgb(230, 221, 210);
+			width: 100%;
+		}
+		h1 {
+			font-weight: 900;
+			font-size: 40px;
+			text-align: center;
+
+			span {
+				color: goldenrod;
+			}
+		}
+
+		section {
+			width: 90%;
+			
+			.text, ul {
+				font-size: 15px;
+				text-align: justify;
+			}
+
+			.location, ul {
+				margin-top: 0;
+			}
+
+			.header {
+				display: flex;
+				align-items: center;
+				font-size: 15px;
+	
+				img {
+					background-color: goldenrod;
+					border-radius: 50%;
+					height: 20px;
+					margin-right: 10px;
+					border: 2px goldenrod solid;
+				}
+			}
+
+			.role_year {
+				display: flex;
+				align-items: center;
+				padding: 0;
+
+				h3, p {
+					margin-top: 0;
+					margin-bottom: 0;
+				}
+
+				.duration {
+					margin-left: auto;
+					font-weight: bold;
+				}
+			}
+
+			.location {
+				font-style: italic;
+			}
+		}
+
+		.skills {
+			margin-bottom: 20px;
+		}
+
+		.footer {
+			display: flex;
+			width: 100%;
+			bottom: 0;
+			position: fixed;
+			background-color: white;
+			height: 5%;
+			align-items: center;
+			justify-content: center;
+			border-top: 2px black solid;
+
+			p {
+				margin: 0;
+			}
+		}
+
+
+	}
+}

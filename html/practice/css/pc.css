@@ -1,0 +1,240 @@
+body {
+  font-family: "Montserrat", sans-serif;
+  margin: 0;
+  padding: 0;
+  background-image: linear-gradient(to right, rgb(60, 58, 58) 0%, rgb(60, 58, 58) 30%, white 30%, white 100%);
+  background-color: cornsilk;
+}
+
+h1 {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 900;
+}
+
+.container {
+  display: flex;
+}
+
+.left {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 30%;
+  color: white;
+  position: relative;
+}
+.left section {
+  border-bottom: 1px wheat solid;
+  margin-bottom: 10px;
+  padding-bottom: 20px;
+}
+.left h2 {
+  font-size: 20px;
+  color: white;
+  margin-left: 10px;
+}
+.left .contact_section {
+  white-space: normal;
+}
+.left .contact_section p {
+  margin-left: 10px;
+  color: white;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+.left .image_container {
+  height: 60%;
+  width: 60%;
+  border-radius: 50% 50% 50% 0;
+  border: 4px wheat solid;
+  align-self: center;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  overflow: hidden;
+  padding: 0;
+}
+.left .image_container img {
+  width: 120%;
+  height: auto;
+  display: block;
+  padding: 0;
+}
+.left .contact_me {
+  display: flex;
+  margin-left: 20%;
+  position: relative;
+  align-items: center;
+}
+.left .contact_me img {
+  border-radius: 50%;
+  border: 2px white solid;
+  background-color: white;
+  width: 25px;
+  height: 25px;
+}
+.left .phone_no {
+  display: flex;
+  flex-direction: row;
+  color: white;
+  margin-left: 20%;
+  align-items: center;
+}
+.left .phone_no img {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 2px white solid;
+  background-color: white;
+}
+.left .email {
+  display: flex;
+  align-items: center;
+  margin-left: 20%;
+  margin-top: 10px;
+}
+.left .email img {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 2px white solid;
+  background-color: white;
+}
+.left .references_section img {
+  border-radius: 50%;
+  border: 2px white solid;
+  background-color: white;
+  width: 25px;
+  height: 25px;
+}
+.left .references_section .references {
+  display: flex;
+  align-items: center;
+  margin-left: 20%;
+  width: 50%;
+}
+.left .references_section .reference_name p, .left .references_section .reference_name h3 {
+  margin-left: 20%;
+  margin-bottom: 5px;
+}
+.left .references_section .reference_name h3 {
+  margin-top: 0;
+  font-size: medium;
+}
+.left .references_section .reference_name p {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+.left .references_section .reference_name .addr {
+  margin-bottom: 15px;
+}
+.left .education_section {
+  border-bottom: 0;
+}
+.left .education_section img {
+  border-radius: 50%;
+  border: 2px white solid;
+  background-color: white;
+  width: 25px;
+  height: 25px;
+}
+.left .education_section .education {
+  display: flex;
+  align-items: center;
+  margin-left: 20%;
+  padding: 0;
+  width: 50%;
+}
+.left .education_section .schools p, .left .education_section .schools h3 {
+  margin-left: 20%;
+  margin-bottom: 5px;
+  margin-top: 0;
+}
+.left .education_section .schools p {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+.left .education_section .schools .year {
+  margin-bottom: 15px;
+}
+
+.right {
+  height: 100%;
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+}
+.right .name_box {
+  display: flex;
+  margin-top: 100px;
+  height: 100px;
+  background-color: rgb(237, 233, 233);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.right .name_box h1 {
+  font-size: 40px;
+}
+.right .name_box span {
+  color: goldenrod;
+}
+.right section {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  align-self: center;
+}
+.right section .header {
+  display: flex;
+  align-items: center;
+  font-size: 15px;
+}
+.right section .header img {
+  background-color: goldenrod;
+  border-radius: 50%;
+  height: 20px;
+  margin-right: 10px;
+  border: 2px goldenrod solid;
+}
+.right section p {
+  text-align: justify;
+  margin-top: 0;
+}
+.right section .role_year {
+  display: flex;
+  align-items: center;
+}
+.right section .role_year h3 {
+  margin: 0;
+}
+.right section .role_year .duration {
+  margin: 0;
+  margin-left: auto;
+  font-weight: bold;
+}
+.right section .location {
+  font-style: italic;
+}
+.right section ul {
+  text-align: justify;
+  list-style-type: circle;
+}
+.right .skill_set {
+  margin: 0;
+  margin-bottom: 50px;
+}
+.right .footer {
+  display: flex;
+  position: fixed;
+  bottom: 0;
+  width: 70%;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  height: 5%;
+  background-color: white;
+  border-top: 1px black solid;
+}
+.right .footer p {
+  margin: 0;
+}/*# sourceMappingURL=pc.css.map */

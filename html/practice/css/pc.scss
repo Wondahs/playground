@@ -1,0 +1,291 @@
+body {
+	font-family: 'Montserrat', sans-serif;
+	margin: 0;
+	padding: 0;
+	background-image: linear-gradient(to right, rgb(60, 58, 58) 0%, rgb(60, 58, 58) 30%, white 30%, white 100%);
+	background-color: cornsilk;
+}
+
+h1 {
+	font-family: 'Montserrat', sans-serif;
+	font-weight: 900;
+}
+
+.container {
+	display: flex;
+}
+
+.left {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	width: 30%;
+	color: white;
+	position: relative;
+
+	section {
+		border-bottom: 1px wheat solid;
+		margin-bottom: 10px;
+		padding-bottom: 20px;
+	}
+
+	h2 {
+		font-size: 20px;
+		color: white;
+		margin-left: 10px;
+	}
+
+	.contact_section {
+		white-space: normal;
+		p {
+			margin-left: 10px;
+			color: white;
+			margin-top: 0;
+			margin-bottom: 0;
+		}
+
+	}
+
+	.image_container {
+		height: 60%;
+		width: 60%;
+		border-radius: 50% 50% 50% 0;
+		border: 4px wheat solid;
+		align-self: center;
+		margin-top: 30px;
+		margin-bottom: 30px;
+		overflow: hidden;
+		padding: 0;
+
+		img {
+			width: 120%;
+			height: auto;
+			display: block;
+			padding: 0;
+		}
+
+	}
+
+	.contact_me {
+		display: flex;
+		margin-left: 20%;
+		position: relative;
+		align-items: center;
+
+		img {
+			border-radius: 50%;
+			border: 2px white solid;
+			background-color: white;
+			width: 25px;
+			height: 25px;
+		}
+	}
+
+	.phone_no {
+		display: flex;
+		flex-direction: row;
+		color: white;
+		margin-left: 20%;
+		align-items: center;
+
+		img {
+			width: 20px;
+			height: 20px;
+			border-radius: 50%;
+			border: 2px white solid;
+			background-color: white;
+		}
+
+	}
+
+	.email {
+		display: flex;
+		align-items: center;
+		margin-left: 20%;
+		margin-top: 10px;
+
+		img {
+			width: 20px;
+			height: 20px;
+			border-radius: 50%;
+			border: 2px white solid;
+			background-color: white;
+		}
+		
+	}
+
+	.references_section {
+
+		img {
+			border-radius: 50%;
+			border: 2px white solid;
+			background-color: white;
+			width: 25px;
+			height: 25px;
+		}
+
+		.references {
+			display: flex;
+			align-items: center;
+			margin-left: 20%;
+			width: 50%;
+		}
+
+		.reference_name {
+			p, h3 {
+				margin-left: 20%;
+				margin-bottom: 5px;
+			}
+
+			h3 {
+				margin-top: 0;
+				font-size: medium;
+			}
+
+			p {
+				margin-top: 0;
+				margin-bottom: 0;
+			}
+
+			.addr {
+				margin-bottom: 15px;
+			}
+		}
+	}
+
+	.education_section {
+
+		border-bottom: 0;
+		img {
+			border-radius: 50%;
+			border: 2px white solid;
+			background-color: white;
+			width: 25px;
+			height: 25px;
+		}
+
+		.education {
+			display: flex;
+			align-items: center;
+			margin-left: 20%;
+			padding: 0;
+			width: 50%;
+		}
+
+		.schools {
+
+			p, h3 {
+				margin-left: 20%;
+				margin-bottom: 5px;
+				margin-top: 0;
+			}
+
+			p {
+				margin-top: 0;
+				margin-bottom: 0;
+			}
+
+			.year {
+				margin-bottom: 15px;
+			}
+		}
+	}
+}
+
+.right {
+	height: 100%;
+	width: 70%;
+	display: flex;
+	flex-direction: column;
+
+	.name_box {
+		display: flex;
+		margin-top: 100px;
+		height: 100px;
+		background-color: rgb(237, 233, 233);
+		display: flex;
+		justify-content: center;
+		align-items: center;
+
+		h1 {
+			font-size: 40px;
+		}
+		span {
+			color: goldenrod;
+		}
+	}
+
+	section {
+		display: flex;
+		flex-direction: column;
+		width: 90%;
+		align-self: center;
+
+		.header {
+			display: flex;
+			align-items: center;
+			font-size: 15px;
+
+			img {
+				background-color: goldenrod;
+				border-radius: 50%;
+				height: 20px;
+				margin-right: 10px;
+				border: 2px goldenrod solid;
+			}
+		}
+
+		p {
+			text-align: justify;
+			margin-top: 0;
+		}
+
+		.role_year {
+			display: flex;
+			align-items: center;
+			// width: 100%;
+
+			h3 {
+				margin: 0;
+			}
+
+			.duration {
+				margin: 0;
+				margin-left: auto;
+				font-weight: bold;
+			}
+		}
+
+		.location {
+			font-style: italic;
+		}
+
+		ul {
+			text-align: justify;
+			list-style-type: circle;
+		}
+	}
+
+	.skill_set {
+		margin: 0;
+		margin-bottom: 50px;
+	}
+
+	.footer {
+		display: flex;
+		position: fixed;
+		bottom: 0;
+		width: 70%;
+		align-items: center;
+		justify-content: center;
+		margin: 0;
+		height: 5%;
+		background-color: white;
+		border-top: 1px black solid;
+
+		p {
+			margin: 0;
+		}
+	}
+}
+
