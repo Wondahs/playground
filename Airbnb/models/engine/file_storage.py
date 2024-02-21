@@ -22,17 +22,12 @@ class FileStorage:
         from models.base_model import BaseModel
 
         key = f"{obj.__class__.__name__}.{obj.id}"
-        print(key)
-        print(obj)
         self.__objects[key] = obj
 
     def save(self):
         '''serializes __objects to the JSON file (path: __file_path)'''
-        from models.base_model import BaseModel
-
         objects = {}
         for key, value in self.__objects.items():
-            print(type(value))
             objects[key] = value.to_dict()
         jsondump = json.dumps(objects)
         try:
@@ -52,5 +47,6 @@ class FileStorage:
             for key, value in dicts.items():
                 class_name = value["__class__"]
                 if class_name in classes:
-                    obj = eval(f"{class_name}({value})")
-                self.__objects[key] = obj.id
+                    obj = eval(f"{class_name}(**{value})")
+                self.__objects[key] = obj
+            self.save()

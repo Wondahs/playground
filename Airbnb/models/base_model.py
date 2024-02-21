@@ -9,9 +9,9 @@ from models import storage
 
 class BaseModel:
     '''BaseModel class'''
-    id:str = str(uuid.uuid4())
-    created_at = datetime.now()
-    updated_at = datetime.now()
+    # id:str = str(uuid.uuid4())
+    # created_at = datetime.now()
+    # updated_at = datetime.now()
 
     def __init__(self, *args, **kwargs):
         '''Instantiation method.'''
@@ -21,10 +21,10 @@ class BaseModel:
                 del self.__dict__["class"]
             self.__dict__["created_at"] = datetime.strptime(self.__dict__["created_at"], "%Y-%m-%dT%H:%M:%S.%f")
             self.__dict__["updated_at"] = datetime.strptime(self.__dict__["updated_at"], "%Y-%m-%dT%H:%M:%S.%f")
-            storage.new(self)
         else:
             self.id = str(uuid.uuid4())
             self.created_at = datetime.now()
+            self.updated_at = datetime.now()
             storage.new(self)
 
     def __str__(self):
