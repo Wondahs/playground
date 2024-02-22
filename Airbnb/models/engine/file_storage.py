@@ -19,8 +19,6 @@ class FileStorage:
 
     def new(self, obj):
         '''sets in __objects the obj with key <obj class name>.id.'''
-        from models.base_model import BaseModel
-
         key = f"{obj.__class__.__name__}.{obj.id}"
         self.__objects[key] = obj
 
@@ -39,8 +37,14 @@ class FileStorage:
     def reload(self):
         from os import path
         from models.base_model import BaseModel
+        from models.user import User
+        from models.amenity import Amenity
+        from models.city import City
+        from models.place import Place
+        from models.review import Review
+        from models.state import State
 
-        classes = {"BaseModel": BaseModel}
+        classes = ["BaseModel", "User", "Amenity", "City", "Place", "Review", "State"]
         if path.exists(self.__file_path):
             with open(self.__file_path, 'r', encoding='utf-8') as jsonfile:
                 dicts = json.load(jsonfile)
