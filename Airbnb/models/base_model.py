@@ -7,6 +7,7 @@ import uuid
 from datetime import datetime
 from models import storage
 
+
 class BaseModel:
     '''BaseModel class'''
     # id:str = str(uuid.uuid4())
@@ -19,8 +20,12 @@ class BaseModel:
             self.__dict__.update(kwargs)
             if self.__dict__.get("__class__"):
                 del self.__dict__["__class__"]
-            self.__dict__["created_at"] = datetime.strptime(self.__dict__["created_at"], "%Y-%m-%dT%H:%M:%S.%f")
-            self.__dict__["updated_at"] = datetime.strptime(self.__dict__["updated_at"], "%Y-%m-%dT%H:%M:%S.%f")
+            self.__dict__["created_at"] = \
+                datetime.strptime(self.__dict__["created_at"],
+                                  "%Y-%m-%dT%H:%M:%S.%f")
+            self.__dict__["updated_at"] = \
+                datetime.strptime(self.__dict__["updated_at"],
+                                  "%Y-%m-%dT%H:%M:%S.%f")
         else:
             self.id = str(uuid.uuid4())
             self.created_at = datetime.now()
@@ -35,7 +40,6 @@ class BaseModel:
         class_name = self.__class__.__name__
         return (f"[{class_name}] ({self.id}) {self.__dict__}")
 
-
     def save(self):
         '''
         updates the public instance attribute
@@ -43,7 +47,6 @@ class BaseModel:
         '''
         self.updated_at = datetime.now()
         storage.save()
-
 
     def to_dict(self):
         '''

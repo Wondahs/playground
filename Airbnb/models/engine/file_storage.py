@@ -44,7 +44,8 @@ class FileStorage:
         from models.review import Review
         from models.state import State
 
-        classes = ["BaseModel", "User", "Amenity", "City", "Place", "Review", "State"]
+        classes = ["BaseModel", "User", "Amenity",
+                   "City", "Place", "Review", "State"]
         if path.exists(self.__file_path):
             with open(self.__file_path, 'r', encoding='utf-8') as jsonfile:
                 dicts = json.load(jsonfile)

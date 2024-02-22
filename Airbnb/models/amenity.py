@@ -4,10 +4,9 @@ from models.base_model import BaseModel
 
 
 class Amenity(BaseModel):
-	'''Amenity Class'''
-	name: str = ""
+    '''Amenity Class'''
+    name: str = ""
 
-
-	def __init__(self, *args, **kwargs):
-		'''Instantiation Method'''
-		super().__init__(*args, **kwargs)
+    def __init__(self, *args, **kwargs):
+        '''Instantiation Method'''
+        super().__init__(*args, **kwargs)

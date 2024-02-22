@@ -4,11 +4,10 @@ from models.base_model import BaseModel
 
 
 class State(BaseModel):
-	'''State Class'''
-	state_id: str = ""
-	name: str = ""
+    '''State Class'''
+    state_id: str = ""
+    name: str = ""
 
-
-	def __init__(self, *args, **kwargs):
-		'''Instantiation Method'''
-		super().__init__(*args, **kwargs)
+    def __init__(self, *args, **kwargs):
+        '''Instantiation Method'''
+        super().__init__(*args, **kwargs)
