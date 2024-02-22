@@ -17,8 +17,8 @@ class BaseModel:
         '''Instantiation method.'''
         if kwargs:
             self.__dict__.update(kwargs)
-            if self.__dict__.get("class"):
-                del self.__dict__["class"]
+            if self.__dict__.get("__class__"):
+                del self.__dict__["__class__"]
             self.__dict__["created_at"] = datetime.strptime(self.__dict__["created_at"], "%Y-%m-%dT%H:%M:%S.%f")
             self.__dict__["updated_at"] = datetime.strptime(self.__dict__["updated_at"], "%Y-%m-%dT%H:%M:%S.%f")
         else:
