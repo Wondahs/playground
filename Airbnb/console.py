@@ -80,6 +80,7 @@ class HBNBCommand(cmd.Cmd):
         <class name>.update(<id>, <attribute name>, <attribute value>)
         <class name>.update(<id>, <dictionary representation>)
         '''
+        instance = ""
         if not arg:
             print("** class name missing **")
             return
@@ -99,7 +100,7 @@ class HBNBCommand(cmd.Cmd):
         for key, value in storage.all().items():
             if obj_id in key.split("."):
                 instance = value
-        if not instance:
+        if instance == "":
             print("** no instance found **")
             return
         if len(arg_list) > 2:
