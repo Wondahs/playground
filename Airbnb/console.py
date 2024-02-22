@@ -12,6 +12,24 @@ from models.state import State
 classes = ["BaseModel", "User", "Amenity", "City", "Place", "Review", "State"]
 
 
+def key_parser(line):
+    """Handles case when argument is passed as:
+    <create> <className> <attribute=value>
+    """
+    tokens = line.split()
+    tokens = tokens[1:]
+    key_val_dict = {}
+    for token in tokens:
+        key_val = token.split('=')
+        if key_val[1][0] == '"':
+            value = key_val[1].strip('"').replace('_', ' ')
+        else:
+            try:
+                value = eval(key_val[1])
+            except (SyntaxError, NameError):
+                continue
+        key_val_dict[key_val[0]] = value
+    return key_val_dict
 class HBNBCommand(cmd.Cmd):
     '''Command interpreter class'''
     prompt = "(hbnb) "
@@ -53,6 +71,10 @@ class HBNBCommand(cmd.Cmd):
             result = result.replace("  ", " ")
             return result
         return super().precmd(line)
+    
+    def emptyline(self) -> bool:
+        '''Handles Emptyline'''
+        return super().emptyline()
 
     def do_count(self, arg):
         '''
@@ -223,10 +245,16 @@ class HBNBCommand(cmd.Cmd):
         if not arg:
             print("** class name missing **")
             return
-        if arg not in classes:
+        class_name = arg.split()[0]
+        if class_name not in classes:
             print("** class doesn't exist **")
             return
-        new = eval(f"{arg}()")
+        new = eval(f"{class_name}()")
+        key_dict = key_parser(arg)
+        if key_dict:
+            for key, value in key_dict.items():
+                if hasattr(new, key):
+                    setattr(new, key, value)
         new.save()
         print(new.id)
 
