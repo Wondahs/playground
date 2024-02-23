@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """This is the City Module."""
-from models import BaseModel
+from models.base_model import BaseModel
 from models.city import City
 import unittest
 

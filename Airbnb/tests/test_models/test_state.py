@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 """This is the State Module."""
-from models import BaseModel
+from models.base_model import BaseModel
 from models.state import State
 import unittest
 

@@ -2,7 +2,8 @@
 
 import unittest
 from datetime import datetime as dtime
-from models import user, BaseModel
+from models.base_model import BaseModel
+from models import user
 
 """User Model Unittest Module."""
 

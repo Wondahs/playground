@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 """This is the Review Module."""
-from models import BaseModel
+from models.base_model import BaseModel
 from models.review import Review
 import unittest
 

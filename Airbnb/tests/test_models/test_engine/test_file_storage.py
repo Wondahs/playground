@@ -2,7 +2,7 @@
 """File storage Unittest module"""
 
 from models import FileStorage
-from models import BaseModel
+from models.base_model import BaseModel
 import unittest
 
 

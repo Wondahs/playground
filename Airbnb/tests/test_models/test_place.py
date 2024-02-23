@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 """This is the Place Module."""
-from models import BaseModel
+from models.base_model import BaseModel
 from models.place import Place
 import unittest
 

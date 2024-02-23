@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Amenity unittest module"""
 
-from models import BaseModel
+from models.base_model import BaseModel
 from models.amenity import Amenity
 import unittest
 
