@@ -33,8 +33,8 @@ class BaseModel:
             self.id = str(uuid.uuid4())
             self.created_at = datetime.now()
             self.updated_at = datetime.now()
-        if self.__dict__.get("_sa_instance_state"):
-            del self.__dict__["_sa_instance_state"]
+        # if self.__dict__.get("_sa_instance_state", None):
+        #     del self.__dict__["_sa_instance_state"]
 
     def __str__(self):
         '''
@@ -42,7 +42,11 @@ class BaseModel:
         in the format [<class name>] (<self.id>) <self.__dict__>.
         '''
         class_name = self.__class__.__name__
-        return (f"[{class_name}] ({self.id}) {self.__dict__}")
+        dictionary = {}
+        dictionary.update(self.__dict__)
+        if dictionary.get("_sa_instance_state"):
+            del dictionary["_sa_instance_state"]
+        return (f"[{class_name}] ({self.id}) {dictionary}")
 
     def save(self):
         from models import storage
@@ -62,6 +66,8 @@ class BaseModel:
         dictionary = {}
         dictionary.update(self.__dict__)
         dictionary["__class__"] = self.__class__.__name__
+        if dictionary.get("_sa_instance_state"):
+            del dictionary["_sa_instance_state"]
         dictionary["updated_at"] = self.updated_at.isoformat()
         dictionary["created_at"] = self.created_at.isoformat()
         return dictionary

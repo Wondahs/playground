@@ -37,7 +37,7 @@ class DBStorage:
         Value = object
         '''
         obj_dict = {}
-        classes = [City, State] # Amenity, Place, User, Review]
+        classes = [City, State, User] # Amenity, Place, Review]
 
         if cls:
             if cls in classes:
@@ -45,8 +45,8 @@ class DBStorage:
                 for obj in objects:
                     key = f'{obj.__class__.__name__}.{obj.id}'
                     value = obj
-                    if obj.__dict__.get('_sa_instance_state'):
-                        del obj.__dict__['_sa_instance_state']
+                    # if obj.__dict__.get('_sa_instance_state'):
+                    #     del obj.__dict__['_sa_instance_state']
                     obj_dict[key] = value
         else:
             for cls in classes:
@@ -54,8 +54,8 @@ class DBStorage:
                 for obj in objects:
                     key = f'{obj.__class__.__name__}.{obj.id}'
                     value = obj
-                    if obj.__dict__.get('_sa_instance_state'):
-                        del obj.__dict__['_sa_instance_state']
+                    # if obj.__dict__.get('_sa_instance_state', None):
+                    #     del obj.__dict__['_sa_instance_state']
                     obj_dict[key] = value
         return obj_dict
     
