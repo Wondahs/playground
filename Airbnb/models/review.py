@@ -1,13 +1,16 @@
 #!/usr/bin/python3
 '''Module containing Review Class'''
-from models.base_model import BaseModel
+from models.base_model import BaseModel, Base, Column, String
+from sqlalchemy import ForeignKey
+from sqlalchemy.orm import Relationship
 
 
-class Review(BaseModel):
+class Review(BaseModel, Base):
     '''Review Class'''
-    place_id: str = ""
-    user_id: str = ""
-    text: str = ""
+    __tablename__ = "reviews"
+    place_id: str = Column(String(60), ForeignKey("places.id"), nullable=False)
+    user_id: str = Column(String(60), ForeignKey("users.id"), nullable=False)
+    text: str = Column(String(1024), nullable=False)
 
     def __init__(self, *args, **kwargs):
         '''Instantiation Method'''

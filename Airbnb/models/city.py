@@ -10,6 +10,8 @@ class City(BaseModel, Base):
     name: str = Column(String(128), nullable=False)
     # Define foeign key
     state_id: str = Column(String(60), ForeignKey('states.id'), nullable=False)
+    # One to many relationship with Place
+    places = Relationship("Place", backref="cities", cascade="all, delete-orphan")
 
 
     def __init__(self, *args, **kwargs):

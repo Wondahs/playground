@@ -16,14 +16,16 @@ class State(BaseModel, Base):
         '''Instantiation Method'''
         super().__init__(*args, **kwargs)
 
+    # Also include relationship if storage is not db
     if getenv("HBNB_TYPE_STORAGE") != "db":
         @property
         def cities(self):
-            from models import storage
             '''
             Returns the list of City instances
             with state_id equals to the current State.id
             '''
+            from models import storage
+            
             cities_list = []
             for key, obj in storage.all(City).items():
                 if obj.state_id == self.id:
