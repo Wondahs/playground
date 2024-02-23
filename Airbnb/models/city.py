@@ -1,12 +1,14 @@
 #!/usr/bin/python3
 '''Module containing City Class'''
-from models.base_model import BaseModel
+from models.base_model import BaseModel, Base, Column, String
+from sqlalchemy import ForeignKey
 
 
-class City(BaseModel):
+class City(BaseModel, Base):
     '''City Class'''
-    state_id: str = ""
-    name: str = ""
+    __tablename__ = "cities"
+    state_id: str = Column(String(60), ForeignKey('states.id'), nullable=False)
+    name: str = Column(String(128), nullable=False)
 
     def __init__(self, *args, **kwargs):
         '''Instantiation Method'''

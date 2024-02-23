@@ -6,13 +6,17 @@ that defines all common attributes/methods for other classes.
 import uuid
 from datetime import datetime
 from models import storage
+from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy import Column, String, DateTime
+
+Base = declarative_base()
 
 
 class BaseModel:
     '''BaseModel class'''
-    # id:str = str(uuid.uuid4())
-    # created_at = datetime.now()
-    # updated_at = datetime.now()
+    id = Column(String(60), primary_key=True, default=uuid.uuid4, nullable=False)
+    created_at = Column(DateTime, default=datetime.utcnow, nullable=False)
+    updated_at = Column(DateTime, default=datetime.utcnow, nullable=False)
 
     def __init__(self, *args, **kwargs):
         '''Instantiation method.'''
@@ -30,7 +34,6 @@ class BaseModel:
             self.id = str(uuid.uuid4())
             self.created_at = datetime.now()
             self.updated_at = datetime.now()
-            storage.new(self)
 
     def __str__(self):
         '''
@@ -46,6 +49,7 @@ class BaseModel:
         updated_at with the current datetime
         '''
         self.updated_at = datetime.now()
+        storage.new(self)
         storage.save()
 
     def to_dict(self):
@@ -55,7 +59,16 @@ class BaseModel:
         '''
         dictionary = {}
         dictionary.update(self.__dict__)
+        if dictionary.get("_sa_instance_state"):
+            print("Deleting _sa_instance_state")
+            del dictionary["_sa_instance_state"]
         dictionary["__class__"] = self.__class__.__name__
         dictionary["updated_at"] = self.updated_at.isoformat()
         dictionary["created_at"] = self.created_at.isoformat()
         return dictionary
+
+    def delete(self):
+        '''
+        Deletes the current instance from the storage.
+        '''
+        storage.delete(self)
