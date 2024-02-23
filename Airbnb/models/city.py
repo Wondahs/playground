@@ -2,7 +2,7 @@
 '''Module containing City Class'''
 from models.base_model import BaseModel, Base, Column, String
 from sqlalchemy import ForeignKey
-
+from sqlalchemy.orm import Relationship, backref
 
 class City(BaseModel, Base):
     '''City Class'''

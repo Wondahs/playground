@@ -1,16 +1,15 @@
 #!/usr/bin/python3
 '''Module containing State Class'''
 from models.base_model import BaseModel, Base, Column, String
-from sqlalchemy.orm import Relationship
+from sqlalchemy.orm import Relationship, backref
 from os import getenv
-from models import storage
 from models.city import City
 
 class State(BaseModel, Base):
     '''State Class'''
     __tablename__ = "states"
     name: str = Column(String(128), nullable=False)
-    cities = Relationship("City", backref=backref("state", cascade="all, delete-orphan"))
+    cities = Relationship("City", backref=backref("state", cascade="all, delete-orphan", single_parent=True))
 
     def __init__(self, *args, **kwargs):
         '''Instantiation Method'''
@@ -19,6 +18,7 @@ class State(BaseModel, Base):
     if getenv("HBNB_TYPE_STORAGE") != "db":
         @property
         def cities(self):
+            from models import storage
             '''
             Returns the list of City instances
             with state_id equals to the current State.id

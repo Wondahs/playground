@@ -5,7 +5,6 @@ that defines all common attributes/methods for other classes.
 '''
 import uuid
 from datetime import datetime
-from models import storage
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import Column, String, DateTime
 
@@ -44,6 +43,7 @@ class BaseModel:
         return (f"[{class_name}] ({self.id}) {self.__dict__}")
 
     def save(self):
+        from models import storage
         '''
         updates the public instance attribute
         updated_at with the current datetime
@@ -68,6 +68,7 @@ class BaseModel:
         return dictionary
 
     def delete(self):
+        from models import storage
         '''
         Deletes the current instance from the storage.
         '''
