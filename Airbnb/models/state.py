@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 '''Module containing State Class'''
 from models.base_model import BaseModel, Base, Column, String
-from sqlalchemy.orm import Relationship, backref
+from sqlalchemy.orm import Relationship
 from os import getenv
 from models.city import City
 
@@ -9,7 +9,8 @@ class State(BaseModel, Base):
     '''State Class'''
     __tablename__ = "states"
     name: str = Column(String(128), nullable=False)
-    cities = Relationship("City", backref=backref("state", cascade="all, delete-orphan", single_parent=True))
+    # Define One-to-Many relationship with City
+    cities = Relationship("City", backref="state", cascade="all, delete-orphan")
 
     def __init__(self, *args, **kwargs):
         '''Instantiation Method'''

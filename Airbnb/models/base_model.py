@@ -33,6 +33,8 @@ class BaseModel:
             self.id = str(uuid.uuid4())
             self.created_at = datetime.now()
             self.updated_at = datetime.now()
+        if self.__dict__.get("_sa_instance_state"):
+            del self.__dict__["_sa_instance_state"]
 
     def __str__(self):
         '''
@@ -59,9 +61,6 @@ class BaseModel:
         '''
         dictionary = {}
         dictionary.update(self.__dict__)
-        if dictionary.get("_sa_instance_state"):
-            print("Deleting _sa_instance_state")
-            del dictionary["_sa_instance_state"]
         dictionary["__class__"] = self.__class__.__name__
         dictionary["updated_at"] = self.updated_at.isoformat()
         dictionary["created_at"] = self.created_at.isoformat()

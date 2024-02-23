@@ -7,8 +7,10 @@ from sqlalchemy.orm import Relationship, backref
 class City(BaseModel, Base):
     '''City Class'''
     __tablename__ = "cities"
-    state_id: str = Column(String(60), ForeignKey('states.id'), nullable=False)
     name: str = Column(String(128), nullable=False)
+    # Define foeign key
+    state_id: str = Column(String(60), ForeignKey('states.id'), nullable=False)
+
 
     def __init__(self, *args, **kwargs):
         '''Instantiation Method'''

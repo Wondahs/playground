@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 '''Module containing DBStorage Class'''
 from os import getenv
-from sqlalchemy.orm import sessionmaker
+from sqlalchemy.orm import sessionmaker, scoped_session
 from sqlalchemy import create_engine
 from models.base_model import Base
 from models.amenity import Amenity
@@ -37,7 +37,7 @@ class DBStorage:
         Value = object
         '''
         obj_dict = {}
-        classes = [Amenity, City, State, Place, User, Review]
+        classes = [City, State] # Amenity, Place, User, Review]
 
         if cls:
             if cls in classes:
@@ -45,6 +45,8 @@ class DBStorage:
                 for obj in objects:
                     key = f'{obj.__class__.__name__}.{obj.id}'
                     value = obj
+                    if obj.__dict__.get('_sa_instance_state'):
+                        del obj.__dict__['_sa_instance_state']
                     obj_dict[key] = value
         else:
             for cls in classes:
@@ -52,6 +54,8 @@ class DBStorage:
                 for obj in objects:
                     key = f'{obj.__class__.__name__}.{obj.id}'
                     value = obj
+                    if obj.__dict__.get('_sa_instance_state'):
+                        del obj.__dict__['_sa_instance_state']
                     obj_dict[key] = value
         return obj_dict
     
@@ -73,6 +77,7 @@ class DBStorage:
     def reload(self):
         '''Create all tables in the database'''
         Base.metadata.create_all(self.__engine)
-        Session = sessionmaker(bind=self.__engine, expire_on_commit=False)
+        session = sessionmaker(bind=self.__engine,
+                               expire_on_commit=False)
+        Session = scoped_session(session)
         self.__session = Session()
-
