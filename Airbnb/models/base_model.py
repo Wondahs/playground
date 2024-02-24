@@ -57,8 +57,9 @@ class BaseModel:
         class_name = self.__class__.__name__
         dictionary = {}
         dictionary.update(self.__dict__)
-        if dictionary.get("_sa_instance_state"):
-            del dictionary["_sa_instance_state"]
+        if getenv('HBNB_TYPE_STORAGE') != 'db':
+            if dictionary.get("_sa_instance_state"):
+                del dictionary["_sa_instance_state"]
         return (f"[{class_name}] ({self.id}) {dictionary}")
 
     def save(self):
