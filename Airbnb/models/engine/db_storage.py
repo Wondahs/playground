@@ -40,6 +40,8 @@ class DBStorage:
         classes = [City, State, User, Place, Review, Amenity]
 
         if cls:
+            if type(cls) is str:
+                cls = eval(cls)
             if cls in classes:
                 objects = self.__session.query(cls).all()
                 for obj in objects:
@@ -77,3 +79,10 @@ class DBStorage:
                                expire_on_commit=False)
         Session = scoped_session(session)
         self.__session = Session()
+    
+    def close(self):
+        '''
+        Call remove() method
+        on the private session attribute (self.__session).
+        '''
+        self.__session.close()

@@ -21,7 +21,7 @@ class BaseModel:
         created_at = Column(DateTime, default=datetime.utcnow, nullable=False)
         updated_at = Column(DateTime, default=datetime.utcnow, nullable=False)
     else:
-        id = uuid.uuid4()
+        id = str(uuid.uuid4())
         created_at = datetime.utcnow()
         updated_at = datetime.utcnow()
 

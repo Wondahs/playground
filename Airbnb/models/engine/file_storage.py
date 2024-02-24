@@ -16,6 +16,8 @@ class FileStorage:
     def all(self, cls=None):
         ''': returns the dictionary __objects'''
         if cls:
+            if type(cls) is str:
+                cls = eval(cls)
             dictionary = {}
             for key, value in self.__objects.items():
                 if type(value) is cls:
@@ -33,6 +35,7 @@ class FileStorage:
         objects = {}
         for key, value in self.__objects.items():
             objects[key] = value.to_dict()
+        print(objects)
         jsondump = json.dumps(objects)
         try:
             with open(self.__file_path, 'w', encoding='utf-8') as jsonfile:
@@ -69,3 +72,7 @@ class FileStorage:
         """
         if obj is not None:
             del self.__objects[f"{obj.__class__.__name__}.{obj.id}"]
+
+    def close(self):
+        '''reload() method for deserializing the JSON file to objects'''
+        self.reload()
