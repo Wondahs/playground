@@ -204,7 +204,7 @@ class HBNBCommand(cmd.Cmd):
             return
         for key, value in storage.all().items():
             if obj_id in key.split("."):
-                del storage.all()[key]
+                storage.delete(value)
                 storage.save()
                 return
         print("** no instance found **")
