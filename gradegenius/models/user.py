@@ -8,3 +8,4 @@ class User(BaseModel):
     username = ""
     password = ""
     school = ""
+    last_gpa = 0
