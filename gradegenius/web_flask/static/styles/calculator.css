@@ -1,0 +1,63 @@
+.calculator {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+    max-width: 70%;
+    margin: auto;
+    padding: 20px;
+	background-color: #fff;
+	border-radius: 4px;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+ul {
+	list-style: none;
+}
+
+.gpa_list {
+	list-style-type: square;
+	display: flex;
+	flex-direction: column;
+	align-self: center;
+	width: 90%;
+	margin-bottom: 10px;
+}
+
+.gpa_field {
+	display: flex;
+	border-radius: 4px;
+	border: #ddd solid 1px;
+}
+.input-group {
+	height: 100%;
+	width: 50%;
+}
+
+select {
+    width: 100%;
+    padding: 5px;
+    font-size: 16px;
+	border-radius: 4px;
+	border: 1px solid #ddd;
+	
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #5cb85c;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+	border-radius: 4px;
+	margin-bottom: 10px;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+#result {
+    margin-top: 20px;
+    font-size: 18px;
+}

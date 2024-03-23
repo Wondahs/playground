@@ -1,0 +1,35 @@
+{% extends 'layout.html' %}
+{% block content %}
+<div class="calculator">
+	<h2> GPA Calculator</h2>
+	<ul class="gpa_list">
+		<li id="gpaForm" class="gpa_field">
+			<div class="input-group">
+				<select name="grade" id="grade" required>
+					<option value="">Select Grade</option>
+					<option value="A">A</option>
+					<option value="B">B</option>
+					<option value="C">C</option>
+					<option value="D">D</option>
+					<option value="E">E</option>
+					<option value="F">F</option>
+				</select>
+			</div>
+			<div class="input-group">
+				<select name="creditHours" id="creditHours" required>
+					<option value="">Select Credit Hours</option>
+					<option value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+					<option value="4">4</option>
+					<option value="5">5</option>
+					<option value="6">6</option>
+				</select>
+			</div>
+		</li>
+	</ul>
+	<button type="button" id="addCourse">Add Course</button>
+    <button type="submit">Calculate GPA</button>
+	<div id="result"></div>
+</div>
+{% endblock content %}
