@@ -19,17 +19,21 @@ selectField[0].addEventListener('change', (event) => {
     let selectedOption = event.target.value;
     grades += selectedOption;
     console.log(grades);
-    // calculateGpa(grades, hours);
 });
 // Add event listener for hours.
 selectField[1].addEventListener('change', (event) => {
     let selectedOption = event.target.value;
     hours += selectedOption;
     console.log(hours);
-    //displayResult(grades, hours);
-    // calculateGpa(grades, hours);
 });
 
+// Add event listener for Remove Grade button.
+let removeButtons = listField.querySelectorAll('button');
+let removeButton = removeButtons[0];
+removeButton.addEventListener('click', (event) => {
+	let liElement = event.target.closest('.gpa-field');
+	liElement.remove();
+});
 
 // Add event listener for the add list button.
 addList.addEventListener('click', () => {
@@ -46,8 +50,6 @@ addList.addEventListener('click', () => {
     selectClone[0].addEventListener('change', (event) => {
         let selectedOption = event.target.value;
         grades += selectedOption;
-        console.log(grades);
-	// calculateGpa(grades, hours);
     });
 
     // Change select id to avoid errors.
@@ -56,11 +58,15 @@ addList.addEventListener('click', () => {
     selectClone[1].addEventListener('change', (event) => {
         let selectedOption = event.target.value;
         hours += selectedOption;
-        console.log(hours);
-
-        // displayResult(grades, hours);
-	// calculateGpa(grades, hours);
     });
+
+    // Add event listener for Remove Grade button.
+    let removeButtons = listFieldClone.querySelectorAll('button');
+    let removeButton = removeButtons[0];
+    removeButton.addEventListener('click', (event) => {
+	    let liElement = event.target.closest('.gpa-field');
+	    liElement.remove();
+});
 
     // Change li id to avoid errors.
     listFieldClone.id = `gpa-field-${selectCount++}`;
@@ -104,11 +110,8 @@ function calculateGpa(grades, hour) {
 	    total += hourDigit;
 	    qualityPoints += gradeNo * hourDigit;
 	}
-	// console.log("QualityPoints: ", qualityPoints);
-	// console.log("Total: ", total);
 	gpa = total !== 0 ?  qualityPoints / total : 0;
 	gpa = gpa.toFixed(2);
-	// console.log("GPA: ", gpa);
 	resultDiv.textContent = `Your GPA is ${gpa}`;
     } else {
 	    resultDiv.textContent = "Select a Grade";
