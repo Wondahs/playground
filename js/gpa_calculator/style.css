@@ -1,0 +1,94 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:wght@700&display=swap");
+
+body {
+	color: black;
+	background-color: brown;
+	font-family: "Montserrat", sans-serif;
+}
+
+ul {
+	list-style: none;
+	padding: 0;
+	width: 70%;
+	margin: 5px;
+}
+
+.container {
+	display: flex;
+	flex-direction: column;
+	background-color: wheat;
+	width: 70%;
+	margin-left: auto;
+	margin-right: auto;
+	border-radius: 10px;
+	padding: 10px;
+	align-items: center;
+	justify-content: center;
+	margin-top: 50px;
+	box-shadow: 0 0 10px;
+}
+
+li select,
+li button
+ {
+	background-color: aliceblue;
+	border: none;
+	padding: 10px;
+	border-radius: 10px;
+	width: 40%;
+	cursor: pointer;
+}
+
+li {
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+	width: 90%;
+	border: 1px solid aliceblue;
+	border-radius: 10px;
+	padding: 10px;
+}
+
+.add-icon {
+	margin: 5px;
+	width: 40px;
+	aspect-ratio: 1;
+	background-image: url(./add_circle.png);
+	background-repeat: no-repeat;
+	background-color: transparent;
+	border: none;
+	background-size: cover;
+	cursor: pointer;
+}
+
+.remove-icon {
+	width: 30px;
+	aspect-ratio: 1;
+	background-image: url(./close.png);
+	background-repeat: no-repeat;
+	background-color: transparent;
+	border: 1px solid aliceblue;
+	background-size: cover;
+	cursor: pointer;
+}
+
+.result {
+	font-weight: bold;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: azure;
+	width: 30%;
+	border-radius: 5px;
+	aspect-ratio: 4.5;
+	font-size: 20px;
+	padding: 5px;
+}
+
+h1 {
+	margin: 0;
+}
+
+p {
+	margin-bottom: 0;
+}
