@@ -19,13 +19,15 @@ selectField[0].addEventListener('change', (event) => {
     let selectedOption = event.target.value;
     grades += selectedOption;
     console.log(grades);
+    // calculateGpa(grades, hours);
 });
 // Add event listener for hours.
 selectField[1].addEventListener('change', (event) => {
     let selectedOption = event.target.value;
     hours += selectedOption;
     console.log(hours);
-    displayResult(grades, hours);
+    //displayResult(grades, hours);
+    // calculateGpa(grades, hours);
 });
 
 
@@ -45,6 +47,7 @@ addList.addEventListener('click', () => {
         let selectedOption = event.target.value;
         grades += selectedOption;
         console.log(grades);
+	// calculateGpa(grades, hours);
     });
 
     // Change select id to avoid errors.
@@ -55,7 +58,8 @@ addList.addEventListener('click', () => {
         hours += selectedOption;
         console.log(hours);
 
-        displayResult(grades, hours);
+        // displayResult(grades, hours);
+	// calculateGpa(grades, hours);
     });
 
     // Change li id to avoid errors.
@@ -65,37 +69,55 @@ addList.addEventListener('click', () => {
     list.appendChild(listFieldClone);
 });
 
-function displayResult(grade, hour) {
-    if (grade.length > 0 && grade.length === hour.length) {
-        resultDiv.textContent = grade + hour;
-    }
-}
-
+// GPA calculator
 function calculateGpa(grades, hour) {
+    // Calculate only if grades and hour arrays have same length.
     if (grades.length > 0 && grades.length === hour.length) {
-
-        let gradeNo = [];
-        grades.forEach((grade, index) => {
-            switch (grade) {
+	let gradeNo = 0; // GPA grade converted to number using the 5-point GPA scale
+	let gpa = 0;
+	let qualityPoints = 0;
+	let total = 0; // Total credit hours
+        for (index = 0; index < grades.length; index++) {
+	    // Convert grade to its corresponding numerical weight.
+            switch (grades[index]) {
                 case 'A':
-                    gradeNo[index] = 5;
+                    gradeNo = 5;
                     break;
                 case 'B':
-                    gradeNo[index] = 4;
+                    gradeNo = 4;
                     break;
                 case 'C':
-                    gradeNo[index] = 3;
+                    gradeNo = 3;
                     break;
                 case 'D':
-                    gradeNo[index] = 2;
+                    gradeNo = 2;
                     break;
                 case 'E':
-                    gradeNo[index] = 1;
+                    gradeNo = 1;
                     break;
                 case 'F':
-                    gradeNo[index] = 0;
+                    gradeNo = 0;
                     break;
-            } 
-        });
+            }
+	    // Convert hour to integer
+	    hourDigit = Number(hour[index]);
+	    total += hourDigit;
+	    qualityPoints += gradeNo * hourDigit;
+	}
+	// console.log("QualityPoints: ", qualityPoints);
+	// console.log("Total: ", total);
+	gpa = total !== 0 ?  qualityPoints / total : 0;
+	gpa = gpa.toFixed(2);
+	// console.log("GPA: ", gpa);
+	resultDiv.textContent = `Your GPA is ${gpa}`;
+    } else {
+	    resultDiv.textContent = "Select a Grade";
     }
 }
+
+// Get calculate button and bind to GPA calculator
+let lastSelect = document.getElementById('calculate');
+
+lastSelect.addEventListener('click', () => {
+	calculateGpa(grades, hours);
+});
