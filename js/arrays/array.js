@@ -1,25 +1,76 @@
-let addList = document.getElementById("add-list");
-let list = document.getElementById("gpa-list");
+// Initialize variables
+let addList = document.getElementById("add-list"); // Add-List Button.
+let list = document.getElementById("gpa-list"); // ul element containing list of grade and credit hours.
+let selectCount = 2; // Holds id number for select element.
+let gradeCount = 2; // Holds id number for select element holding grade.
+let hourCount = 2; // Holds id number for select element containing hour.
+let grades = []; // Contains grades
+let hours = []; // Contains hours
+let resultDiv = document.getElementById('result');
 
-addList.addEventListener('click', () => {
-    let listField = document.getElementById("gpa-field");
-    let listFieldClone = listField.cloneNode(true);
-    let selectClone = listFieldClone.querySelectorAll('select');
-    
-    selectClone.forEach((select) => {
-        select.selectedIndex = 0;
-    });
+// Get the first gpa field li element.
+let listField = document.getElementById("gpa-field-1");
+// Get all select element in the li element and add event listeners.
+let selectField = listField.querySelectorAll('select');
+// The event listeners will store the selected option in the respective array
 
-    list.appendChild(listFieldClone);
-	addList.style.backgroundColor = blue;
-
+// Add event listener for grades.
+selectField[0].addEventListener('change', (event) => {
+    let selectedOption = event.target.value;
+    grades += selectedOption;
+    console.log(grades);
+});
+// Add event listener for hours.
+selectField[1].addEventListener('change', (event) => {
+    let selectedOption = event.target.value;
+    hours += selectedOption;
+    console.log(hours);
+    displayResult(grades, hours);
 });
 
-function getRandomColor() {
-    let letters = '0123456789ABCDEF';
-    let color = '#';
-    for (let i = 0; i < 6; i++) {
-        color += letters[Math.floor(Math.random() * 16)];
+
+// Add event listener for the add list button.
+addList.addEventListener('click', () => {
+    // CLone the first li
+    let listFieldClone = listField.cloneNode(true);
+
+    // Get all select elements and add event listeners same as above
+    let selectClone = listFieldClone.querySelectorAll('select');
+
+    // Change select id to avoid errors.
+    selectClone[0].id = `gpa-grade-${gradeCount++}`;
+
+    // Add listener for grade.
+    selectClone[0].addEventListener('change', (event) => {
+        let selectedOption = event.target.value;
+        grades += selectedOption;
+        console.log(grades);
+    });
+
+    // Change select id to avoid errors.
+    selectClone[1].id = `gpa-hour-${hourCount++}`;
+    // Add event listener for hour.
+    selectClone[1].addEventListener('change', (event) => {
+        let selectedOption = event.target.value;
+        hours += selectedOption;
+        console.log(hours);
+
+        displayResult(grades, hours);
+    });
+
+    // Change li id to avoid errors.
+    listFieldClone.id = `gpa-field-${selectCount++}`;
+
+    // Append to parent ul element.
+    list.appendChild(listFieldClone);
+});
+
+function displayResult(grade, hour) {
+    if (grade.length > 0 && grade.length === hour.length) {
+        resultDiv.textContent = grade + hour;
     }
-    return color;
+}
+
+function calculateGpa(grade, hour) {
+    
 }
