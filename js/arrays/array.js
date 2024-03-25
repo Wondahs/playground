@@ -71,6 +71,31 @@ function displayResult(grade, hour) {
     }
 }
 
-function calculateGpa(grade, hour) {
-    
+function calculateGpa(grades, hour) {
+    if (grades.length > 0 && grades.length === hour.length) {
+
+        let gradeNo = [];
+        grades.forEach((grade, index) => {
+            switch (grade) {
+                case 'A':
+                    gradeNo[index] = 5;
+                    break;
+                case 'B':
+                    gradeNo[index] = 4;
+                    break;
+                case 'C':
+                    gradeNo[index] = 3;
+                    break;
+                case 'D':
+                    gradeNo[index] = 2;
+                    break;
+                case 'E':
+                    gradeNo[index] = 1;
+                    break;
+                case 'F':
+                    gradeNo[index] = 0;
+                    break;
+            } 
+        });
+    }
 }
