@@ -33,7 +33,15 @@ class GradeGenius(cmd.Cmd):
 
     def do_calculate(self, arg):
         """Calculates GPA"""
-        course_no = int(input("Enter Number of Courses: "))
+        number_checked = False
+        while not number_checked:
+        
+            courses = input("Enter Number of Courses: ")
+            if not courses.isnumeric():
+                print("Enter a number")
+            else:
+                number_checked = True
+                course_no = int(courses)
         grades = []
         hours = []
         for i in range(course_no):

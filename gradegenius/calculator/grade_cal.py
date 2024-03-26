@@ -25,4 +25,4 @@ def grade_cal(grades=[], credit_hours=[]):
     total_hours = sum([int(number) for number in credit_hours])
     for grade, hour in zip(grades, credit_hours):
         quality_point += grade_val[grade] * int(hour)
-    return round(quality_point / total_hours, 3)
+    return round(quality_point / total_hours, 2)
