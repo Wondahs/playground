@@ -26,6 +26,8 @@ def calculate():
 						   css_file='styles/calculator.css',
 						   script='scripts/calculator.js')
 
+@app.route("/about", strict_slashes=False)
+
 if __name__ == "__main__":
 	host = "0.0.0.0"
 	port = "5000"
