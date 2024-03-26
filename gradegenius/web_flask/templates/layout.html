@@ -7,9 +7,6 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='styles/layout.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename=css_file) }}">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    {% if script %}
-        <script src="{{ url_for('static', filename=script) }}"></script>
-    {% endif %}
 </head>
 <body>
     <header>
@@ -28,6 +25,9 @@
     <footer>
         <p>© 2024 GradeGenius</p>
     </footer>
+    {% if script %}
+        <script src="{{ url_for('static', filename=script) }}"></script>
+    {% endif %}
 </body>
 </html>
 
