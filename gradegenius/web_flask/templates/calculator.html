@@ -5,8 +5,9 @@
 	<p>Select Grade and Corresponding Credit Hours</p>
 	<ul id="gpa-list">
 		<li id="gpa-field-1" class="gpa-field">
+			<input type="text" name="course" class="course" placeholder="Course code">
 			<select id="gpa-grade-1" class="gpa-grade" name="gpa-option">
-				<option value="">Select Grade</option>
+				<option value="">Grade</option>
 				<option value="A">A</option>
 				<option value="B">B</option>
 				<option value="C">C</option>
@@ -15,7 +16,7 @@
 				<option value="F">F</option>
 			</select>
 			<select id="gpa-hour-1" class="gpa-hour" name="gpa-hour">
-				<option value="">Select Credit Hour</option>
+				<option value="">Credit Hour</option>
 				<option value="1">1</option>
 				<option value="2">2</option>
 				<option value="3">3</option>
@@ -23,10 +24,10 @@
 				<option value="5">5</option>
 				<option value="6">6</option>
 			</select>
-			<button id="remove-grade" class="remove-icon"></button>
+			<button id="remove-grade" class="remove-icon" title="Remove this course"></button>
 		</li>
 	</ul>
-	<button id="add-list" class="add-icon"></button>
-	<div id="result" class="result">&nbsp;</div>
+	<button id="add-list" class="add-icon" title="Add a new course"></button>
+	<div id="result" class="result" title="Result will be shown here">&nbsp;</div>
 </div>
 {% endblock content %}

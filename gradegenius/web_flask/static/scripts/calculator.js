@@ -132,6 +132,9 @@ addList.addEventListener('click', () => {
 // GPA calculator
 function calculateGpa(grades, hour) {
     let resultDiv = document.getElementById('result');
+    if (grades.length === 0) {
+        resultDiv.textContent = '\u00A0';
+    }
     // Calculate only if grades and hour arrays have same length.
     if (grades.length > 0 && grades.length === hour.length) {
 	let gradeNo = 0; // GPA grade converted to number using the 5-point GPA scale
