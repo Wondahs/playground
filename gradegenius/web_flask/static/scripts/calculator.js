@@ -74,6 +74,11 @@ addList.addEventListener('click', () => {
     // Set custom attribute based on sGradeIndex. See explanation above.
     listFieldClone.setAttribute('index', `${liIndex++}`);
 
+    // Reset input field
+    let inputClone = listFieldClone.querySelector('input');
+
+    inputClone.value = '';
+
     // Get all select elements and add event listeners same as above
     let selectClone = listFieldClone.querySelectorAll('select');
 

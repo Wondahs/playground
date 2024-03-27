@@ -18,8 +18,13 @@ header {
     background-color: purple;
     color: #fff;
     padding: 10px 0;
+    display: flex;
+    box-shadow: 0 0 10px;
 }
 
+nav {
+    margin-left: auto;
+}
 /* Style the navigation menu */
 nav ul {
     list-style: none;
@@ -28,7 +33,7 @@ nav ul {
 }
 
 nav ul li {
-    padding: 0 20px;
+    padding: 0 15px;
 }
 
 nav ul li a {
@@ -54,5 +59,35 @@ footer {
     border-top-left-radius: 5px;
     width: 100%;
     border-top: 1px solid white;
-    margin-top: 10px;
+    margin-top: 50px;
+    box-shadow: 0 0 10px;
+}
+
+header img {
+    height: 20px;
+    border: 1px solid white;
+    border-radius: 50%;
+    background-color: white;
+    margin-right: 5px;
+}
+
+header .logo a {
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+    text-decoration: none;
+}
+
+.logo a:visited {
+    text-decoration: none;
+}
+
+.logo a:hover {
+    filter: brightness(70%);
+}
+
+.logo a h1 {
+    line-height: 0.7;
+    font-size: 18px;
+    color: white;
 }

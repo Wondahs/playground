@@ -1,15 +1,10 @@
-/* Basic styling for the login page */
-body {
-  background-color: #f4f4f4;
-  margin: 0;
-  padding: 0;
-}
 
 .login {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-bottom: 50px;
 }
 
 .container {
@@ -26,7 +21,7 @@ body {
 input {
   width: 100%;
   padding: 10px;
-  margin: 10px 0;
+  margin-bottom: 10px;
   border: 1px solid #ddd;
   border-radius: 4px;
   box-sizing: border-box; /* Include padding in total width and height */
@@ -47,5 +42,16 @@ button:hover {
   background-color: #4cae4c;
 }
 
+.login a {
+  text-decoration: none;
+}
+
+.signup {
+  display: flex;
+}
+
+.signup button {
+  width: 40%;
+}
 /* Additional styling can be added for links, messages, etc. */
 

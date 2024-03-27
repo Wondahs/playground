@@ -1,0 +1,29 @@
+{% extends 'layout.html' %}
+{% block content %}
+    <div class="login">
+        <h2>Sign Up</h2>
+        <p>Enter details to create new account</p>
+        <form action="/submit_signup" method="post">
+            <div class="container">
+                <label for="fname"><b>First Name</b></label>
+                <input type="text" placeholder="Enter First Name" name="fname" required>
+
+                <label for="lname"><b>Last Name</b></label>
+                <input type="text" placeholder="Enter Last Name" name="lname" required>
+
+                <label for="school"><b>School</b></label>
+                <input type="text" placeholder="Name of Institution" name="school" required>
+
+                <label for="uname"><b>Username</b></label>
+                <input type="text" placeholder="Enter Username" name="uname" required>
+
+                <label for="pwd"><b>Password</b></label>
+                <input type="password" placeholder="Enter Password" name="pwd" required>
+
+                <button type="submit">Sign up</button>
+
+				<p>Already have an account? <a href="/login"><button type="button">Login</button></a></p>
+
+            </div>
+    </div>
+{% endblock content %}

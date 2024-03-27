@@ -18,6 +18,13 @@ def login():
 						   title='Login',
 						   css_file='styles/login.css')
 
+@app.route("/signup", strict_slashes=False)
+def signup():
+	"""Serves Login Page"""
+	return render_template("signup.html",
+						   title='Signup',
+						   css_file='styles/login.css')
+
 @app.route("/calculate", strict_slashes=False)
 def calculate():
 	"""Serves Calculator Page"""
