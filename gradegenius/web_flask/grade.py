@@ -27,6 +27,11 @@ def calculate():
 						   script='scripts/calculator.js')
 
 @app.route("/about", strict_slashes=False)
+def about():
+	"""Serves About Page"""
+	return render_template("about.html",
+						   title="About",
+						   css_file="styles/about.css",)
 
 if __name__ == "__main__":
 	host = "0.0.0.0"

@@ -11,13 +11,14 @@ let hours = []; // Contains hours
 // being added to the array whenever an option in the select element is picked multiple times
 let sGradeIndex = 0;
 let sHourIndex = 0;
+let liIndex = 0;
 
 // Get the first gpa field li element.
-let listField = document.getElementById("gpa-field-1");
+let listField = document.getElementsByClassName("gpa-field")[0];
 
 // Set custom attribute 'index'. Useful for keeping track of element position in array
 // and rearranging when a li element is deleted.
-listField.setAttribute('index', `${sGradeIndex}`);
+listField.setAttribute('index', `${liIndex++}`);
 
 // Get all select element in the li element and add event listeners.
 let selectField = listField.querySelectorAll('select');
@@ -53,14 +54,15 @@ let removeButton = listField.querySelector('#remove-grade');
 removeButton.addEventListener('click', (event) => {
 	let liElement = event.target.closest('li');
     let liIndex = liElement.getAttribute('index');
+    console.log("Removed index: ", liIndex)
 
     // Splice grades and hours array to remove value of select being deleted.
-    grades.splice(liIndex, 1);
+    grades.splice(liIndex, 1)
     hours.splice(liIndex, 1);
     liElement.remove();
 
     // Rearrange array and select index positions.
-    rearrange();
+    rearrangeArrays();
     calculateGpa(grades, hours);
 });
 
@@ -70,13 +72,13 @@ addList.addEventListener('click', () => {
     let listFieldClone = listField.cloneNode(true);
 
     // Set custom attribute based on sGradeIndex. See explanation above.
-    listFieldClone.setAttribute('index', `${sGradeIndex}`);
+    listFieldClone.setAttribute('index', `${liIndex++}`);
 
     // Get all select elements and add event listeners same as above
     let selectClone = listFieldClone.querySelectorAll('select');
 
-    // Change select id to avoid errors.
-    selectClone[0].id = `gpa-grade-${gradeCount++}`;
+    // Reset value to avoid errors.
+    selectClone[0].value = '';
 
     // Set custom attribute based on sGradeIndex. See explanation above.
     selectClone[0].setAttribute('grade-index', `${sGradeIndex++}`);
@@ -90,8 +92,8 @@ addList.addEventListener('click', () => {
         calculateGpa(grades, hours);
     });
 
-    // Change select id to avoid errors.
-    selectClone[1].id = `gpa-hour-${hourCount++}`;
+    // Reset value to avoid errors.
+    selectClone[1].value = '';
 
     // Set custom attribute based on sHourIndex. See explanation above.
     selectClone[1].setAttribute('hour-index', `${sHourIndex++}`);
@@ -111,14 +113,15 @@ addList.addEventListener('click', () => {
     removeButton.addEventListener('click', (event) => {
 	    let liElement = event.target.closest('li');
         let liIndex = liElement.getAttribute('index');
+        console.log("Removed index: ", liIndex)
 
         // Splice grades and hours array to remove value of select being deleted.
-        grades.splice(liIndex, 1);
+        grades.splice(liIndex, 1)
         hours.splice(liIndex, 1);
 	    liElement.remove();
 
         // Rearrange arrays
-        rearrange();
+        rearrangeArrays();
         calculateGpa(grades, hours);
     });
 
@@ -127,14 +130,13 @@ addList.addEventListener('click', () => {
 
     // Append to parent ul element.
     list.appendChild(listFieldClone);
+
+    rearrangeArrays();
 });
 
 // GPA calculator
 function calculateGpa(grades, hour) {
     let resultDiv = document.getElementById('result');
-    if (grades.length === 0) {
-        resultDiv.textContent = '\u00A0';
-    }
     // Calculate only if grades and hour arrays have same length.
     if (grades.length > 0 && grades.length === hour.length) {
 	let gradeNo = 0; // GPA grade converted to number using the 5-point GPA scale
@@ -143,6 +145,10 @@ function calculateGpa(grades, hour) {
 	let total = 0; // Total credit hours
         for (index = 0; index < grades.length; index++) {
 	    // Convert grade to its corresponding numerical weight.
+            if ((grades[index] === undefined || grades[index] === null) ||
+                (hours[index] === undefined || hours[index] === null)) {
+                continue;
+            }
             switch (grades[index]) {
                 case 'A':
                     gradeNo = 5;
@@ -176,22 +182,17 @@ function calculateGpa(grades, hour) {
     }
 }
 
-// Get calculate button and bind to GPA calculator
-// let lastSelect = document.getElementById('calculate');
-// lastSelect.addEventListener('click', () => {
-// 	calculateGpa(grades, hours);
-// });
-
 // Rearrange positions of elements in arrays.
-function rearrange() {
+function rearrangeArrays() {
     sGradeIndex = 0;
     sHourIndex = 0;
     let gradeSelects = document.getElementsByClassName('gpa-grade');
     let hourSelects = document.getElementsByClassName('gpa-hour');
-    let liElements = document.getElementsByTagName('li');
+    let liElements = document.getElementsByClassName('gpa-field');
+    newGrades = []
+    newHours = []
 
     for (i = 0; i < gradeSelects.length; i++) {
-        console.log("Current index: ", i);
         gradeSelects[i].setAttribute('grade-index', `${i}`);
         hourSelects[i].setAttribute('hour-index', `${i}`);
         liElements[i].setAttribute('index', `${i}`);
