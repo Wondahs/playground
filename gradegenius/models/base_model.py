@@ -13,11 +13,13 @@ class BaseModel:
             for key, value in kwargs.items():
                 setattr(self, key, value)
             if kwargs.get("created_at", None):
-                self.created_at = datetime.strptime(kwargs["created_at"])
+                self.created_at = datetime.strptime(kwargs["created_at"],
+                                                    "%Y-%m-%dT%H:%M:%S.%f")
             else:
                 self.created_at = datetime.now()
             if kwargs.get("updated_at", None):
-                self.updated_at = datetime.strptime(kwargs["updated_at"])
+                self.updated_at = datetime.strptime(kwargs["updated_at"],
+                                                    "%Y-%m-%dT%H:%M:%S.%f")
             else:
                 self.updated_at = datetime.now()
         else:
@@ -25,6 +27,7 @@ class BaseModel:
             self.created_at = datetime.now()
             self.updated_at = datetime.now()
         models.storage.new(self)
+
     def __str__(self):
         '''Returns a string representation of BaseModel'''
         class_name = self.__class__.__name__
@@ -42,3 +45,7 @@ class BaseModel:
         """Updates updated_at"""
         self.updated_at = datetime.now()
         models.storage.save()
+
+    def delete(self):
+        """delete the current instance from the storage"""
+        models.storage.delete(self)
