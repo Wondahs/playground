@@ -23,7 +23,8 @@ def signup():
 	"""Serves Login Page"""
 	return render_template("signup.html",
 						   title='Signup',
-						   css_file='styles/login.css')
+						   css_file='styles/login.css',
+						   script='scripts/signup.js')
 
 @app.route("/calculate", strict_slashes=False)
 def calculate():
@@ -32,6 +33,14 @@ def calculate():
 						   title='Calculate',
 						   css_file='styles/calculator.css',
 						   script='scripts/calculator.js')
+
+@app.route("/signup-success", strict_slashes=False)
+def signup_success():
+	"""Serves Successful signup Page"""
+	return render_template("signup-success.html",
+						   title='Calculate',
+						   css_file='styles/signup-success.css',
+						   script='scripts/signup-success.js')
 
 @app.route("/about", strict_slashes=False)
 def about():

@@ -22,6 +22,8 @@ class BaseModel:
                                                     "%Y-%m-%dT%H:%M:%S.%f")
             else:
                 self.updated_at = datetime.now()
+            if 'id' not in kwargs:
+                self.id = str(uuid4())
         else:
             self.id = str(uuid4())
             self.created_at = datetime.now()

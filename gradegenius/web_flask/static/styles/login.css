@@ -5,6 +5,7 @@
   justify-content: center;
   align-items: center;
   margin-bottom: 50px;
+  padding-top: 20px;
 }
 
 .container {
@@ -33,13 +34,13 @@ button {
   margin: 10px 0;
   border: none;
   border-radius: 4px;
-  background-color: #5cb85c;
+  background-color: #4cae4c;
   color: white;
   cursor: pointer;
 }
 
 button:hover {
-  background-color: #4cae4c;
+  background-color: #5cb85c;
 }
 
 .login a {

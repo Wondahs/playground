@@ -1,7 +1,30 @@
 {% extends 'layout.html' %}
 {% block content %}
     <main>
-        <h1>Welcome to GradeGenius!</h1>
-        <p>Calculate your CGPA in simple steps.</p>
+        <div class="welcome">
+            <h1>Welcome to GradeGenius!</h1>
+            <p>We provide tools that help you track and improve your academic progress.</p>
+        </div>
+        <div class="try-calculator">
+            <div class="introduction">
+                <h3>Introducing our new GPA calculator</h3>
+            </div>
+            <div class="describe-calculator">
+                <div class="features">
+                    <ul>
+                        <h2>FEATURES</h2>
+                        <li>Easy to use</li>
+                        <li>Doesn't require any special expertise</li>
+                        <li>Quick and responsive</li>
+                        <li>Can be used by any level of student</li>
+                        <li>Can help to record grades for future reference</li>
+                    </ul>
+                </div>
+                <div class="calculator-image">
+                    <!-- <img src="{{ url_for('static', filename='images/gpa_calculator.png') }}" alt=""> -->
+                </div>
+            </div>
+            <a class="calculator-cta" href="/calculate"><button>Try it Now</button></a>
+        </div>
     </main>
 {% endblock content %}

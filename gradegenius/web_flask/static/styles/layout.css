@@ -11,6 +11,9 @@ body {
     font-family: "Montserrat", sans-serif;
     line-height: 1.6;
     background-color: #f4f4f4;
+    margin-bottom: 50px;
+    padding-top: 20px;
+    width: 100%;
 }
 
 /* Style the header */
@@ -20,6 +23,10 @@ header {
     padding: 10px 0;
     display: flex;
     box-shadow: 0 0 10px;
+    border-bottom: 1px white solid;
+    position: fixed;
+    top: 0;
+    width: 100%;
 }
 
 nav {
@@ -59,8 +66,16 @@ footer {
     border-top-left-radius: 5px;
     width: 100%;
     border-top: 1px solid white;
-    margin-top: 50px;
+    margin-top: 30px;
     box-shadow: 0 0 10px;
+    display: flex;
+    /* align-items: center; */
+    justify-content: space-evenly;
+}
+
+footer p {
+    align-self: center;
+    position: absolute;
 }
 
 header img {
@@ -90,4 +105,49 @@ header .logo a {
     line-height: 0.7;
     font-size: 18px;
     color: white;
+}
+
+.status {
+    margin-left: auto;
+    margin-right: 10px;
+    font-size: 10px;
+    padding: 7px;
+    border-radius: 10px;
+    background-color: red;
+    color: white;
+    font-size: 5px;
+}
+
+.nav-toggle {
+    display: none;
+}
+
+@media (max-width: 768px) {
+
+    nav {
+        position: fixed;
+        background-color: purple;
+        right: -450px;
+        width: 250px;
+        height: 100%;
+        padding-top: 50px;
+        transition: left 0.3s ease;
+        margin-left: 30px;
+        border-left: 1px solid #ddd;
+    }
+
+    nav ul {
+        display: inline-block;
+        height: 100%;
+    }
+
+ .nav-toggle {
+    display: block;
+    position: fixed;
+    top: 10px;
+    right: 15px;
+    cursor: pointer;
+    font-size: 20px;
+    z-index: 5;
+ }
 }

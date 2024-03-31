@@ -2,4 +2,118 @@
 main {
     text-align: center;
     padding: 50px 20px;
+    background-color: purple;
+    color: white;
+    height: auto;
+    margin-bottom: -10px;
+    text-wrap: wrap;
+    width: 100vw;
+}
+
+h1 {
+    font-size: 70px;
+    margin-bottom: 0;
+}
+
+p {
+    margin-top: 0;
+}
+
+.try-calculator {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.try-calculator h3 {
+    margin-bottom: 15px;
+}
+
+.introduction {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    font-size: 20px;
+    text-align: left;
+    padding: 0;
+}
+
+.try-calculator button {
+    width: auto;
+    aspect-ratio: 5;
+    padding: 10px;
+    margin-top: 30px;
+    border: none;
+    border-radius: 4px;
+    background-color: white;
+    color: purple;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.calculator-cta button:hover {
+    filter: brightness(80%);
+}
+
+.calculator-image {
+    width: 60%;
+    aspect-ratio: 2.5;
+    border: 5px white solid;
+    border-radius: 20px;
+    overflow: hidden;
+    background-image: url('../images/gpa_calculator.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.welcome {
+    border-bottom: 1px white solid;
+    padding: 10px;
+}
+
+.describe-calculator {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+}
+
+.describe-calculator ul {
+    list-style: inside;
+    text-align: left;
+    padding: 10px;
+    padding-top: 50px;
+}
+
+.describe-calculator ul h2 {
+    margin: 0;
+}
+
+.welcome {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.welcome h1 {
+    word-wrap: break-word;
+}
+
+@media (max-width: 768px) {
+
+    .describe-calculator {
+        flex-direction: column-reverse;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .describe-calculator ul {
+        padding-top: 10px;
+    }
+
+    .calculator-image {
+        width: 80%;
+    }
 }

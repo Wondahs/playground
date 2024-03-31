@@ -22,13 +22,22 @@ class GradeGenius(cmd.Cmd):
 
     def do_create(self, arg):
         """Creates new user"""
-        new_class = arg.split()[0]
+        args = arg.split()
+        if len(args) < 1:
+            print("Class Name not included")
+            return
+        new_class = args[0]
         new_item = eval(f"{new_class}")
         if new_item in classes:
-            new_item = eval(f"{new_class}()")
-            storage.new(new_item)
+            if new_item is not classes[0] and len(args) < 2:
+                print("Class Name not included")
+            new_obj = eval(f"{new_class}()")
+            if new_item is not classes[0]:
+                user_id = args[1]
+                new_obj.user_id = user_id
+            storage.new(new_obj)
             storage.save()
-            print("New item successfully created")
+            print(new_obj.id)
         else:
             print("Invalid class")
             return
