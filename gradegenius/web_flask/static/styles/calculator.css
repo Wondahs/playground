@@ -9,6 +9,8 @@
 	display: flex;
 	flex-direction: column;
 	background-color: purple;
+	background-image: url(../images/background.jpg);
+	background-size: cover;
 	width: 70%;
 	margin-left: auto;
 	margin-right: auto;

@@ -18,7 +18,8 @@ body {
 
 /* Style the header */
 header {
-    background-color: purple;
+    background-image: url(../images/background.jpg);
+    background-size: cover;
     color: #fff;
     padding: 10px 0;
     display: flex;
@@ -57,6 +58,8 @@ nav ul li a:hover {
 /* Style the footer */
 footer {
     background-color: purple;
+    background-image: url(../images/background.jpg);
+    background-size: cover;
     color: #fff;
     text-align: center;
     padding: 10px 0;
@@ -127,18 +130,29 @@ header .logo a {
     nav {
         position: fixed;
         background-color: purple;
+        background-image: url(../images/background.jpg);
+        background-size: cover;
         right: -450px;
         width: 250px;
         height: 100%;
         padding-top: 50px;
         transition: left 0.3s ease;
         margin-left: 30px;
-        border-left: 1px solid #ddd;
+        border-left: 3px solid #ddd;
+        border-top-left-radius: 5px;
     }
 
     nav ul {
         display: inline-block;
         height: 100%;
+        width: 100%;
+    }
+
+    nav ul li {
+        width: 100%;
+        margin-bottom: 20px;
+        border-bottom: 1px solid white;
+        padding-bottom: 10px;
     }
 
  .nav-toggle {
@@ -149,5 +163,8 @@ header .logo a {
     cursor: pointer;
     font-size: 20px;
     z-index: 5;
+ }
+ .nav-toggle:hover {
+    font-size: 22px;
  }
 }

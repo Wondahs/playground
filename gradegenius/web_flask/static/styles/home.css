@@ -2,7 +2,9 @@
 main {
     text-align: center;
     padding: 50px 20px;
-    background-color: purple;
+    /* background-color: purple; */
+    background-image: url(../images/background.jpg);
+    background-size: cover;
     color: white;
     height: auto;
     margin-bottom: -10px;
