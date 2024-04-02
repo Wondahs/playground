@@ -29,10 +29,12 @@ navToggle.addEventListener('click', () => {
 	if (nav.style.right === '-450px') {
 		console.log("Show nav");
 		nav.style.right = '0';
+		nav.style.top = '10px';
 		navToggle.textContent = '\u2716';
 		navToggle.style.right = "215px";
 	} else {
 		nav.style.right = '-450px';
+		nav.style.top = '7px';
 		navToggle.textContent = '\u2630';
 		navToggle.style.right = "15px";
 
