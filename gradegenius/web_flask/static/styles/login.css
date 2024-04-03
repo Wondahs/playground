@@ -56,3 +56,12 @@ button:hover {
 }
 /* Additional styling can be added for links, messages, etc. */
 
+#username-ok {
+  font-size: 10px;
+}
+
+.button-disabled {
+  background-color: #c2cac2;
+  color: rgb(86, 83, 83);
+  cursor: not-allowed;
+}
