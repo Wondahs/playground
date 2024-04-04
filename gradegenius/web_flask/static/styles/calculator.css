@@ -158,3 +158,13 @@
 	font-size: smaller;
 	margin-right: 100px;
 }
+
+@media (max-width: 768px) {
+	.container {
+		width: 90%;
+	}
+
+	header {
+		padding-left: 30px;
+	}
+}

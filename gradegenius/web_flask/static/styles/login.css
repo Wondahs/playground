@@ -5,7 +5,7 @@
   justify-content: center;
   align-items: center;
   margin-bottom: 50px;
-  padding-top: 20px;
+  padding-top: 40px;
 }
 
 .container {
@@ -64,4 +64,10 @@ button:hover {
   background-color: #c2cac2;
   color: rgb(86, 83, 83);
   cursor: not-allowed;
+}
+
+@media (max-width: 768px) {
+	header {
+		padding-left: 30px;
+	}
 }

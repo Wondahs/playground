@@ -23,9 +23,10 @@ fetch(status_url)
 	})
 
 let navToggle = document.getElementById("nav-toggle");
+let nav = document.querySelector("nav");
+nav.style.right = '-450px';
 
 navToggle.addEventListener('click', () => {
-	let nav = document.querySelector("nav");
 	if (nav.style.right === '-450px') {
 		console.log("Show nav");
 		nav.style.right = '0';
@@ -37,6 +38,5 @@ navToggle.addEventListener('click', () => {
 		nav.style.top = '7px';
 		navToggle.textContent = '\u2630';
 		navToggle.style.right = "15px";
-
 	}
 });

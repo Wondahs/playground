@@ -43,8 +43,8 @@ main {
     margin-top: 30px;
     border: none;
     border-radius: 4px;
-    background-color: white;
-    color: purple;
+    background-color: rgb(219, 6, 219);
+    color: white;
     cursor: pointer;
     font-weight: bold;
 }
@@ -54,31 +54,32 @@ main {
 }
 
 .calculator-image {
-    width: 40%;
-    aspect-ratio: 1.5;
+    width: 60%;
+}
+
+.calculator-image img {
+    width: 100%;
+    height: auto;
     border: 5px white solid;
     border-radius: 20px;
-    overflow: hidden;
-    background-image: url('../images/gpa_calculator.png');
-    background-size: cover;
-    background-repeat: no-repeat;
-    position: absolute;
-    top: -40px;
+    position: static;
+    top: 10px;
     right: 50px;
     box-shadow: 0 0 10px;
+    z-index: 0;
 }
 
 .describe-calculator {
     display: flex;
     justify-content: space-around;
-    width: auto;
+    width: 100%;
     text-align: left;
     color: black;
     /* padding-left: 35px; */
 }
 
 .features {
-    width: 40%;
+    width: 35%;
     margin-right: auto;
 }
 
@@ -94,6 +95,7 @@ main {
 .features p {
     margin-top: 0;
     padding-top: 0;
+    text-align: justify;
 }
 
 .features h4 {
@@ -128,10 +130,25 @@ main {
 
 @media (max-width: 768px) {
 
+    header,
+    .welcome,
+    .try-calculator {
+        padding-left: 30px;
+    }
+
+    header {
+        z-index: 20;
+    }
+
     .describe-calculator {
         flex-direction: column-reverse;
         align-items: center;
         justify-content: center;
+    }
+
+    .features {
+        margin-left: auto;
+        width: auto;
     }
 
     .describe-calculator ul {
