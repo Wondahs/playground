@@ -49,13 +49,13 @@
 	height: 15px;
 }
 
-#grade {
+.gpa-field .gpa-grade {
 	width: 30%;
 	border-radius: 0;
 	height: 35px;
 }
 
-#hour {
+.gpa-field .gpa-hour {
 	width: 20%;
 	border-top-right-radius: 5px;
 	height: 35px;
@@ -157,6 +157,10 @@
 	align-items: center;
 	font-size: smaller;
 	margin-right: 100px;
+}
+
+#add-list {
+	cursor: pointer;
 }
 
 @media (max-width: 768px) {
