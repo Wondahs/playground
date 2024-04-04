@@ -1,24 +1,15 @@
 /* Style the main content area */
 main {
     text-align: center;
-    padding: 50px 20px;
-    /* background-color: purple; */
-    background-image: url(../images/background.jpg);
-    background-size: cover;
+    padding-top: 20px;
+    background-color: rgb(255, 255, 255);
+    /* background-image: url(../images/background.jpg);
+    background-size: cover; */
     color: white;
     height: auto;
-    margin-bottom: -10px;
+    margin-top: -10px;
     text-wrap: wrap;
     width: 100vw;
-}
-
-h1 {
-    font-size: 70px;
-    margin-bottom: 0;
-}
-
-p {
-    margin-top: 0;
 }
 
 .try-calculator {
@@ -27,6 +18,8 @@ p {
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
+    padding: 50px;
+    position: relative;
 }
 
 .try-calculator h3 {
@@ -61,46 +54,76 @@ p {
 }
 
 .calculator-image {
-    width: 60%;
-    aspect-ratio: 2.5;
+    width: 40%;
+    aspect-ratio: 1.5;
     border: 5px white solid;
     border-radius: 20px;
     overflow: hidden;
     background-image: url('../images/gpa_calculator.png');
     background-size: cover;
     background-repeat: no-repeat;
-}
-
-.welcome {
-    border-bottom: 1px white solid;
-    padding: 10px;
+    position: absolute;
+    top: -40px;
+    right: 50px;
+    box-shadow: 0 0 10px;
 }
 
 .describe-calculator {
     display: flex;
     justify-content: space-around;
-    width: 100%;
+    width: auto;
+    text-align: left;
+    color: black;
+    /* padding-left: 35px; */
 }
 
-.describe-calculator ul {
-    list-style: inside;
-    text-align: left;
-    padding: 10px;
-    padding-top: 50px;
+.features {
+    width: 40%;
+    margin-right: auto;
+}
+
+.describe-calculator p {
+    width: 100%;
+    font-weight: 100;
 }
 
 .describe-calculator ul h2 {
     margin: 0;
 }
 
+.features p {
+    margin-top: 0;
+    padding-top: 0;
+}
+
+.features h4 {
+    margin-bottom: 5px;
+}
+
 .welcome {
     display: flex;
     flex-direction: column;
     height: 100%;
+    background-color: rgb(219, 6, 219);
+    border-bottom: 1px white solid;
+    padding: 50px;
+    padding-top: 30px;
 }
 
-.welcome h1 {
+.welcome h3 {
+    font-size: 50px;
+    margin-bottom: 0;
+    text-align: left;
+    padding-top: 10px;
     word-wrap: break-word;
+    height: max-content;
+}
+
+.welcome p {
+    margin-top: 0;
+    text-align: left;
+    padding: 0;
+    width: 70%;
 }
 
 @media (max-width: 768px) {

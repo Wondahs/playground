@@ -181,7 +181,7 @@ function calculateGpa(grades, hour) {
 	}
 	gpa = total !== 0 ?  qualityPoints / total : 0;
 	gpa = gpa.toFixed(2);
-	resultDiv.textContent = `GPA: ${gpa}`;
+	resultDiv.textContent = ` ${gpa}`;
     } else {
 	    resultDiv.textContent = '\u00A0';
     }
