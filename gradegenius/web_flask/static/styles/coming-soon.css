@@ -1,0 +1,48 @@
+.coming-soon {
+	text-align: center;
+}
+
+.circles {
+	width: 200px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	position: relative;
+	height: 200px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 70px;
+}
+
+@keyframes rotateCircle {
+	to {
+		transform: rotate(360deg);
+	}
+}
+
+.circle1 img, .circle2 img {
+	animation-name: rotateCircle;
+	animation-duration: 5s;
+	animation-iteration-count: infinite;
+	animation-timing-function: ease-in;
+	position: absolute;
+	top: 30%;
+	height: 5rem;
+	z-index: -1;
+}
+
+.circle2 img {
+	height: 10rem;
+	animation-direction: reverse;
+	animation-timing-function: ease-out;
+}
+
+.circle1 img {
+	top: 50%;
+	right: 30%;
+}
+
+.circle2 img {
+	right: 10%;
+}

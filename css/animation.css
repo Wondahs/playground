@@ -1,0 +1,84 @@
+body {
+	padding: 30px;
+	background-color: rgb(87, 87, 228);
+}
+
+.container {
+	background-color: white;
+	width: 500px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	position: relative;
+	height: 800px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+img {
+	height: 2rem;
+}
+
+
+@keyframes moveAndRotate {
+	0% {
+		transform: translateX(0px) rotate(0deg);
+	} 
+	20% {
+		transform: translateX(120px) rotate(0deg);
+	}
+	40% {
+		transform: translateX(120px) rotate(180deg);
+	}
+	60% {
+		transform: translateX(-120px) rotate(180deg);
+	}
+	80% {
+		transform: translateX(-120px) rotate(0deg);
+	}
+	100% {
+		transform: translateX(0px) rotate(0deg);
+	}
+}
+
+
+.arrow img {
+	width: 2em;
+	animation-name: moveAndRotate;
+	animation-duration: 5s;
+	animation-delay: 5s;
+	animation-timing-function: ease-out;
+	animation-fill-mode: forwards;
+	animation-iteration-count: infinite;
+	position: absolute;
+	top: 20%;
+}
+
+@keyframes rotateCircle {
+	to {
+		transform: rotate(360deg);
+	}
+}
+
+.circle1 img, .circle2 img {
+	animation-name: rotateCircle;
+	animation-duration: 5s;
+	animation-iteration-count: infinite;
+	animation-timing-function: ease-in;
+	position: absolute;
+	top: 30%;
+	right: 50%;
+	height: 5rem;
+}
+
+.circle2 img {
+	height: 10rem;
+	animation-direction: reverse;
+	animation-timing-function: ease-out;
+}
+
+.circle1 img {
+	top: 35%;
+	right: 58%;
+}

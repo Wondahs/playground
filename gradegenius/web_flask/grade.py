@@ -14,9 +14,9 @@ def home():
 @app.route("/login", strict_slashes=False)
 def login():
 	"""Serves Login Page"""
-	return render_template("login.html",
+	return render_template("coming-soon.html",
 						   title='Login',
-						   css_file='styles/login.css')
+						   css_file='styles/coming-soon.css')
 
 @app.route("/signup", strict_slashes=False)
 def signup():
