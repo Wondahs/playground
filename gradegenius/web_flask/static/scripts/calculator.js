@@ -114,6 +114,7 @@ addList.addEventListener('click', () => {
 
     // Add event listener for Remove Grade button.
     let removeButton = listFieldClone.querySelector('#remove-grade');
+    
     // let removeButton = removeButtons[0];
     removeButton.addEventListener('click', (event) => {
 	    let liElement = event.target.closest('li');

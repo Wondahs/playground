@@ -31,6 +31,9 @@ header {
     top: 0;
     width: 100vw;
     background-color: rgb(219, 6, 219);
+    background-image: url(../images/background.jpg);
+    background-size: cover;
+    /* border-bottom: #ddd solid 1px; */
 }
 
 nav {
