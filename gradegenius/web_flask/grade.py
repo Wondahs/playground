@@ -11,14 +11,14 @@ def home():
 						   title='Home',
 						   css_file='styles/home.css')
 
-@app.route("/login", strict_slashes=False)
+@app.route("/gradegenius/login", strict_slashes=False)
 def login():
 	"""Serves Login Page"""
 	return render_template("coming-soon.html",
 						   title='Login',
 						   css_file='styles/coming-soon.css')
 
-@app.route("/signup", strict_slashes=False)
+@app.route("/gradegenius/signup", strict_slashes=False)
 def signup():
 	"""Serves Login Page"""
 	return render_template("signup.html",
@@ -26,7 +26,7 @@ def signup():
 						   css_file='styles/login.css',
 						   script='scripts/signup.js')
 
-@app.route("/calculate", strict_slashes=False)
+@app.route("/gradegenius/calculate", strict_slashes=False)
 def calculate():
 	"""Serves Calculator Page"""
 	return render_template("calculator.html",
@@ -34,7 +34,7 @@ def calculate():
 						   css_file='styles/calculator.css',
 						   script='scripts/calculator.js')
 
-@app.route("/signup-success", strict_slashes=False)
+@app.route("/gradegenius/signup-success", strict_slashes=False)
 def signup_success():
 	"""Serves Successful signup Page"""
 	return render_template("signup-success.html",
@@ -42,7 +42,7 @@ def signup_success():
 						   css_file='styles/signup-success.css',
 						   script='scripts/signup-success.js')
 
-@app.route("/about", strict_slashes=False)
+@app.route("/gradegenius/about", strict_slashes=False)
 def about():
 	"""Serves About Page"""
 	return render_template("about.html",

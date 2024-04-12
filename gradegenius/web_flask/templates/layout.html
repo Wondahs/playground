@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='styles/layout.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename=css_file) }}">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <link rel="icon" href="../static/images/graduation-cap.svg" type="image/png">
+    <link rel="icon" href="{{ url_for('static', filename='images/graduation-cap.svg') }}" type="image/png">
 </head>
 <body>
     <header>
@@ -21,9 +21,9 @@
         <nav>
             <ul>
                 <li class="home-li"><a href="/">Home</a></li>
-                <li class="login-li"><a href="/login">Login</a></li>
-                <li class="calculate-li"><a href="/calculate">Calculator</a></li>
-                <li class="about-li"><a href="/about">About</a></li>
+                <li class="login-li"><a href="/gradegenius/login">Login</a></li>
+                <li class="calculate-li"><a href="/gradegenius/calculate">Calculator</a></li>
+                <li class="about-li"><a href="/gradegenius/about">About</a></li>
             </ul>
         </nav>
     </header>
