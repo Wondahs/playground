@@ -95,7 +95,7 @@ main {
 
 .message p {
 	margin-bottom: 0px;
-	font-size: 12px;
+	font-size: 15px;
 }
 
 .error-msg {
@@ -106,7 +106,7 @@ main {
 
 .subscribe input {
 	width: 90%;
-	padding: 15px;
+	padding: 20px 15px;
 	border-radius: 5px;
 	border: 1px hsl(231, 7%, 60%) solid;
 	margin-bottom: 20px;
@@ -115,7 +115,7 @@ main {
 .subscribe button,
 .success button {
 	width: 100%;
-	padding: 10px;
+	padding: 20px 15px;
 	background-color: hsl(234, 29%, 20%);
 	color: white;
 	border: none;
@@ -182,10 +182,86 @@ input {
 	font-size: 11px; 
 	text-align: center; 
 	color: white;
-	position: fixed;
+	position: relative;
 	bottom: 0;
 }
 
 .attribution a {
 	color: white;
+}
+
+#subscribe-button {
+	font-size: 16px;
+}
+
+@media only screen and (max-width: 768px) {
+	body {
+		padding: 0;
+		margin: 0;
+		background-color: white;
+	}
+
+	p {
+		font-size: larger;
+	}
+
+	main {
+		width: 90%;
+		margin-top: 0;
+		margin-left: auto;
+		margin-right: auto;
+	}
+	.signup {
+		flex-direction: column-reverse;
+		padding-bottom: 40px;
+		width: 100%;
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+	#email {
+		width: 95%;
+		padding-right: 0;
+	}
+
+	.subscribe, .image {
+		width: 100%;
+	}
+
+	.attribution {
+		color: hsl(234, 29%, 20%);
+		position: relative;
+	}
+
+	.attribution a {
+		color: hsl(234, 29%, 20%);
+	}
+
+	.success {
+		width: 100%;
+		padding: 20px;
+		margin-left: auto;
+		margin-right: auto;
+		margin-top: 80px;
+		font-size: larger;
+	}
+
+	.success p {
+		font-size: larger;
+		text-align: left;
+		margin-bottom: 300px;
+	}
+
+	.success img {
+		width: 80px;
+	}
+
+	.success h1 {
+		font-size: 50px;
+	}
+
+	.success button {
+		margin-top: auto;
+		justify-self: end;
+	}
 }
