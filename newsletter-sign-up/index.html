@@ -11,14 +11,12 @@
 
   <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
   <style>
-    .attribution { font-size: 11px; text-align: center; }
-    .attribution a { color: hsl(228, 45%, 44%); }
   </style>
 </head>
 <body>
   <main>
-    <div class="signup">
-       <div class="subscribe">
+    <div class="signup" id="signup-div">
+       <div id="subscribe-div" class="subscribe">
           <h1>Stay updated!</h1>
 
           <p>Join 60,000+ product managers receiving monthly updates on:</p>
@@ -29,24 +27,25 @@
           </ul>
           <div class="message">
             <p><b>Email address</b></p>
+            <p id="error-msg" class="error-msg"></p>
           </div>
           <input id="email" type="text" placeholder="email@company.com" required>
-          <button id="subscribe">Subscribe to monthly newsletter</button>
+          <button id="subscribe-button">Subscribe to monthly newsletter</button>
        </div>
        <div class="image">
         <img src="./assets/images/illustration-sign-up-desktop.svg" alt="">
        </div>
     </div>
-    <div class="success">
+    <div class="success" id="success-div">
       <img src="./assets/images/icon-list.svg" alt="">
       <h1>Thanks for subscribing!</h1>
-      <p>A confirmation email has been sent to ash@loremcompany.com. 
+      <p>A confirmation email has been sent to <b><span id="user-email">ash@loremcompany.com.</span></b> 
         Please open it and click the button inside to confirm your subscription.</p>
-      <button> Dismiss message</button>
+      <button id="dismiss-button"> Dismiss message</button>
     </div>
     <div class="attribution">
       Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
-      Coded by <a href="#">Your Name Here</a>.
+      Coded by <a href="#">Wonders Victor</a>.
     </div>
   </main>
 <script src="./assets/scripts/script.js"></script>
