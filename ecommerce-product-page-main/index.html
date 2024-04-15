@@ -16,8 +16,9 @@
 </head>
 <body>
   <header>
+	  <div class="menu"> <img state="closed" id="menu-button" src="./images/icon-menu.svg" alt="Menu botton">  </div>
     <div class="logo"><img src="./images/logo.svg" alt="Logo"></div>
-    <nav>
+    <nav id="nav-bar" >
       <ul>
         <li>Collections</li>
         <li>Men</li>
@@ -42,11 +43,16 @@
       </div>
     </div>
     <div class="right">
-      <h3>Sneaker Company</h3>
+      <h3>SNEAKER COMPANY</h3>
       <h1>Fall Limited Edition Sneakers</h1>
       <p class="description">These low-profile sneakers are your perfect casual wear companion. Featuring a                                  durable rubber outer sole, they’ll withstand everything the weather can offer.</p>
-      <div class="discount-price"><p>$125.00 <span>50%</span></p></div>
-      <div class="real-price"><p>$250.00</p></div>
+      <div class="prices" >
+	      <div class="discount-price">
+		      <p>$125.00</p>
+		      <p class="discount" ><span>50%</span></p>
+	      </div>
+	      <div class="real-price"><p>$250.00</p></div>
+      </div>
       <div class="order">
         <div class="add-amount-remove">
           <img src="./images/icon-plus.svg" alt="">
@@ -63,8 +69,9 @@
   <footer>
     <div class="attribution">
       Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
-      Coded by <a href="#">Your Name Here</a>.
+      Coded by <a href="#">Wonders Victor</a>.
     </div>
   </footer>
+  <script src="./scripts/script.js" ></script>
 </body>
 </html>
