@@ -6,9 +6,8 @@
 
   <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
   <link rel="stylesheet" href="./styles/styles.css">
+  <link rel="stylesheet" href="./styles/cart.css">
   <title>Frontend Mentor | E-commerce product page</title>
-
-  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
   <style>
     .attribution { font-size: 11px; text-align: center; }
     .attribution a { color: hsl(228, 45%, 44%); }
@@ -27,9 +26,21 @@
         <li>Contact</li>
       </ul>
     </nav>
-    <div class="cart-icon"><img src="./images/icon-cart.svg" alt=""></div>
+    <div class="cart-icon"><img id="cart-icon" src="./images/icon-cart.svg" alt=""></div>
     <div class="avatar"><img src="./images/image-avatar.png" alt=""></div>
   </header>
+  <section id="cart" state="closed"  class="cart" >
+	  <div class="title" >Cart</div>
+	  <div class="items" >
+		  <div class="item-pic"><img src="./images/image-product-1-thumbnail.jpg"> </div>
+		  <div class="details">
+			  <p>Fall Limited Edition Sneakers</p>
+			  <p class="price">$3</p>
+		  </div>
+		  <div id="delete-button"><img src="./images/icon-delete.svg" alt=""></div>
+	  </div>
+	  <div class="checkout">Checkout</div>
+  </section>
   <main>
     <div class="left">
       <div class="preview">
@@ -55,9 +66,9 @@
       </div>
       <div class="order">
         <div class="add-amount-remove">
-          <img src="./images/icon-plus.svg" alt="">
-          <div class="amount">0</div>
-          <img class="minus" src="./images/icon-minus.svg" alt="">
+          <img id="plus-button" src="./images/icon-plus.svg" alt="">
+          <div id="amount" class="amount">0</div>
+          <img id="minus-button" class="minus" src="./images/icon-minus.svg" alt="">
         </div>
         <div class="add-to-cart">
           <img src="./images/icon-cart.svg" alt="">
