@@ -30,7 +30,7 @@ function thumbnailsPreview (thumbnails, preview) {
 	}
 }
 
-previewImg[1].addEventListener('click', () => {
-	popup.querySelector("#preview-image").src = this.src;
+previewImg[1].addEventListener('click', (event) => {
+	popup.querySelector("#preview-image").src = event.target.src;
 	popup.style.display = "flex";
 })
