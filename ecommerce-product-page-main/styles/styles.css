@@ -122,9 +122,6 @@ nav ul li {
 .discount-price * {
 	padding: 0;
 	margin: 0;
-	margin-top: auto;
-	margin-bottom: auto;
-	height: max-content;
 }
 
 .discount-price p {
@@ -226,7 +223,14 @@ nav ul li {
 	}
 
 	.menu img {
-		z-index: 1;
+		position: relative;
+		z-index: 1000;
+		top: 10;
+		left: 20;
+	}
+
+	.menu img:hover {
+		cursor: pointer;
 	}
 
 	header nav ul {
