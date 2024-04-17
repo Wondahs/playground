@@ -4,30 +4,33 @@ let normalThumbnails = document.querySelectorAll("main .left .thumbnails img");
 thumbnailsPreview(normalThumbnails, previewImg[0]);
 
 previewImg[0].addEventListener('click', (event) => {
-	popup = document.getElementById("popup");
-	left = document.querySelector(".left");
 
-	popup.style.display = "none";
-	popup.innerHTML = `<img id="close-popup" src="./images/icon-close.svg" alt=""><div id="left" class="left">${left.innerHTML}</div>`;
-	popup.querySelector("#preview-image").src = event.target.src;
+	if (window.innerWidth > 768) {
+		popup = document.getElementById("popup");
+		left = document.querySelector(".left");
 
-	let popupPreview = popup.querySelector("#preview-image");
-	let popupThumbnails = popup.querySelectorAll(".left .thumbnails img");
-	let closePopup = document.querySelector("#popup #close-popup");
-	let popupLeft = popup.querySelector(".left");
-
-	closePopup.addEventListener('click', () => {
 		popup.style.display = "none";
-		popup.innerHTML = "";
-	});
+		popup.innerHTML = `<img id="close-popup" src="./images/icon-close.svg" alt=""><div id="left" class="left">${left.innerHTML}</div>`;
+		popup.querySelector("#preview-image").src = event.target.src;
 
-	thumbnailsPreview(popupThumbnails, popupPreview);
-	popup.style.display = "flex";
-	popupLeft.style.zIndex = 90;
+		let popupPreview = popup.querySelector("#preview-image");
+		let popupThumbnails = popup.querySelectorAll(".left .thumbnails img");
+		let closePopup = document.querySelector("#popup #close-popup");
+		let popupLeft = popup.querySelector(".left");
 
-	popup.addEventListener('click', event => {
-		popClose(event, popupLeft);
-	});
+		closePopup.addEventListener('click', () => {
+			popup.style.display = "none";
+			popup.innerHTML = "";
+		});
+
+		thumbnailsPreview(popupThumbnails, popupPreview);
+		popup.style.display = "flex";
+		popupLeft.style.zIndex = 90;
+
+		popup.addEventListener('click', event => {
+			popClose(event, popupLeft);
+		});
+	}
 });
 
 function popClose (event, popupLeft) {
