@@ -192,5 +192,14 @@
 		width: 30px;
 		cursor: pointer;
 	}
+
+}
+
+#popup {
+	display: none;
+}
+
+#popup .left {
+	z-index: 90;
 }
 

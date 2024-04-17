@@ -1,25 +1,42 @@
-let popup = document.getElementById("popup");
-let left = document.querySelector(".left");
-
-popup.innerHTML = `<img id="close-popup" src="./images/icon-close.svg" alt="">
-<div id="left" class="left">${left.innerHTML}</div>`;
-
-let popupThumbnails = document.querySelectorAll("#popup .left .thumbnails img")
 let previewImg = document.querySelectorAll(".preview #preview-image");
 let normalThumbnails = document.querySelectorAll("main .left .thumbnails img");
-let closePopup = document.querySelector("#popup #close-popup");
 
+thumbnailsPreview(normalThumbnails, previewImg[0]);
 
-closePopup.addEventListener('click', () => {
+previewImg[0].addEventListener('click', (event) => {
+	popup = document.getElementById("popup");
+	left = document.querySelector(".left");
+
 	popup.style.display = "none";
-})
+	popup.innerHTML = `<img id="close-popup" src="./images/icon-close.svg" alt=""><div id="left" class="left">${left.innerHTML}</div>`;
+	popup.querySelector("#preview-image").src = event.target.src;
 
-console.log(popupThumbnails);
-console.log(previewImg);
+	let popupPreview = popup.querySelector("#preview-image");
+	let popupThumbnails = popup.querySelectorAll(".left .thumbnails img");
+	let closePopup = document.querySelector("#popup #close-popup");
+	let popupLeft = popup.querySelector(".left");
 
+	closePopup.addEventListener('click', () => {
+		popup.style.display = "none";
+		popup.innerHTML = "";
+	});
 
-thumbnailsPreview(popupThumbnails, previewImg[0]);
-thumbnailsPreview(normalThumbnails, previewImg[1]);
+	thumbnailsPreview(popupThumbnails, popupPreview);
+	popup.style.display = "flex";
+	popupLeft.style.zIndex = 90;
+
+	popup.addEventListener('click', event => {
+		popClose(event, popupLeft);
+	});
+});
+
+function popClose (event, popupLeft) {
+	console.log(event.target);
+	if (popup.style.display === "flex" && !popupLeft.contains(event.target)) {
+		popup.style.display = "none";
+		popup.innerHTML = "";
+	}
+}
 
 function thumbnailsPreview (thumbnails, preview) {
 	for (let i = 0; i < thumbnails.length; i++) {
@@ -29,8 +46,3 @@ function thumbnailsPreview (thumbnails, preview) {
 		});
 	}
 }
-
-previewImg[1].addEventListener('click', (event) => {
-	popup.querySelector("#preview-image").src = event.target.src;
-	popup.style.display = "flex";
-})
