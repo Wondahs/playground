@@ -149,14 +149,28 @@ input[type="radio"] {
 
 .step-3 .card {
 	flex-direction: row;
-	padding: 2rem 0;
+	padding: 1rem 0;
 	column-gap: 1rem;
+	padding-left: 0;
+	width: 100%;
 }
 
 .step-3 .card input {
 	width: 2rem;
 	margin: auto 0;
 	margin-left: 1rem;
+}
+
+.step-3 .card-text {
+	width: 280%;
+}
+
+.step-3 .card:last-child {
+	margin-bottom: 3rem;
+}
+
+.cost {
+	color: blue;
 }
 
 .card:hover {
@@ -185,8 +199,7 @@ input[type="radio"] {
 	font-size: 1.2rem;
 }
 
-input[type="radio"]:checked + .card-details,
-input[type="checkbox"]:checked + .card
+input[type="radio"]:checked + .card-details
 {
 	border: 1px solid blue;
 	background-color: rgb(208, 239, 239);

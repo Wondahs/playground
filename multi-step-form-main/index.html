@@ -1,170 +1,170 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
 
-  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
- <link rel="stylesheet" href="./assets/styles/general.css">
- <link rel="stylesheet" href="./assets/styles/mobile.css">
-  <title>Frontend Mentor | Multi-step form</title>
+		<link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+		<link rel="stylesheet" href="./assets/styles/general.css">
+		<link rel="stylesheet" href="./assets/styles/mobile.css">
+		<title>Frontend Mentor | Multi-step form</title>
 
-  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
-  <style>
-    .attribution { font-size: 11px; text-align: center; }
-    .attribution a { color: hsl(228, 45%, 44%); }
-  </style>
-</head>
-<body>
-	<main>
-		<section class="top left">
-			<div class="steps">
-			
-				<button class="buttons" id="button-1">1</button>
-				<p>Step 1<br><b>Your info</b></p>
-			</div>
-			<div class="steps">
-			
-				<button class="buttons" id="button-2">2</button>
-				<p>Step 2<br><b>Select plan</b></p>
-			</div>
-			<div class="steps">
-			
-				<button class="buttons" id="button-3">3</button>
-				<p>Step 3<br><b>Add-ons</b></p>
-			</div>
-			<div class="steps">
-			
-				<button class="buttons" id="button-4">4</button>
-				<p>Step 4<br><b>Summary</b></p>
+		<!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+		<style>
+.attribution { font-size: 11px; text-align: center; }
+.attribution a { color: hsl(228, 45%, 44%); }
+		</style>
+	</head>
+	<body>
+		<main>
+			<section class="top left">
+				<div class="steps">
+
+					<button class="buttons" id="button-1">1</button>
+					<p>Step 1<br><b>Your info</b></p>
 				</div>
-		</section>
-		<section class="bottom right">
-			<div class="step-1">
-				<h3>Personal info</h3>
-				<p><span>Please provide your name, email address, and phone number.</span></p>
-				<label for="name">Name</label>
-				<input id="name" type="text" placeholder="e.g. Stephen King" autocomplete="on" required>
-				<label for="email">Email Address</label>
-				<input id="email" type="email" placeholder="e.g. stephenking@lorem.com" autocomplete="on" required>
-				<label for="phone">Phone Number</label>
-				<input type="tel" placeholder="e.g. +1 234 567 890" autocomplete="on" required>
-			</div>
-			<div class="step-2">
-				<h3>Select your plan</h3>
-				<p><span>You have the option of monthly or yearly billing.</span></p>
-				<label for="arcade" class="card">
-					<input type="radio" id="arcade" name="plan" value="arcade">
-					<div class="card-details">
-						<img src="./assets/images/icon-arcade.svg" alt="">
-						<div class="card-text">
-							<h3>Arcade</h3>
-							<p class="month-year">$9/mo</p>
+				<div class="steps">
+
+					<button class="buttons" id="button-2">2</button>
+					<p>Step 2<br><b>Select plan</b></p>
+				</div>
+				<div class="steps">
+
+					<button class="buttons" id="button-3">3</button>
+					<p>Step 3<br><b>Add-ons</b></p>
+				</div>
+				<div class="steps">
+
+					<button class="buttons" id="button-4">4</button>
+					<p>Step 4<br><b>Summary</b></p>
+				</div>
+			</section>
+			<section class="bottom right">
+				<div class="step-1">
+					<h3>Personal info</h3>
+					<p><span>Please provide your name, email address, and phone number.</span></p>
+					<label for="name">Name</label>
+					<input id="name" type="text" placeholder="e.g. Stephen King" autocomplete="on" required>
+					<label for="email">Email Address</label>
+					<input id="email" type="email" placeholder="e.g. stephenking@lorem.com" autocomplete="on" required>
+					<label for="phone">Phone Number</label>
+					<input type="tel" placeholder="e.g. +1 234 567 890" autocomplete="on" required>
+				</div>
+				<div class="step-2">
+					<h3>Select your plan</h3>
+					<p><span>You have the option of monthly or yearly billing.</span></p>
+					<label for="arcade" class="card">
+						<input type="radio" id="arcade" name="plan" value="arcade">
+						<div class="card-details">
+							<img src="./assets/images/icon-arcade.svg" alt="">
+							<div class="card-text">
+								<h3>Arcade</h3>
+								<p class="month-year">$9/mo</p>
+							</div>
 						</div>
-					</div>
-				</label>
-				<label for="advanced" class="card">
-					<input type="radio" id="advanced" name="plan" value="advanced">
-					<div class="card-details">
-						<img src="./assets/images/icon-advanced.svg" alt="">
-						<div class="card-text">
-							<h3>Advanced</h3>
-							<p class="month-year">$12/mo</p>
-						</div>
-					</div>
-				</label>
-				<label for="pro" class="card">
-					<input type="radio" id="pro" name="plan" value="pro">
-					<div class="card-details">
-						<img src="./assets/images/icon-pro.svg" alt="">
-						<div class="card-text">
-							<h3>Pro</h3>
-							<p class="month-year">$15/mo</p>
-						</div>
-					</div>
-				</label>
-				<div class="billing-toggle">
-					<span class="monthly">Monthly</span>
-					<label for="switch" class="switch">
-						<input type="checkbox" name="switch" id="switch">
-						<span class="slider"></span>
 					</label>
-					<span>Yearly</span>
-				</div>
-			</div>
-			<div class="step-3">
-				<h3>Pick add-ons</h3>
-				<p><span>Add-ons help enhance your gaming experience.</span></p>
-				<label for="online" class="card">
-					<input type="checkbox" id="online" name="online">
-					<div class="card-text">
-						<h3>Online service</h3>
-						<p><span>Access to multiplayer games</span></p>
+					<label for="advanced" class="card">
+						<input type="radio" id="advanced" name="plan" value="advanced">
+						<div class="card-details">
+							<img src="./assets/images/icon-advanced.svg" alt="">
+							<div class="card-text">
+								<h3>Advanced</h3>
+								<p class="month-year">$12/mo</p>
+							</div>
+						</div>
+					</label>
+					<label for="pro" class="card">
+						<input type="radio" id="pro" name="plan" value="pro">
+						<div class="card-details">
+							<img src="./assets/images/icon-pro.svg" alt="">
+							<div class="card-text">
+								<h3>Pro</h3>
+								<p class="month-year">$15/mo</p>
+							</div>
+						</div>
+					</label>
+					<div class="billing-toggle">
+						<span class="monthly">Monthly</span>
+						<label for="switch" class="switch">
+							<input type="checkbox" name="switch" id="switch">
+							<span class="slider"></span>
+						</label>
+						<span>Yearly</span>
 					</div>
-				</label>
-			</div>
-			<div class="progress">
-				<div class="next">
-					<button id="next">Go Back</button>
 				</div>
-				<div class="back">
-					<button id="back">Next Step</button>
+				<div class="step-3">
+					<h3>Pick add-ons</h3>
+					<p><span>Add-ons help enhance your gaming experience.</span></p>
+					<label for="online" class="card">
+						<input type="checkbox" id="online" name="add-ons">
+						<div class="card-text">
+							<h3>Online service</h3>
+							<p><span>Access to multiplayer games</span></p>
+						</div>
+						<p class="cost" id="cost-online-service">+$1/mo</p>
+					</label>
+					<label for="storage" class="card">
+						<input type="checkbox" id="storage" name="add-ons">
+						<div class="card-text">
+							<h3>Larger storage</h3>
+							<p><span>Extra 1TB of cloud save</span></p>                                                         </div>
+						<p id="cost-storage" class="cost">+$2/mo</p>
+					</label>
+					<label for="customize" class="card">                                                                                       <input type="checkbox" id="customize" name="add-ons">                                                              <div class="card-text">                                                                                                 <h3>Customizable Profile</h3>
+							<p><span>Custom theme on your profile</span></p>                                                         </div>                                                  <p id="cost-customize" class="cost">+$1/mo</p>                                                                  </label>
 				</div>
-			</div>
-		</section>
-	</main>
+				<div class="progress">
+					<div class="next">
+						<button id="next">Go Back</button>
+					</div>
+					<div class="back">
+						<button id="back">Next Step</button>
+					</div>
+				</div>
+			</section>
+		</main>
 
 
 
-  <!-- Step 3 start -->
+		<!-- Step 3 start -->
 
-  Pick add-ons
-  Add-ons help enhance your gaming experience.
+		Customizable Profile
+		Custom theme on your profile
+		+$2/mo
 
-  Online service
-  Access to multiplayer games
-  +$1/mo
+		Go Back
+		Next Step
 
-  Larger storage
-  Extra 1TB of cloud save
-  +$2/mo
+		<!-- Step 3 end -->
 
-  Customizable Profile
-  Custom theme on your profile
-  +$2/mo
+		<!-- Step 4 start -->
 
-  Go Back
-  Next Step
+		Finishing up
+		Double-check everything looks OK before confirming.
 
-  <!-- Step 3 end -->
+		<!-- Dynamically add subscription and add-on selections here -->
 
-  <!-- Step 4 start -->
+		Total (per month/year)
 
-  Finishing up
-  Double-check everything looks OK before confirming.
+		Go Back
+		Confirm
 
-  <!-- Dynamically add subscription and add-on selections here -->
+		<!-- Step 4 end -->
 
-  Total (per month/year)
+		<!-- Step 5 start -->
 
-  Go Back
-  Confirm
+		Thank you!
 
-  <!-- Step 4 end -->
+		Thanks for confirming your subscription! We hope you have fun 
+		using our platform. If you ever need support, please feel free 
+		to email us at support@loremgaming.com.
 
-  <!-- Step 5 start -->
+		<!-- Step 5 end -->
 
-  Thank you!
-
-  Thanks for confirming your subscription! We hope you have fun 
-  using our platform. If you ever need support, please feel free 
-  to email us at support@loremgaming.com.
-
-  <!-- Step 5 end -->
-  
-  <div class="attribution">
-    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
-    Coded by <a href="#">Your Name Here</a>.
-  </div>
-</body>
+		<div class="attribution">
+			Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+			Coded by <a href="#">Your Name Here</a>.
+		</div>
+		<script src="./assets/scripts/script.js"></script>
+	</body>
 </html>
