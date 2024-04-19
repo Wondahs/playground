@@ -54,27 +54,49 @@
 				<h3>Select your plan</h3>
 				<p><span>You have the option of monthly or yearly billing.</span></p>
 				<label for="arcade" class="card">
-					<input type="radio" id="arcade" name="arcade">
+					<input type="radio" id="arcade" name="plan" value="arcade">
 					<div class="card-details">
 						<img src="./assets/images/icon-arcade.svg" alt="">
 						<div class="card-text">
 							<h3>Arcade</h3>
-							<p id="month-year">$9/mo</p>
+							<p class="month-year">$9/mo</p>
 						</div>
 					</div>
 				</label>
-			</div>
-		
-			<div class="progress">
-			
-				<div class="next">
-				
-					<button id="next">Go Back</button>
-			
+				<label for="advanced" class="card">
+					<input type="radio" id="advanced" name="plan" value="advanced">
+					<div class="card-details">
+						<img src="./assets/images/icon-advanced.svg" alt="">
+						<div class="card-text">
+							<h3>Advanced</h3>
+							<p class="month-year">$9/mo</p>
+						</div>
+					</div>
+				</label>
+				<label for="pro" class="card">
+					<input type="radio" id="pro" name="plan" value="pro">
+					<div class="card-details">
+						<img src="./assets/images/icon-pro.svg" alt="">
+						<div class="card-text">
+							<h3>Pro</h3>
+							<p class="month-year">$9/mo</p>
+						</div>
+					</div>
+				</label>
+				<div class="billing-toggle">
+					<span>Monthly</span>
+					<label for="switch" class="switch">
+						<input type="checkbox" name="switch">
+						<span class="slider"></span>
+					</label>
+					<span>Yearly</span>
 				</div>
-			
+			</div>
+			<div class="progress">
+				<div class="next">
+					<button id="next">Go Back</button>
+				</div>
 				<div class="back">
-				
 					<button id="back">Next Step</button>
 				</div>
 			</div>

@@ -39,7 +39,7 @@ main .top .steps button {
 main .bottom {
 	display: flex;
 	flex-direction: column;
-	height: 30rem;
+	height: 40rem;
 }
 
 main .bottom .step-1, main .bottom .step-2 {
@@ -133,7 +133,6 @@ main .bottom .step-1 {
 
 input[type="radio"],
 input[type="checkbox"] {
-	appearance: none;
 	display: none;
 }
 
@@ -141,12 +140,21 @@ input[type="checkbox"] {
 	width: 80%;
 	display: flex;
 	flex-direction: column;
-	align-items: center;
+	border: 1px solid rgb(206, 203, 203);
+	border-radius: .5rem;
+	margin: .5rem 0rem;
+}
+
+.card:hover {
+	cursor: pointer;
 }
 
 .card .card-details {
 	display: flex;
-	padding: 1.5rem 2rem;
+	padding: 1.5rem 0;
+	width: 100%;
+	border: 1px solid rgb(206, 203, 203);
+	border-radius: .5rem;
 }
 
 .card .card-details img {
@@ -159,6 +167,45 @@ input[type="checkbox"] {
 	padding: 0;
 }
 
-input[type="radio"]:checked {
+input[type="radio"]:checked + .card-details {
 	border: 1px solid blue;
+	background-color: rgb(208, 239, 239);
+}
+
+.billing-toggle {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: 1.5rem 0;
+}
+
+.switch {
+	position: relative;
+	display: inline-block;
+	width: 6rem;
+	height: 3rem;
+}
+
+.switch input {
+	display: none;
+}
+
+.slider {
+	position: absolute;
+	cursor: pointer;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: #CCC;
+	transition: .4s;
+	border-radius: 50%;
+}
+
+input:checked + .slider {
+	background-color: blue;
+}
+
+input:checked + .slider::before {
+	transform: translateX(26px);
 }
