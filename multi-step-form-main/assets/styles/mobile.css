@@ -44,7 +44,7 @@ main .bottom {
 
 main .bottom .step-1,
 main .bottom .step-2,
-.main .bottom .step-3 {
+main .bottom .step-3 {
 	position: absolute;
 	width: 85%;
 	background-color: white;
@@ -74,7 +74,7 @@ p span {
 	opacity: .3;
 }
 
-.step-1 h3 {
+h3 {
 	margin: .5rem 0 0 0;
 	font-family: Ubuntu-Bold;
 	font-size: 2rem;
@@ -134,8 +134,7 @@ main .bottom .step-2 {
 	display: none;
 }
 
-input[type="radio"],
-input[type="checkbox"] {
+input[type="radio"] {
 	display: none;
 }
 
@@ -146,6 +145,18 @@ input[type="checkbox"] {
 	border: 1px solid rgb(206, 203, 203);
 	border-radius: .5rem;
 	margin: .5rem 0rem;
+}
+
+.step-3 .card {
+	flex-direction: row;
+	padding: 2rem 0;
+	column-gap: 1rem;
+}
+
+.step-3 .card input {
+	width: 2rem;
+	margin: auto 0;
+	margin-left: 1rem;
 }
 
 .card:hover {
@@ -170,7 +181,13 @@ input[type="checkbox"] {
 	padding: 0;
 }
 
-input[type="radio"]:checked + .card-details {
+.card-text h3 {
+	font-size: 1.2rem;
+}
+
+input[type="radio"]:checked + .card-details,
+input[type="checkbox"]:checked + .card
+{
 	border: 1px solid blue;
 	background-color: rgb(208, 239, 239);
 }
