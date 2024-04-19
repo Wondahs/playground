@@ -42,7 +42,9 @@ main .bottom {
 	height: 40rem;
 }
 
-main .bottom .step-1, main .bottom .step-2 {
+main .bottom .step-1,
+main .bottom .step-2,
+.main .bottom .step-3 {
 	position: absolute;
 	width: 85%;
 	background-color: white;
@@ -127,7 +129,8 @@ main .bottom .progress button {
 	font-family: Ubuntu-Bold;
 }
 
-main .bottom .step-1 {
+main .bottom .step-1,
+main .bottom .step-2 {
 	display: none;
 }
 
@@ -174,38 +177,60 @@ input[type="radio"]:checked + .card-details {
 
 .billing-toggle {
 	display: flex;
-	justify-content: center;
+	justify-content: space-evenly;
 	align-items: center;
-	margin: 1.5rem 0;
+	margin: 1.5rem auto;
+	width: 100%;
+	background-color: #ccc;
+	padding: 1rem 0;
+	border-radius: .5rem;
 }
 
-.switch {
-	position: relative;
-	display: inline-block;
-	width: 6rem;
-	height: 3rem;
+.billing-toggle .monthly {
+	margin-left: 3rem;
 }
-
+/* Hide the default checkbox */
 .switch input {
-	display: none;
+  display: none;
 }
 
+/* Style the switch container */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 10px;
+  height: 34px;
+}
+
+/* Style the slider */
 .slider {
-	position: absolute;
-	cursor: pointer;
-	top: 0;
-	left: 0;
-	right: 0;
-	bottom: 0;
-	background-color: #CCC;
-	transition: .4s;
-	border-radius: 50%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: hsl(213, 96%, 18%);
+  border-radius: 34px;
+  cursor: pointer;
 }
 
-input:checked + .slider {
-	background-color: blue;
+.switch .slider {
+	width: 74px;
+}
+/* Style the slider button */
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  border-radius: 50%;
+  transition: transform 0.2s;
 }
 
-input:checked + .slider::before {
-	transform: translateX(26px);
+/* Move the slider button to the right when the checkbox is checked */
+.switch input:checked + .slider:before {
+  transform: translateX(40px);
 }
