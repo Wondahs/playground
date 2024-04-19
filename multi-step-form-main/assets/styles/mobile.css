@@ -1,0 +1,164 @@
+
+
+main {
+	display: flex;
+	flex-direction: column;
+	position: relative;
+	width: 100%;
+}
+
+main .top {
+	background-image: url(../images/bg-sidebar-mobile.svg);
+	background-repeat: no-repeat;
+	background-size: cover;
+	width: 100%;
+	display: flex;
+	padding: 30px 10px;
+	justify-content: center;
+	column-gap: 10px;
+	height: 12rem;
+}
+
+main .top .steps {
+	margin-top: 2rem;
+}
+
+main .top .steps p {
+	display: none;
+}
+
+main .top .steps button {
+	width: 3rem;
+	aspect-ratio: 1;
+	background-color: transparent;
+	border: .1rem white solid;
+	border-radius: 50%;
+	color: white;
+}
+
+main .bottom {
+	display: flex;
+	flex-direction: column;
+	height: 30rem;
+}
+
+main .bottom .step-1, main .bottom .step-2 {
+	position: absolute;
+	width: 85%;
+	background-color: white;
+	top: 8.5rem;
+	left: 50%;
+	transform: translateX(-50%);
+	padding: 3% 5%;
+	display: flex;
+	flex-direction: column;
+	border-radius: 1rem;
+	box-shadow: 0 0 1rem rgba(0, 0, 0, 0.2);
+}
+
+main .bottom * {
+	width: 100%;
+}
+
+.bottom label, button input {
+	width: 100%;
+}
+
+.bottom input {
+	margin-bottom: 1rem;
+}
+
+p span {
+	opacity: .3;
+}
+
+.step-1 h3 {
+	margin: .5rem 0 0 0;
+	font-family: Ubuntu-Bold;
+	font-size: 2rem;
+}
+
+.step-1 label {
+	font-family: Ubuntu-Bold;
+}
+
+.step-1 input {
+	padding: 1rem;
+	width: 85%;
+	border: 1px gray solid;
+	border-radius: .3rem;
+}
+
+.step-1 input::placeholder {
+	font-size: 1rem;
+	color: hsl(213, 96%, 18%);
+	opacity: .3;
+	font-family: Ubuntu-Bold;
+}
+
+main .bottom .progress {
+	position: absolute;
+	display: flex;
+	padding: 1rem .1rem;
+	bottom: 0;
+	background-color: white;
+	width: 100%;
+}
+
+.progress .next {
+	margin-right: auto;
+	margin-left: 1em;
+	width: 25%;
+}
+
+.progress .back {
+	margin-left: auto;
+	margin-right: 1em;
+	width: 25%;
+}
+
+main .bottom .progress button {
+	width: 100%;
+	border: none;
+	background-color: hsl(213, 96%, 18%);
+	color: white;
+	border-radius: .5rem;
+	padding: .5rem 1rem;
+	font-family: Ubuntu-Bold;
+}
+
+main .bottom .step-1 {
+	display: none;
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+	appearance: none;
+	display: none;
+}
+
+.card {
+	width: 80%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.card .card-details {
+	display: flex;
+	padding: 1.5rem 2rem;
+}
+
+.card .card-details img {
+	width: 3rem;
+	margin: 0 1rem;
+}
+
+.card-text * {
+	margin: .2rem 0;
+	padding: 0;
+}
+
+input[type="radio"]:checked {
+	border: 1px solid blue;
+}
