@@ -210,7 +210,7 @@ input[type="radio"]:checked + .card-details
 	align-items: center;
 	margin: 1.5rem auto;
 	width: 100%;
-	background-color: #ccc;
+	background-color: #f3eded;
 	padding: 1rem 0;
 	border-radius: .5rem;
 }
@@ -288,6 +288,7 @@ p {
 	margin: 0;
 }
 .finishing p {
+	display: flex;
 	width: auto;
 	color: hsl(240, 2%, 53%);
 	margin: 1rem 0;
@@ -295,7 +296,7 @@ p {
 
 
 p.finishing-cost {
-	margin-left: 70%;
+	margin-right: auto;
 	width: min-content;
 	font-weight: bold;
 	color: hsl(213, 96%, 18%);
@@ -320,13 +321,17 @@ p.finishing-cost {
 }
 
 
-.total {
+main .bottom .total {
+	display: flex;
+	align-items: center;
 	color: hsl(240, 2%, 53%);
-	margin-left: 1rem;
+	padding: 0 1rem;
+	width: 90%;
 }
 
 .total span {
-	margin-left: 50%;
+	width: min-content;
+	margin-left: auto;
 	color: blue;
 	font-weight: bold;
 	opacity: 1;
