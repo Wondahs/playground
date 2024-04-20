@@ -20,24 +20,32 @@
 		<main>
 			<section class="top left">
 				<div class="steps">
-
 					<button class="buttons" id="button-1">1</button>
-					<p>Step 1<br><b>Your info</b></p>
+					<div class="step-text">
+						<p>Step 1</p>
+						<p class="detail">YOUR INFO</p>
+					</div>	
 				</div>
 				<div class="steps">
-
 					<button class="buttons" id="button-2">2</button>
-					<p>Step 2<br><b>Select plan</b></p>
+					<div class="step-text">
+						<p>Step 2</p>
+						<p class="detail">SELECT PLAN</p>
+					</div>
 				</div>
 				<div class="steps">
-
 					<button class="buttons" id="button-3">3</button>
-					<p>Step 3<br><b>Add-ons</b></p>
+					<div class="step-text">
+						<p>Step 3</p>
+						<p class="detail">ADD-ONS</p>
+					</div>
 				</div>
 				<div class="steps">
-
 					<button class="buttons" id="button-4">4</button>
-					<p>Step 4<br><b>Summary</b></p>
+					<div class="step-text">
+						<p>Step 4</p>
+						<p class="detail">SUMMARY</p>
+					</div>
 				</div>
 			</section>
 			<section class="bottom right">
@@ -54,36 +62,38 @@
 				<div class="step-2">
 					<h3>Select your plan</h3>
 					<p><span>You have the option of monthly or yearly billing.</span></p>
-					<label for="arcade" class="card">
-						<input type="radio" id="arcade" name="plan" value="arcade">
-						<div class="card-details">
-							<img src="./assets/images/icon-arcade.svg" alt="">
-							<div class="card-text">
-								<h3>Arcade</h3>
-								<p class="month-year">$9/mo</p>
+					<div class="labels">
+						<label for="arcade" class="card">
+							<input type="radio" id="arcade" name="plan" value="arcade">
+							<div class="card-details">
+								<img src="./assets/images/icon-arcade.svg" alt="">
+								<div class="card-text">
+									<h3>Arcade</h3>
+									<p class="month-year">$9/mo</p>
+								</div>
 							</div>
-						</div>
-					</label>
-					<label for="advanced" class="card">
-						<input type="radio" id="advanced" name="plan" value="advanced">
-						<div class="card-details">
-							<img src="./assets/images/icon-advanced.svg" alt="">
-							<div class="card-text">
-								<h3>Advanced</h3>
-								<p class="month-year">$12/mo</p>
+						</label>
+						<label for="advanced" class="card">
+							<input type="radio" id="advanced" name="plan" value="advanced">
+							<div class="card-details">
+								<img src="./assets/images/icon-advanced.svg" alt="">
+								<div class="card-text">
+									<h3>Advanced</h3>
+									<p class="month-year">$12/mo</p>
+								</div>
 							</div>
-						</div>
-					</label>
-					<label for="pro" class="card">
-						<input type="radio" id="pro" name="plan" value="pro">
-						<div class="card-details">
-							<img src="./assets/images/icon-pro.svg" alt="">
-							<div class="card-text">
-								<h3>Pro</h3>
-								<p class="month-year">$15/mo</p>
+						</label>
+						<label for="pro" class="card">
+							<input type="radio" id="pro" name="plan" value="pro">
+							<div class="card-details">
+								<img src="./assets/images/icon-pro.svg" alt="">
+								<div class="card-text">
+									<h3>Pro</h3>
+									<p class="month-year">$15/mo</p>
+								</div>
 							</div>
-						</div>
-					</label>
+						</label>
+					</div>
 					<div class="billing-toggle">
 						<span class="monthly">Monthly</span>
 						<label for="switch" class="switch">

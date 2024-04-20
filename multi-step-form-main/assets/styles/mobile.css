@@ -23,7 +23,7 @@ main .top .steps {
 	margin-top: 2rem;
 }
 
-main .top .steps p {
+main .top .steps .step-text {
 	display: none;
 }
 
