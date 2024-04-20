@@ -20,4 +20,5 @@ body {
 	background-color: hsl(206, 94%, 87%);
 	color: hsl(213, 96%, 18%);
 	font-family: "Ubuntu-Regular", sans-serif;
+	position: relative;
 }
