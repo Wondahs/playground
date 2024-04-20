@@ -1,0 +1,36 @@
+@media only screen and (min-width: 600px) {
+	main {
+		margin: 5rem auto;
+		width: 65%;
+		flex-direction: row;
+		background-color: white;
+		border-radius: 1rem;
+		padding: 1rem;
+		height: 25rem;
+	}
+
+	main .left {
+		background-image: url(../images/bg-sidebar-desktop.svg);
+		flex-direction: column;
+		width: 40%;
+		background-size: contain;
+		height: 85%;
+	}
+
+	main .left .steps {
+		margin-top: 0;
+		width: 5%;
+	}
+
+	main .bottom {
+		display: none;
+	}
+
+	main .bottom .step-1,
+	main .bottom .step-2,
+	main .bottom .step-3,
+	main .bottom .step-4,
+	main .bottom .step-5 {
+		position: static;
+	}
+}

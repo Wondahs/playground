@@ -7,6 +7,7 @@
 		<link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
 		<link rel="stylesheet" href="./assets/styles/general.css">
 		<link rel="stylesheet" href="./assets/styles/mobile.css">
+		<link rel="stylesheet" href="./assets/styles/desktop.css">
 		<title>Frontend Mentor | Multi-step form</title>
 
 		<!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
@@ -107,11 +108,41 @@
 						<input type="checkbox" id="storage" name="add-ons">
 						<div class="card-text">
 							<h3>Larger storage</h3>
-							<p><span>Extra 1TB of cloud save</span></p>                                                         </div>
+							<p><span>Extra 1TB of cloud save</span></p> 
+						</div>
 						<p id="cost-storage" class="cost">+$2/mo</p>
 					</label>
-					<label for="customize" class="card">                                                                                       <input type="checkbox" id="customize" name="add-ons">                                                              <div class="card-text">                                                                                                 <h3>Customizable Profile</h3>
-							<p><span>Custom theme on your profile</span></p>                                                         </div>                                                  <p id="cost-customize" class="cost">+$1/mo</p>                                                                  </label>
+					<label for="customize" class="card">
+						<input type="checkbox" id="customize" name="add-ons">
+						<div class="card-text">
+							<h3>Customizable Profile</h3>
+							<p><span>Custom theme on your profile</span></p>
+						</div>
+						<p id="cost-customize" class="cost">+$1/mo</p>
+					</label>
+				</div>
+				<div class="step-4">
+					<h3>Finishing up</h3>
+					<p><span>Double-check everything looks OK before confirming.</span></p>
+					<div class="finishing">
+						<div class="title">
+							<div class="plan">
+								<h3>Arcade</h3>
+								<a href="#"><p>Change</p></a>
+							</div>
+							<p class="finishing-cost">$9/mo</p>
+						</div>
+						<p>Online Service <span>+$1/mo</span></p>
+						<p>Larger storage <span>+$2/mo</span></p>
+					</div>
+					<p class="total">Total (per month) <span>+$12/mo</span></p>
+				</div>
+				<div class="step-5">
+					<img src="./assets/images/icon-thank-you.svg" alt="">
+					<h3>Thank you!</h3>
+					<p>Thanks for confirming your subscription! We hope you have fun 
+						using our platform. If you ever need support, please feel free 
+						to email us at support@loremgaming.com.</p>
 				</div>
 				<div class="progress">
 					<div class="next">
@@ -123,44 +154,6 @@
 				</div>
 			</section>
 		</main>
-
-
-
-		<!-- Step 3 start -->
-
-		Customizable Profile
-		Custom theme on your profile
-		+$2/mo
-
-		Go Back
-		Next Step
-
-		<!-- Step 3 end -->
-
-		<!-- Step 4 start -->
-
-		Finishing up
-		Double-check everything looks OK before confirming.
-
-		<!-- Dynamically add subscription and add-on selections here -->
-
-		Total (per month/year)
-
-		Go Back
-		Confirm
-
-		<!-- Step 4 end -->
-
-		<!-- Step 5 start -->
-
-		Thank you!
-
-		Thanks for confirming your subscription! We hope you have fun 
-		using our platform. If you ever need support, please feel free 
-		to email us at support@loremgaming.com.
-
-		<!-- Step 5 end -->
-
 		<div class="attribution">
 			Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
 			Coded by <a href="#">Your Name Here</a>.

@@ -44,7 +44,9 @@ main .bottom {
 
 main .bottom .step-1,
 main .bottom .step-2,
-main .bottom .step-3 {
+main .bottom .step-3,
+main .bottom .step-4,
+main .bottom .step-5 {
 	position: absolute;
 	width: 85%;
 	background-color: white;
@@ -129,10 +131,6 @@ main .bottom .progress button {
 	font-family: Ubuntu-Bold;
 }
 
-main .bottom .step-1,
-main .bottom .step-2 {
-	display: none;
-}
 
 input[type="radio"] {
 	display: none;
@@ -161,8 +159,9 @@ input[type="radio"] {
 	margin-left: 1rem;
 }
 
-.step-3 .card-text {
-	width: 280%;
+.card .cost {
+	width: min-content;
+	margin-right: 1rem;
 }
 
 .step-3 .card:last-child {
@@ -263,4 +262,102 @@ input[type="radio"]:checked + .card-details
 /* Move the slider button to the right when the checkbox is checked */
 .switch input:checked + .slider:before {
   transform: translateX(40px);
+}
+
+.step-4 .finishing {
+	background-color: hsl(206, 94%, 87%);
+	border-radius: 1rem;
+	padding: 1rem 1rem;
+	width: 90%;
+}
+
+.step-4 .finishing .title {
+	display: flex;
+	align-items: center;
+	border-bottom: 1px rgb(187, 185, 185) solid;
+	/* margin-bottom: 1rem; */
+}
+
+p {
+	opacity: 1;
+}
+
+.plan {
+	padding: 0;
+	padding-bottom: 1rem;
+	margin: 0;
+}
+.finishing p {
+	width: auto;
+	color: hsl(240, 2%, 53%);
+	margin: 1rem 0;
+}
+
+
+p.finishing-cost {
+	margin-left: 70%;
+	width: min-content;
+	font-weight: bold;
+	color: hsl(213, 96%, 18%);
+}
+
+.finishing p span {
+	width: min-content;
+	margin: auto 0;
+	margin-left: 65%;
+	color: hsl(213, 96%, 18%);
+	opacity: 1;
+}
+
+.plan a, .plan p {
+	padding: 0;
+	margin: 0;
+}
+.title h3 {
+	font-size: 1.5rem;
+	margin: 0;
+	padding: 0;
+}
+
+
+.total {
+	color: hsl(240, 2%, 53%);
+	margin-left: 1rem;
+}
+
+.total span {
+	margin-left: 50%;
+	color: blue;
+	font-weight: bold;
+	opacity: 1;
+}
+
+main .bottom .step-5 {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	padding: 5rem 1rem;
+}
+
+.step-5 * {
+	max-width: fit-content;
+}
+
+.step-5 p {
+	opacity: .4;
+}
+
+.step-5 img {
+	width: 3rem;
+	margin: 1rem auto;
+}
+
+
+main .bottom .step-2,
+main .bottom .step-3,
+main .bottom .step-4,
+main .bottom .step-5 {
+	display: none;
 }
