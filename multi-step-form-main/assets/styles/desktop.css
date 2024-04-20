@@ -83,8 +83,18 @@
 	}
 
 	main .bottom .step-2 .labels {
+		display: flex;	
+	}
+
+	main .bottom .step-2 .card-details {
 		display: flex;
-		
+		flex-direction: column;
+		padding: 0;
+	}
+
+	.bottom .step-2 .card-details img {
+		width: 1rem;
+		margin: 0;
 	}
 
 	main .bottom .progress {
