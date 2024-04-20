@@ -80,7 +80,11 @@
 	}
 	main .bottom .step-2 {
 		display: flex;
-		flex-direction: row;
+	}
+
+	main .bottom .step-2 .labels {
+		display: flex;
+		
 	}
 
 	main .bottom .progress {
