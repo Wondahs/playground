@@ -8,6 +8,7 @@ window.addEventListener('resize', () => {
 	next = window.innerWidth < 768 ? document.querySelector('footer #next') : document.querySelector('.progress .next');
 	back = window.innerWidth < 768 ? document.querySelector('footer #back') : document.querySelector('.progress .back');
 
+	console.log("Resized")
 	console.log(next ? next.textContent : "not found");
 })
 for (let step of steps) {
