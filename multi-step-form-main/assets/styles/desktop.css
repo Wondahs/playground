@@ -137,6 +137,15 @@
 		justify-content: center;
 	}
 
+	main .bottom .progress .next{
+		margin-right: 1rem;
+		margin-left: auto;
+	}
+
+	main .bottom .progress .back {
+		margin-left: 1rem;
+	}
+
 	.billing-toggle .switch {
 		height: 20px;
 	}
@@ -185,3 +194,5 @@
 		display: none;
 	}
 }
+
+
