@@ -35,21 +35,27 @@ back.addEventListener('click', prevStep);
 
 function prevStep () {
 	if (currentStepCount > 1) {
+		stepButton.style.backgroundColor = "transparent";
+		stepButton.style.color = "white";
 		currentStep.style.display = "none";
 		currentStep = document.querySelector(`.step-${--currentStepCount}`);
-		console.log(currentStepCount);
 		currentStep.style.display = "flex";
+		stepButton = document.getElementById(`button-${currentStepCount}`);
+		stepButton.style.backgroundColor = "hsl(228, 100%, 84%)";
+		stepButton.style.color = "hsl(213, 96%, 18%)";
 	}
 }
 
 function nextStep () {
 	if (currentStepCount < 5) {
 		stepButton.style.backgroundColor = "transparent";
+		stepButton.style.color = "white";
 		currentStep.style.display = "none";
 		currentStep = document.querySelector(`.step-${++currentStepCount}`);
 		currentStep.style.display = "flex";
 		stepButton = document.getElementById(`button-${currentStepCount}`);
 		stepButton.style.backgroundColor = "hsl(228, 100%, 84%)";
+		stepButton.style.color = "hsl(213, 96%, 18%)";
 	}
 }
 
