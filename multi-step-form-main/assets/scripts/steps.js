@@ -12,20 +12,26 @@ window.addEventListener('resize', () => {
 	console.log(next ? next.textContent : "not found");
 });
 
+hideSteps();
+
 function hideSteps () {
 	for (let step of steps) {
-		console.log(step.innerHtml);
 		step.style.display = 'none';
 	}
 }
 
 let currentStepCount = 1;
 let currentStep = document.querySelector(`.step-${currentStepCount}`);
+let stepButton = document.getElementById(`button-${currentStepCount}`);
+stepButton.style.backgroundColor = "hsl(228, 100%, 84%)";
+stepButton.style.color = "hsl(213, 96%, 18%)";
+
 
 currentStep.style.display = 'flex';
 
 next.addEventListener('click', nextStep);
 back.addEventListener('click', prevStep);
+
 
 function prevStep () {
 	if (currentStepCount > 1) {
@@ -38,10 +44,12 @@ function prevStep () {
 
 function nextStep () {
 	if (currentStepCount < 5) {
+		stepButton.style.backgroundColor = "transparent";
 		currentStep.style.display = "none";
 		currentStep = document.querySelector(`.step-${++currentStepCount}`);
-		console.log(currentStepCount);
 		currentStep.style.display = "flex";
+		stepButton = document.getElementById(`button-${currentStepCount}`);
+		stepButton.style.backgroundColor = "hsl(228, 100%, 84%)";
 	}
 }
 
