@@ -385,6 +385,7 @@ footer .back {
 
 footer .next {
 	margin-right: 2rem;
+	margin-left: auto;
 	width: 25%;
 }
 

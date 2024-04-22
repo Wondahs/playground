@@ -22,3 +22,10 @@ body {
 	font-family: "Ubuntu-Regular", sans-serif;
 	position: relative;
 }
+
+main .bottom .step-2 .bonus {
+	display: none;
+	font-weight: bold;
+	opacity: 1;
+	font-size: .7rem;
+}

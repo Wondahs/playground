@@ -144,6 +144,8 @@
 
 	main .bottom .progress .back {
 		margin-left: 1rem;
+		margin-right: auto;
+		display: none;
 	}
 
 	.billing-toggle .switch {

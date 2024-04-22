@@ -57,7 +57,7 @@
 					<label for="email">Email Address</label>
 					<input id="email" type="email" placeholder="e.g. stephenking@lorem.com" autocomplete="on" required>
 					<label for="phone">Phone Number</label>
-					<input id="phone" type="tel" placeholder="e.g. +1 234 567 890" autocomplete="on" required>
+					<input type="tel" placeholder="e.g. +1 234 567 890" autocomplete="on" required>
 				</div>
 				<div class="step-2">
 					<h3>Select your plan</h3>
@@ -69,7 +69,8 @@
 								<img src="./assets/images/icon-arcade.svg" alt="">
 								<div class="card-text">
 									<h3>Arcade</h3>
-									<p class="month-year">$9/mo</p>
+									<p id="arcade-bill" class="month-year">$9/mo</p>
+									<p class="bonus">2 months free</p>
 								</div>
 							</div>
 						</label>
@@ -79,7 +80,8 @@
 								<img src="./assets/images/icon-advanced.svg" alt="">
 								<div class="card-text">
 									<h3>Advanced</h3>
-									<p class="month-year">$12/mo</p>
+									<p id="advanced-bill" class="month-year">$12/mo</p>
+									<p class="bonus">2 months free</p>
 								</div>
 							</div>
 						</label>
@@ -89,18 +91,19 @@
 								<img src="./assets/images/icon-pro.svg" alt="">
 								<div class="card-text">
 									<h3>Pro</h3>
-									<p class="month-year">$15/mo</p>
+									<p id="pro-bill" class="month-year">$15/mo</p>
+									<p class="bonus">2 months free</p>
 								</div>
 							</div>
 						</label>
 					</div>
-					<div class="billing-toggle">
+					<div id="monthly" class="billing-toggle">
 						<span class="monthly">Monthly</span>
 						<label for="switch" class="switch">
 							<input type="checkbox" name="switch" id="switch">
 							<span class="slider"></span>
 						</label>
-						<span>Yearly</span>
+						<span id="yearly">Yearly</span>
 					</div>
 				</div>
 				<div class="step-3">
@@ -154,7 +157,7 @@
 						using our platform. If you ever need support, please feel free 
 						to email us at support@loremgaming.com.</p>
 				</div>
-				<div class="progress">
+				<div id="progress" class="progress">
 					<div class="back">
 						<button id="back">Go Back</button>
 					</div>
@@ -164,7 +167,7 @@
 				</div>
 			</section>
 		</main>
-		<footer>
+		<footer id="footer">
 			<div class="back">
 				<button id="back">Go Back</button>
 			</div>
@@ -178,5 +181,7 @@
 		</div>
 		<script src="./assets/scripts/script.js"></script>
 		<script src="./assets/scripts/steps.js"></script>
+		<script src="./assets/scripts/toggle.js"></script>
+		<script src="./assets/scripts/finishing.js"></script>
 	</body>
 </html>
