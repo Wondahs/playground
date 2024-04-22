@@ -29,3 +29,11 @@ main .bottom .step-2 .bonus {
 	opacity: 1;
 	font-size: .7rem;
 }
+
+.dim-button {
+	opacity: .5;
+}
+
+.dim-button:hover {
+	cursor: not-allowed;
+}

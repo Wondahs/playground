@@ -145,7 +145,6 @@
 	main .bottom .progress .back {
 		margin-left: 1rem;
 		margin-right: auto;
-		display: none;
 	}
 
 	.billing-toggle .switch {
@@ -157,13 +156,14 @@
 	}
 
 	.switch input:checked + .slider:before {
-		transform: translateX(30px);
+		transform: translateX(34px);
 	  }
 
 	.slider::before {
 		width: 16px;
 		height: 16px;
 		bottom: 2px;
+		left: 2px;
 	}
 
 	main .bottom .step-3 .card {
