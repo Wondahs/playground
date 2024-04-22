@@ -125,7 +125,22 @@ function nextStep () {
 	}
 
 	if (currentStepCount === 4) {
-		let selectedAddOns = Array.from(document.querySelectorAll('input[type="checkbox"][name="add-ons"] + .label')).filter(element => element.checked);
-		console.log(selectedAddOns);
+		let selectedAddOns = Array.from(document.querySelectorAll('input[type="checkbox"][name="add-ons"]:checked + .card-text h3'));
+		let addOnCost = Array.from(document.querySelectorAll('input[type="checkbox"][name="add-ons"]:checked + .card-text + .cost'));
+		let addOns = document.querySelector(".step-4 .finishing .finishing-details");
+		let plan = document.querySelector(".step-4 .finishing .plan h3");
+		let selectedPlan = document.querySelector('input[name="plan"]:checked');
+
+		selectedAddOns.forEach(element => console.log(element.innerHTML));
+		addOnCost.forEach(element => console.log(element.innerHTML));
+
+		plan.textContent = selectedPlan.value;
+		addOns.innerHTML = '';
+		
+		for (let i = 0; i < selectedAddOns.length; i++) {
+			let newP = document.createElement('p');
+			newP.innerHTML = `${selectedAddOns[i].textContent} <span>${addOnCost[i].textContent}<span>`;
+			addOns.appendChild(newP);
+		}
 	}
 }
