@@ -8,6 +8,7 @@ let footer = document.getElementById("footer");
 let stepOneInputs = document.querySelectorAll('.step-1 input');
 let stepTwoInputs = document.querySelectorAll('.step-2 input[name="plan"]');
 let stepThreeInputs = document.querySelectorAll('.step-3 input')
+let changePlan = document.getElementById("changePlan");
 
 back.style.display = "none";
 back.style.backgroundColor = "transparent";
@@ -17,6 +18,14 @@ next.disabled = true;
 
 console.log(stepThreeInputs);
 
+changePlan.addEventListener('click', planChange);
+
+function planChange () {
+	currentStepCount = 2;
+	hideSteps();
+	currentStep = document.querySelector(`.step-${currentStepCount}`);
+	currentStep.style.display = "flex";
+}
 
 function addOnClicked () {
 	let addOns = Array.from(stepThreeInputs);
