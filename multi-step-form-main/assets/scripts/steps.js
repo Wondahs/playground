@@ -15,16 +15,23 @@ back.style.backgroundColor = "transparent";
 back.style.color = "gray";
 next.classList.add("dim-button");
 next.disabled = true;
+next.textContent = currentStepCount === 4 ? "Confirm" : "Next Step";
 
 console.log(stepThreeInputs);
 
 changePlan.addEventListener('click', planChange);
 
 function planChange () {
+	stepButton.style.backgroundColor = "transparent";
+	stepButton.style.color = "white";
 	currentStepCount = 2;
 	hideSteps();
 	currentStep = document.querySelector(`.step-${currentStepCount}`);
 	currentStep.style.display = "flex";
+	stepButton = document.getElementById(`button-${currentStepCount}`);
+	stepButton.style.backgroundColor = "hsl(228, 100%, 84%)";
+	stepButton.style.color = "hsl(213, 96%, 18%)";
+	next.textContent = currentStepCount === 4 ? "Confirm" : "Next Step";
 }
 
 function addOnClicked () {
@@ -76,6 +83,11 @@ window.addEventListener('resize', () => {
 	back.style.display = currentStepCount > 1 ? "flex" : "none";
 	back.style.backgroundColor = "transparent";
 	back.style.color = "gray";
+	if (currentStepCount === 5){
+		back.style.display = "none";
+		next.style.display = "none";
+	}
+	next.textContent = currentStepCount === 4 ? "Confirm" : "Next Step";
 });
 
 function allFilled () {
