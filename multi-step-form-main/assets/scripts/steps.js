@@ -7,12 +7,30 @@ let currentStep = document.querySelector(`.step-${currentStepCount}`);
 let footer = document.getElementById("footer");
 let stepOneInputs = document.querySelectorAll('.step-1 input');
 let stepTwoInputs = document.querySelectorAll('.step-2 input');
+let stepThreeInputs = document.querySelectorAll('.step-3 input')
 
 back.style.display = "none";
 back.style.backgroundColor = "transparent";
 back.style.color = "gray";
 next.classList.add("dim-button");
 next.disabled = true;
+
+console.log(stepThreeInputs);
+
+
+function addOnClicked () {
+	let addOns = Array.from(stepThreeInputs);
+	let addOnsSelected = addOns.some(element => element.checked);
+	if (currentStepCount === 3) {
+		if (addOnsSelected) {
+			next.classList.remove("dim-button");
+			next.disabled = false;
+		} else {
+			next.classList.add("dim-button");
+			next.disabled = true;
+		}
+	}
+}
 
 function planClicked () {
 	let plans = Array.from(stepTwoInputs);
@@ -21,9 +39,13 @@ function planClicked () {
 		if (planSelected) {
 			next.classList.remove("dim-button");
 			next.disabled = false;
+			console.log("Freedom!");
 		} else {
 			next.classList.add("dim-button");
 			next.disabled = true;
+			console.log("None shall pass!");
+
+
 		}
 	}
 }
@@ -81,6 +103,10 @@ stepTwoInputs.forEach(element => {
 	element.addEventListener('change', planClicked);
 });
 
+stepThreeInputs.forEach(element => {
+	element.addEventListener('change', addOnClicked);
+});
+
 function hideSteps () {
 	for (let step of steps) {
 		step.style.display = 'none';
@@ -129,6 +155,7 @@ function nextStep () {
 	if (currentStepCount === 3) {
 		let selectedPlan = document.querySelector('input[name="plan"]:checked');
 		console.log("Selected plan is ", selectedPlan.value);
+		addOnClicked();
 	}
 
 	if (currentStepCount === 4) {
@@ -137,17 +164,37 @@ function nextStep () {
 		let addOns = document.querySelector(".step-4 .finishing .finishing-details");
 		let plan = document.querySelector(".step-4 .finishing .plan h3");
 		let selectedPlan = document.querySelector('input[name="plan"]:checked');
+		let planCost = document.querySelector('input[name="plan"]:checked + .card-details .month-year');
+		let toggle = document.getElementById("switch");
+		let finishingCost = document.querySelector(".step-4 .finishing .finishing-cost");
+		let total = document.querySelector('.step-4 .total');
+		let totalCost = 0;
+		let numberRegex = /\d+/;
+		let match = planCost.textContent.match(numberRegex);
+		
+		totalCost += Number(match);
 
 		selectedAddOns.forEach(element => console.log(element.innerHTML));
 		addOnCost.forEach(element => console.log(element.innerHTML));
+		console.log(total);
 
-		plan.textContent = selectedPlan.value;
+		plan.textContent = `${selectedPlan.value}(${toggle.checked ? 'Yearly' : 'Monthly'})`;
+		finishingCost.textContent = planCost.textContent;
 		addOns.innerHTML = '';
 		
 		for (let i = 0; i < selectedAddOns.length; i++) {
 			let newP = document.createElement('p');
+			let match = addOnCost[i].textContent.match(numberRegex);
+			let number = match[0];
+
+			totalCost += Number(number);
 			newP.innerHTML = `${selectedAddOns[i].textContent} <span>${addOnCost[i].textContent}<span>`;
 			addOns.appendChild(newP);
 		}
+
+		total.innerHTML = `<p>Total (${toggle.checked ? "Per Year" : "Per Month"})</p>
+							<span>+\$${totalCost}/${toggle.checked ? "yr" : "mo"}</span>`
+
+		console.log(totalCost);
 	}
 }

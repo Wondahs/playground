@@ -290,7 +290,7 @@ p {
 }
 .finishing p {
 	display: flex;
-	width: auto;
+	width: 100%;
 	color: hsl(240, 2%, 53%);
 	margin: 1rem 0;
 }
@@ -306,7 +306,7 @@ p.finishing-cost {
 .finishing p span {
 	width: min-content;
 	margin: auto 0;
-	margin-left: 65%;
+	margin-left: auto;
 	color: hsl(213, 96%, 18%);
 	opacity: 1;
 }

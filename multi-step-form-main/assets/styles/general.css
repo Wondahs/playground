@@ -37,3 +37,7 @@ main .bottom .step-2 .bonus {
 .dim-button:hover {
 	cursor: not-allowed;
 }
+
+button {
+	text-align: center;
+}

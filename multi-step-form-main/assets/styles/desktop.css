@@ -179,7 +179,7 @@
 		margin-right: auto;
 	}
 	.finishing p span {
-		margin-right: auto;
+		margin-right: 0;
 	}
 
 	#next, #back {
