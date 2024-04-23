@@ -41,3 +41,13 @@ main .bottom .step-2 .bonus {
 button {
 	text-align: center;
 }
+
+button:hover {
+	cursor: pointer;
+}
+.attribution { 
+	font-size: 11px;
+	text-align: center;
+	margin: 1rem 0; 
+}
+.attribution a { color: hsl(228, 45%, 44%); }

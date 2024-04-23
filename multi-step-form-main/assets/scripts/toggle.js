@@ -1,3 +1,4 @@
+// Script for controlling the behavior of month - year toggle
 let toggle = document.getElementById("switch");
 let proPrice = document.getElementById("pro-bill");
 let arcadePrice = document.getElementById("arcade-bill");
@@ -14,6 +15,7 @@ yearly.style.fontWeight = "normal";
 
 toggle.addEventListener('change', monthYear);
 
+// Change prices depending on toggle(month or year)
 function monthYear () {
 	yearly.style.fontWeight = toggle.checked ? "bold" : "normal";
 	monthly.style.fontWeight = toggle.checked ? "normal" : "bold";

@@ -1,3 +1,4 @@
+// Change selected color of add-on
 let checkboxes = document.querySelectorAll('.step-3 input[type="checkbox"]');
 
 function styleBorder () {
@@ -6,7 +7,6 @@ function styleBorder () {
 
 	checkboxParent.style.borderColor = checkbox.checked ? "blue" : "#ccc";
 	checkboxParent.style.backgroundColor = checkbox.checked ? "#BFEFFF" : "white";
-
 }
 
 for (let checkbox of checkboxes) {
