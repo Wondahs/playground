@@ -9,6 +9,8 @@ let stepOneInputs = document.querySelectorAll('.step-1 input');
 let stepTwoInputs = document.querySelectorAll('.step-2 input');
 
 back.style.display = "none";
+back.style.backgroundColor = "transparent";
+back.style.color = "gray";
 next.classList.add("dim-button");
 next.disabled = true;
 
@@ -38,8 +40,11 @@ window.addEventListener('resize', () => {
 	currentStep = document.querySelector(`.step-${currentStepCount}`);
 	currentStep.style.display = 'flex';
 	allFilled();
+	planClicked();
 
 	back.style.display = currentStepCount > 1 ? "flex" : "none";
+	back.style.backgroundColor = "transparent";
+	back.style.color = "gray";
 });
 
 function allFilled () {
@@ -94,6 +99,7 @@ function prevStep () {
 		stepButton.style.color = "hsl(213, 96%, 18%)";
 	}
 	back.style.display = currentStepCount > 1 ? "flex" : "none";
+	next.textContent = currentStepCount === 4 ? "Confirm" : "Next Step";
 }
 
 function nextStep () {
@@ -108,6 +114,7 @@ function nextStep () {
 		console.log(currentStepCount);
 		stepButton.style.color = "hsl(213, 96%, 18%)";
 		back.style.display = (currentStepCount < 2 || currentStepCount > 4) ? "none" : "flex";
+		next.textContent = currentStepCount === 4 ? "Confirm" : "Next Step"
 	}
 	if (window.innerWidth < 768) {
 		footer.style.display = (currentStepCount < 2 || currentStepCount > 4) ? "none" : "flex";
