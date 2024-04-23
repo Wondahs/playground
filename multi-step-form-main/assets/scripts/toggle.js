@@ -27,5 +27,4 @@ function monthYear () {
 	online.innerHTML = toggle.checked ? "$10/yr" : "$1/mo";
 	storage.innerHTML = toggle.checked ? "$20/yr" : "$2/mo";
 	customize.innerHTML = toggle.checked ? "$20/yr" : "$2/mo";
-	planClicked();
 }

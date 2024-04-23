@@ -6,7 +6,7 @@ let currentStepCount = 1;
 let currentStep = document.querySelector(`.step-${currentStepCount}`);
 let footer = document.getElementById("footer");
 let stepOneInputs = document.querySelectorAll('.step-1 input');
-let stepTwoInputs = document.querySelectorAll('.step-2 input');
+let stepTwoInputs = document.querySelectorAll('.step-2 input[name="plan"]');
 let stepThreeInputs = document.querySelectorAll('.step-3 input')
 
 back.style.display = "none";
