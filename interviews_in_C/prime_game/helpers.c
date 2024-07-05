@@ -72,3 +72,25 @@ int firstPrime(int *arr, int size) {
 	}
 	return -1;
 }
+
+/**
+ * arrayFromRange - Creates an array from a range
+ * - start: Starting point
+ * - end: Ending point(Excluded)
+ * 
+ * Return: Array containing numbers starting from @start to @end.
+ * 		   Returns NULL if failed.
+ */
+int *arrayFromRange(int start, int end) {
+	if (!start || !end || start > end)
+		return NULL;
+	int *arr = malloc(sizeof(int) * (end - start));
+	for (int i = start; i < end; i++) {
+		arr[i - start] = i;
+	}
+	return arr;
+}
+
+int *copyWithoutMultiples(int **arr, int *size, int prime) {
+
+}
