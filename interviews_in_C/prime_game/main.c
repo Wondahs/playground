@@ -4,29 +4,16 @@
 #include <stdlib.h>
 
 int main() {
-	int *num_arr;
-	int size;
-	int i = 0;
-	bool cPrime;
+	int *num_arr = malloc(3000 * sizeof(int));
 
-	printf("Enter array size\n");
-	scanf("%d", &size);
+	for (int i = 0; i < 3000; i++)
+		num_arr[i] = i + 1;
 
-	num_arr = (int *)malloc((size_t)size * sizeof(int));
-	while (i < size) {
-		int num;
-		printf("Enter number %d.\n", i + 1);
-		scanf("%d", &num);
-
-		num_arr[i] = num;
-		i++;
-	}
-	cPrime = containsPrime(num_arr, size);
-	printf("Array: ");
-	printArray(num_arr, size);
-	printf("It %s.\n", cPrime ? "contains prime" : "does not contain prime");
-	if (cPrime)
-		printf("First prime: %d.\n", firstPrime(num_arr, size));
+    int size = 3000;
+	
+	// printf("Array: ");
+	// printArray(num_arr, size);
+	printf("Winner is %s.\n", primeGame(size, num_arr));
 	free(num_arr);
 	return 0;
 }
