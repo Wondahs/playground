@@ -1,0 +1,18 @@
+body 
+
+header {
+    background-color: #070828;
+    color: white;
+    display: flex;
+    flex-direction: row;
+}
+
+header nav ul {
+    display: flex;
+    flex-direction: row;
+}
+
+header nav ul li {
+    padding: 10px 0;
+    color: white;
+}
