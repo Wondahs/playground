@@ -17,6 +17,11 @@ header nav ul {
 }
 
 header nav ul li {
-    padding: 10px 0;
+    padding: 10px 5px;
     color: white;
+    list-style: none;
+}
+
+header h1 {
+    padding: 10px;
 }
