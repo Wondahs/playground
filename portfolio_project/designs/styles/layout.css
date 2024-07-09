@@ -9,6 +9,7 @@ body {
     padding: 0;
     margin: 0;
     font-size: smaller;
+    font-weight: 600;
 }
 
 a {
@@ -64,6 +65,10 @@ header button {
     border: none;
     color: white;
     font-weight: bolder;
+}
+
+.nav-button {
+    display: none;
 }
 
 footer {
@@ -122,4 +127,41 @@ footer .contact, footer .navigation {
 
 footer ul {
     padding: 0;
+}
+
+@media only screen and (max-width: 900px) {
+    header nav {
+        display: none;
+    }
+
+    header a.get-started {
+        display: none;
+    }
+
+    .nav-button {
+        display: flex;
+        width: 5%;
+    }
+
+    footer p {
+        text-align: center;
+    }
+
+    footer .logo-address-nav-help {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    footer .description, footer .contact, footer .navigation, footer .help {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+    footer .logo-address-nav-help h4 {
+        margin-bottom: 0;
+    }
 }

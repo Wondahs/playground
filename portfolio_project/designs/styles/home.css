@@ -5,6 +5,9 @@
     --tetiary-color: #EBEDF0;
 }
 
+button p {
+    font-weight: 600;
+}
 
 main {
     padding: 0;
@@ -17,7 +20,6 @@ section {
 
 section p {
     opacity: .5;
-    font-weight: 500;
 }
 
 section.jobs-company-candidates {
@@ -28,6 +30,7 @@ section.jobs-company-candidates {
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 80%;
 }
 
 section.jobs-company-candidates p {
@@ -43,7 +46,10 @@ section.jobs-company-candidates .potential h2 span {
 }
 
 section.jobs-company-candidates .sectors {
-    line-height: 50px;
+    /* line-height: 50px; */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 section.jobs-company-candidates .sectors span {
@@ -52,7 +58,7 @@ section.jobs-company-candidates .sectors span {
     font-weight: bold;
     padding: 10px 15px;
     border-radius: 10px;
-    margin: 20px;
+    margin: 10px 20px;
 }
 
 section.jobs-company-candidates .job-company-count {
@@ -203,12 +209,16 @@ section.latest-featured-jobs h3 {
     display: flex;
     flex-direction: row;
     column-gap: 10px;
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 .job-skills span {
     background-color: var(--tetiary-color);
     border-radius: 5px;
     padding: 10px 15px;
+    margin-bottom: 10px;
 }
 
 .job-skills span p {
@@ -272,4 +282,64 @@ section.contact-us {
 
 [class$="-details"] p {
     margin: 0;
+}
+
+.cta-image {
+    width: 40%;
+}
+
+.cta-image img {
+    width: 90%;
+}
+
+@media only screen and (max-width: 900px) {
+    .featured-jobs {
+        flex-direction: column;
+        align-items: center;
+        row-gap: 20px;
+    }
+
+    .job-card {
+        width: 70%;
+    }
+
+    section.contact-us {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .contact-us .cta-text {
+        width: 100%;
+    }
+
+    .contact-us h3 {
+        font-size: 35px;
+    }
+
+    .contact-us .contacts {
+        margin-top: 20px;
+    }
+
+    .cta-image {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .cta-image img {
+        width: 50%;
+        align-self: center;
+    }
+
+    section.who-we-are {
+        flex-direction: column;
+    }
+
+    section.who-we-are .left {
+        width: 100%;
+    }
+
+    section.who-we-are .right {
+        display: none;
+    }
 }
