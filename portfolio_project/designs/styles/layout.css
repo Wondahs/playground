@@ -1,0 +1,125 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+:root {
+    --primary-color: #070828;
+    --secondary-color: #B2B1FF;
+    --cta-color: #8C8AFF;
+}
+body {
+    font-family: 'Montserrat', sans-serif;
+    padding: 0;
+    margin: 0;
+    font-size: smaller;
+}
+
+a {
+    text-decoration: none;
+}
+
+li {
+    list-style: none;
+}
+
+header {
+    background-color: var(--primary-color);
+    color: white;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 20px 10%;
+}
+
+header nav {
+    margin-right: 2%;
+}
+
+header nav ul {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+header nav ul li {
+    padding: 10px 5px;
+    color: white;
+    list-style: none;
+    font-weight: bolder;
+}
+
+header h1 {
+    font-size: 30px;
+    margin-right: auto;
+}
+
+header a.get-started {
+    background-color: var(--cta-color);
+    color: white;
+    margin-left: auto;
+    margin-left: 0;
+    padding: 15px;
+    border-radius: 10px;
+}
+
+header button {
+    background-color: transparent;
+    border: none;
+    color: white;
+    font-weight: bolder;
+}
+
+footer {
+    background-color: var(--primary-color);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    padding: 30px 5%;
+}
+
+footer a {
+    color: white;
+}
+
+footer li {
+    margin-bottom: 20px;
+}
+
+footer a, footer p {
+    opacity: 60%;
+}
+
+footer .logo-address-nav-help {
+    border-bottom: 1px solid rgb(156, 150, 150);
+    display: flex;
+    flex-direction: row;
+    padding: 30px 5%;
+}
+
+footer .logo-and-name {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+footer .logo-address-nav-help h4 {
+    font-size: larger;
+}
+
+footer img {
+    width: 20px;
+    margin-right: 10px;
+}
+
+footer .description {
+    width: 30%;
+    margin-left: 0;
+    margin-right: auto;
+    text-align: justify;
+}
+
+footer .contact, footer .navigation {
+    width: 20%;
+    margin-right: auto;
+}
+
+footer ul {
+    padding: 0;
+}

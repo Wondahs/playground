@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="./home.css">
-    <link rel="stylesheet" href="./layout.css">
+    <link rel="stylesheet" href="./styles/home.css">
+    <link rel="stylesheet" href="./styles/layout.css">
 </head>
 <body>
     <header>
@@ -19,12 +19,12 @@
                 <a href=""><li>Contact Us</li></a>
             </ul>
         </nav>
-        <a href=""><button class="get-started" id="get-started-cta">Get-Started</button></a>
+        <a class="get-started" href=""><button id="get-started-cta">Get Started</button></a>
     </header>
     <main>
         <section class="jobs-company-candidates">
             <div class="potential">
-                <h2>Unlock Your Potential: Find Your Perfect Job at JobSync</h2>
+                <h2><span>Unlock Your Potential</span>: Find Your<br> Perfect Job at JobSync</h2>
             </div>
             <div class="description-text">
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa recusandae eligendi vitae, perspiciatis a molestiae velit possimus repellat atque odio! Consectetur perferendis explicabo ab saepe non natus, sed fuga quaerat.</p>
@@ -38,7 +38,8 @@
                 <span>#MARKETING</span>
                 <span>#HOSPITALITY</span>
                 <span>#ADMINISTRATION</span>
-                <span>#RETAIL</span>
+                <span>#HUMAN RESOURCES</span>
+                <span>#CUSTOMER SERVICE</span>
             </div>
             <div class="job-company-count">
                 <span>
@@ -64,28 +65,30 @@
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt doloribus, dolores mollitia beatae saepe voluptate unde quidem dolor recusandae illo quae dolore officiis deserunt, ipsam odio est assumenda tempora. Dolore.</p>
                 <button>
                     <p>INNOVATIVE MATCHING ALGORITHM</p>
-                    <span>&rarr;</span>
+                    <img src="./images/right-arrow.svg" alt="">
                 </button>
                 <button>
                     <p>USER-FRIENDLY INTERFACE</p>
-                    <span>&rarr;</span>
+                    <img src="./images/right-arrow.svg" alt="">
                 </button>
                 <button>
                     <p>COMPREHENSIVE JOB LISTINGS</p>
-                    <span>&rarr;</span>
+                    <img src="./images/right-arrow.svg" alt="">
                 </button>
             </div>
             <div class="right">
-                <img src="" alt="Dream Job">
+                <img src="./images/dream-job.svg" alt="Dream Job">
             </div>
         </section>
         <section class="latest-featured-jobs">
-            <h3>Latest Featured Jobs</h3>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Et nemo suscipit, cumque eligendi laboriosam excepturi quo corrupti eius aperiam consectetur nobis rerum esse illo obcaecati aliquid est veniam ipsa consequuntur?</p>
+            <div class="jobs-header">
+                <h3>Latest Featured Jobs</h3>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Et nemo suscipit, cumque eligendi laboriosam excepturi quo corrupti eius aperiam consectetur nobis rerum esse illo obcaecati aliquid est veniam ipsa consequuntur?</p>
+            </div>
             <div class="featured-jobs">
                 <div class="job-card">
                     <div class="logo-and-name">
-                        <img src="" alt="Company Logo">
+                        <img src="./images/logo-company1.svg" alt="Company Logo">
                         <div>
                             <p class="company-name">Company Name</p>
                             <p class="job-type">Job Type</p>
@@ -106,7 +109,7 @@
                 </div>
                 <div class="job-card">
                     <div class="logo-and-name">
-                        <img src="" alt="Company Logo">
+                        <img src="./images/logo-company2.svg" alt="Company Logo">
                         <div>
                             <p class="company-name">Company Name</p>
                             <p class="job-type">Job Type</p>
@@ -127,7 +130,7 @@
                 </div>
                 <div class="job-card">
                     <div class="logo-and-name">
-                        <img src="" alt="Company Logo">
+                        <img src="./images/logo-company3.svg" alt="Company Logo">
                         <div>
                             <p class="company-name">Company Name</p>
                             <p class="job-type">Job Type</p>
@@ -146,38 +149,45 @@
                         <span><p>Django</p></span>
                     </div>
                 </div>
+            </div>
+            <div class="browse-more">
+                <a class="browse-more-link" href="#">
+                    <button class="browse-more-cta">
+                        BROWSE MORE
+                    </button>
+                </a>
             </div>
         </section>
         <section class="contact-us">
             <div class="cta-text">
                 <p>CONTACT US</p>
-                <h3>Take Action Now With JobSync!</h3>
+                <h3>Take Action Now<br> With JobSync!</h3>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur, architecto? Quae, tempora. Quia, repudiandae! Nemo, debitis. Necessitatibus, rerum.</p>
                 <div class="contacts">
-                    <div class="address">
-                        <img src="" alt="Address Icon">
-                        <div>
+                    <div class="contacts-address">
+                        <img src="./images/icon-address.svg" alt="Address Icon">
+                        <div class="address-details">
                             <h4>Address</h4>
                             <p>123, Main Street</p>
                         </div>
                     </div>
-                    <div class="phone">
-                        <img src="" alt="Phone Icon">
-                        <div>
+                    <div class="contacts-phone">
+                        <img src="./images/icon-phone.svg" alt="Phone Icon">
+                        <div class="phone-details">
                             <h4>Phone</h4>
                             <p>+234 905 460 4494</p>
                         </div>
                     </div>
-                    <div class="email">
-                        <img src="" alt="Email Icon">
-                        <div>
+                    <div class="contacts-email">
+                        <img src="./images/icon-email.svg" alt="Email Icon">
+                        <div class="email-details">
                             <h4>Email</h4>
                             <p>hr@jobsync.com</p>
                         </div>
                     </div>
-                    <div class="website">
-                        <img src="" alt="Website Icon">
-                        <div>
+                    <div class="contacts-website">
+                        <img src="./images/icon-website.svg" alt="Website Icon">
+                        <div class="website-details">
                             <h4>Website</h4>
                             <p>jobsync.com</p>
                         </div>
@@ -193,20 +203,20 @@
         <div class="logo-address-nav-help">
             <div class="description">
                 <div class="logo-and-name">
-                    <img src="" alt="Company Logo">
+                    <img src="./images/footer-company-logo.svg" alt="Company Logo">
                     <h4>JobSync</h3>
                 </div>
                 <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sed delectus, quas, voluptatum magni, voluptas debitis voluptatibus quod expedita recusandae doloribus error eligendi eveniet maxime harum.</p>
                 <div class="socials">
-                    <a href="#"><img src="" alt="Facebook Icon"></a>
-                    <a href="#"><img src="" alt="Twitter Icon"></a>
-                    <a href="#"><img src="" alt="Instagram Icon"></a>
-                    <a href="#"><img src="" alt="LinkedIn Icon"></a>
+                    <a href="#"><img src="./images/logo-facebook.svg" alt="Facebook Icon"></a>
+                    <a href="#"><img src="./images/logo-twitter.svg" alt="Twitter Icon"></a>
+                    <a href="#"><img src="./images/logo-instagram.svg" alt="Instagram Icon"></a>
+                    <a href="#"><img src="./images/logo-github.svg" alt="Github Icon"></a>
                 </div>
             </div>
             <div class="contact">
                 <h4>Address</h4>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium praesentium dignissimos quia tempora facilis magnam maiores ad fugiat porro. Nulla quis, impedit dicta reiciendis beatae illo error libero doloribus nam?</p>
+                <p>Lorem ipsum dolor sit amet nam?</p>
 
                 <h4>Contact</h4>
                 <p>+234 905 460 4494</p>
@@ -231,7 +241,7 @@
             </div>
         </div>
         <div>
-            <p>&copy; JobSync. All rights reserved.</p>
+            <p>&copy; 2024 JobSync. All rights reserved.</p>
         </div>
     </footer>
 </body>
