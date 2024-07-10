@@ -70,6 +70,10 @@ section.jobs-company-candidates .job-company-count {
     justify-content: space-evenly;
 }
 
+section.jobs-company-candidates .job-company-count span {
+    margin: 0 10px;
+}
+
 section.jobs-company-candidates .job-company-count p[class$="count"] {
     opacity: 1;
     font-size: xx-large;

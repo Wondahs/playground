@@ -16,7 +16,12 @@ a {
   text-decoration: none;
 }
 
+li a {
+  color: white;
+}
+
 li {
+  color: white;
   list-style: none;
 }
 
