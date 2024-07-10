@@ -25,12 +25,12 @@ section p {
 section.jobs-company-candidates {
     background-color: var(--secondary-color);
     color: var(--primary-color);
-    padding: 20px 10%;
+    padding: 40px 10%;
     text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 80%;
+    /* width: 80%; */
 }
 
 section.jobs-company-candidates p {
@@ -64,8 +64,9 @@ section.jobs-company-candidates .sectors span {
 section.jobs-company-candidates .job-company-count {
     display: flex;
     flex-direction: row;
-    width: 80%;
+    /* width: 80%; */
     align-self: center;
+    flex-wrap: wrap;
     justify-content: space-evenly;
 }
 
@@ -257,14 +258,17 @@ section.contact-us {
 }
 
 .contact-us .contacts {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-items: center;
 }
 
 [class^="contacts-"] {
     display: flex;
     flex-direction: row;
     align-items: flex-start;
+    min-width: 50%;
 }
 
 [class^="contacts-"] img {
