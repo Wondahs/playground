@@ -10,6 +10,7 @@ window.addEventListener('resize', () => {
     navButton.style.display = 'none';
     document.body.style.overflow = 'visible';
     navButton.setAttribute('open', 'false');
+    navButton.src = './images/nav-button.svg';
     if (filter.classList.contains('filter')) filter.classList.remove('filter');
   } else {
     navBar.style.display = 'none';
@@ -23,12 +24,13 @@ navButton.addEventListener('click', () => {
     navBar.style.display = 'flex';
     document.body.style.overflow = 'hidden';
     navButton.setAttribute('open', 'true');
-    navButton.style.src = '../images/close-nav-icon.svg'
+    navButton.src = './images/close-nav-icon.svg'
     filter.classList.add('filter');
   } else {
     navBar.style.display = 'none';
     document.body.style.overflow = 'visible';
     navButton.setAttribute('open', 'false');
+    navButton.src = './images/nav-button.svg';
     filter.classList.remove('filter');
   }
 });
