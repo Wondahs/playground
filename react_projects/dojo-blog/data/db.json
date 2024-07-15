@@ -1,0 +1,22 @@
+{
+  "blogs": [
+    {
+      "id": "1",
+      "title": "A Guide to Healthy Eating",
+      "content": "Healthy eating doesn't have to be complicated. Focus on incorporating a variety of whole foods into your diet, such as fruits, vegetables, lean proteins, and whole grains. Avoid processed foods and sugary drinks. Planning your meals and preparing them at home can also help you make healthier choices. Remember, moderation is key.",
+      "author": "John Smith"
+    },
+    {
+      "id": "2",
+      "title": "Exploring Minimalist Living",
+      "content": "Minimalist living is about focusing on what truly matters and decluttering your life. By reducing unnecessary possessions, you can create a more peaceful and purposeful environment. Start small by decluttering one area of your home and slowly adopt a minimalist mindset. This lifestyle can lead to greater happiness and freedom.",
+      "author": "Sam Smith"
+    },
+    {
+      "id": "3",
+      "title": "The Benefits of Meditation",
+      "content": "Meditation is a powerful tool for reducing stress and increasing mindfulness. By setting aside just a few minutes each day, you can improve your mental clarity and emotional well-being. Start with simple breathing exercises and gradually explore different meditation techniques to find what works best for you. Consistency is key to reaping the benefits of meditation.",
+      "author": "John Joe"
+    }
+  ]
+}
