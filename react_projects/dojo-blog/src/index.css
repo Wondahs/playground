@@ -143,3 +143,9 @@ article button {
   color: #f1356d;
   text-decoration: none;
 }
+
+.blog-list input {
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid gray;
+}
